@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.Credits.GeneralCredits.GeneralCreditsController">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="186.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Lightwave Research Laboratory, led by Professor Keren Bergman, aims to investigate the realization of dynamic optical data routing in transparent optical interconnection networks, developing potentially disruptive technology solutions with ultra-high throughput, minimal access latencies, and low power dissipation that remains independent of data capacity, ultimately capitalizing on the enormous bandwidth advantage enabled by dense wavelength division multiplexing." textAlignment="JUSTIFY" wrappingWidth="395.8984375" />
+      <ImageView fitHeight="153.0" fitWidth="148.0" layoutX="23.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Extras/meisam-bahadori.png" />
+         </image>
+      </ImageView>
+      <Text fontSmoothingType="LCD" layoutX="186.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meisam Bahadori received his B.S. degree in electrical engineering, majoring in Telecommunications, from Sharif University of Technology in 2011. After that, he worked towards M.S. degree in electrical engineering, majoring in Microwaves and Optics, at the same school and graduated with the highest honors in June 2013. From September 2011 to August 2014, he was a research assistant at the Integrated Photonics Laboratory, where he studied the theory of propagation of light in metallic nanostructures and plasmonic devices. He is currently pursuing a PhD in electrical engineering with research interests related to photonics and optical devices." textAlignment="JUSTIFY" wrappingWidth="395.8984375" />
+      <Button fx:id="lrlWebsiteButton" layoutX="25.0" layoutY="364.0" mnemonicParsing="false" onAction="#websitePressed" text="Go to LRL website">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="feedbackButton" layoutX="456.0" layoutY="364.0" mnemonicParsing="false" onAction="#feedbackPressed" text="Give us Feedback">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="153.0" fitWidth="148.0" layoutX="25.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Extras/LRL_logo_new.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="25.0" layoutY="200.0" prefHeight="2.0" prefWidth="553.0" />
+      <Separator layoutX="25.0" layoutY="354.0" prefHeight="2.0" prefWidth="553.0" />
+      <Text fontSmoothingType="LCD" layoutX="197.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright 2017. All rights are reserved." wrappingWidth="241.556640625" />
+   </children>
+</Pane>
