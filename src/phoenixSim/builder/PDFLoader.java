@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 
 import com.sun.pdfview.PDFViewer;
 
-import People.Meisam.GUI.Utilities.ExportPlot.JavaFXFileChooser.FileChooserFX;
+import phoenixSim.util.FileChooserFX;
 
 public class PDFLoader {
 
