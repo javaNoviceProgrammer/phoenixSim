@@ -3,11 +3,11 @@ package phoenixSim.modules;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
-import People.Meisam.GUI.Builders.AbstractController;
-import People.Meisam.GUI.Builders.WindowBuilder;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import phoenixSim.builder.AbstractController;
 
 public class GeneralCreditsController extends AbstractController {
 	

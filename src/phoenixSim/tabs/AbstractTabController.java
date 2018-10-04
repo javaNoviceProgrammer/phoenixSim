@@ -1,11 +1,12 @@
 package phoenixSim.tabs;
 
 import org.controlsfx.control.StatusBar;
+
 import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.Pane;
+import phoenixSim.util.SimulationDataBase;
 
 public abstract class AbstractTabController {
 

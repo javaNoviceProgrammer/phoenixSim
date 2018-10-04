@@ -1,8 +1,9 @@
 package phoenixSim.tabs;
 
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
+
 import javafx.scene.control.Tab;
+import phoenixSim.util.SimulationDataBase;
 
 public abstract class AbstractTab {
 

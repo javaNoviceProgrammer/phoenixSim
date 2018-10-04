@@ -1,10 +1,10 @@
 package phoenixSim.util;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 /**
  * Created by meisam on 7/2/17.

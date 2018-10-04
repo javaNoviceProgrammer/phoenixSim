@@ -1,10 +1,10 @@
 package phoenixSim.modules;
 
 import java.io.IOException;
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.DataBaseTable.DataBase_v1_0.DatabaseTableController;
+
 import javafx.fxml.FXMLLoader;
+import phoenixSim.util.DatabaseTableController;
+import phoenixSim.util.SimulationDataBase;
 
 public class DatabaseModule {
 

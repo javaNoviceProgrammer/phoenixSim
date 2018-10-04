@@ -1,10 +1,9 @@
 package phoenixSim.util;
 
-import People.Meisam.GUI.DataInput.InputData;
+import java.util.ArrayList;
+
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import flanagan.io.FileOutput;
-
-import java.util.ArrayList;
 
 /**
  * Created by meisam on 6/25/17.

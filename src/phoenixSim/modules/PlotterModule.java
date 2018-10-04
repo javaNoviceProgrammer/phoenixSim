@@ -1,10 +1,10 @@
 package phoenixSim.modules;
 
 import java.io.IOException;
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.Plotters.MainGUI.PlotterController;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
+
 import javafx.fxml.FXMLLoader;
+import phoenixSim.util.PlotterController;
+import phoenixSim.util.SimulationDataBase;
 
 public class PlotterModule {
 

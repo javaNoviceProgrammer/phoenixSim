@@ -1,15 +1,10 @@
 package phoenixSim.util;
 
-import People.Meisam.GUI.Builders.AbstractController;
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.DatabaseModule.DatabaseModule;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.ImportDataModule.ImportDataModule;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.PlotterModule.PlotterModule;
+import java.io.IOException;
+
 import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
 import People.Meisam.GUI.Utilities.ExportPlot.ExportToMATLAB.ExportToMatlabController;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +18,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-
-import java.io.IOException;
+import phoenixSim.builder.AbstractController;
+import phoenixSim.modules.DatabaseModule;
+import phoenixSim.modules.ImportDataModule;
+import phoenixSim.modules.PlotterModule;
 
 public class PlotterController extends AbstractController {
 

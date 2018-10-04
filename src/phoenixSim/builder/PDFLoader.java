@@ -1,6 +1,7 @@
 package phoenixSim.builder;
 
-import java.awt.*;
+import java.awt.Desktop;
+import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;

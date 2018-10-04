@@ -1,6 +1,6 @@
 package phoenixSim.util;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class Colors {
 	

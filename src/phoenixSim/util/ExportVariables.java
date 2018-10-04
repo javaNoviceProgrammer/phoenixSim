@@ -1,11 +1,9 @@
 package phoenixSim.util;
 
 import java.util.ArrayList;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.ExportCompleted.ExportCompleted;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
-import People.Meisam.GUI.Utilities.ExportPlot.JavaFXFileChooser.FileChooserFX;
+
 import flanagan.io.FileOutput;
+import phoenixSim.modules.ExportCompleted;
 
 public class ExportVariables {
 	

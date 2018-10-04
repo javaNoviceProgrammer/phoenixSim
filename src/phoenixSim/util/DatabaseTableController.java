@@ -2,11 +2,7 @@ package phoenixSim.util;
 
 import java.io.File;
 import java.io.IOException;
-import People.Meisam.GUI.Builders.AbstractController;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.ImportDataModule.ImportDataModule;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
-import People.Meisam.GUI.Utilities.ExportData.ExportVariables;
+
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,14 +10,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.util.Callback;
-import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
+import phoenixSim.builder.AbstractController;
+import phoenixSim.modules.ImportDataModule;
 
 /**
  * Created by meisam on 7/7/17.
