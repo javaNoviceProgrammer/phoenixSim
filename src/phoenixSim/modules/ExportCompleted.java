@@ -3,6 +3,7 @@ package phoenixSim.modules;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import phoenixSim.builder.WindowBuilder;
 
 public class ExportCompleted {
 	

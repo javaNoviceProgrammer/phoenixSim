@@ -3,6 +3,7 @@ package phoenixSim.modules;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.util.DatabaseTableController;
 import phoenixSim.util.SimulationDataBase;
 

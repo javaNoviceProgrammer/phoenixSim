@@ -3,12 +3,13 @@ package phoenixSim.modules;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import phoenixSim.builder.AbstractController;
-import sun.rmi.transport.Transport;
+import phoenixSim.builder.WindowBuilder;
 
 public class FeedbackFormController extends AbstractController {
 	
