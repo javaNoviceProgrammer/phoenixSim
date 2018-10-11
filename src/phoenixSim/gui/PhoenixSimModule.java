@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.util.SimulationDataBase;
 
 public class PhoenixSimModule {

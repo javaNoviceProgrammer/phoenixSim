@@ -2,10 +2,10 @@ package phoenixSim.tabs;
 
 import org.controlsfx.control.StatusBar;
 
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.Pane;
+import mathLib.plot.MatlabChart;
 import phoenixSim.util.SimulationDataBase;
 
 public abstract class AbstractTabController {
