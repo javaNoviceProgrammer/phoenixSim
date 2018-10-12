@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.AddDropFitting.SymmetricDropBackScatteringDoubleReflector.AddDropFittingSymmetricBSDoubleReflectorTabController">
+   <tabs>
+      <Tab fx:id="tab" text="Add-Drop Fitting (Sym+BS-2)">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane maxWidth="273.0" minWidth="273.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="273.0">
+                     <children>
+                        <Pane layoutX="9.0" layoutY="209.0">
+                           <children>
+                              <Label layoutX="1.0" layoutY="4.0" prefHeight="16.0" prefWidth="59.0" text="lambda">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="minLambdaTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="nm" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setMinLambda" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="minLambdaLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                              <Label layoutX="4.0" layoutY="18.0" prefHeight="16.0" prefWidth="48.0" text="(min)">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="8.0" layoutY="278.0">
+                           <children>
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setMaxLambda" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <TextField fx:id="maxLambdaTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="nm" />
+                              <Label layoutX="1.0" layoutY="4.0" text="lambda">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="maxLambdaLabel" layoutX="60.0" layoutY="31.0" text="Label" />
+                              <Label layoutX="4.0" layoutY="19.0" text="(max)">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add-Drop Spectral Fitting (Symmetric drop +BS-2)" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Pane layoutX="8.0" layoutY="347.0">
+                           <children>
+                              <Label layoutX="1.0" layoutY="5.0" text="lambda">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="centerLambdaTextField" layoutX="58.0" layoutY="1.0" prefHeight="26.0" prefWidth="153.0" promptText="nm" />
+                              <Button layoutX="216.0" layoutY="1.0" mnemonicParsing="false" onAction="#setCenterLambda" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="centerLambdaLabel" layoutX="61.0" layoutY="33.0" text="Label" />
+                              <Label layoutX="-1.0" layoutY="21.0" text="(center)">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="75.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="X data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" fx:id="xDataTextField" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setXData" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseXData" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label layoutX="56.0" layoutY="30.0" text="Label" fx:id="xDataLabel" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="136.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="Y data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="yDataTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setYData" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseYData" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label fx:id="yDataLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Separator layoutX="32.0" layoutY="412.0" prefWidth="200.0" />
+                        <Pane layoutX="8.0" layoutY="428.0">
+                           <children>
+                              <Label layoutX="18.0" layoutY="5.0" text="FSR">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="fsrTextField" layoutX="58.0" layoutY="1.0" prefHeight="26.0" prefWidth="153.0" promptText="nm" />
+                              <Button layoutX="216.0" layoutY="1.0" mnemonicParsing="false" onAction="#setFSR" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="fsrLabel" layoutX="61.0" layoutY="33.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Separator layoutX="30.0" layoutY="195.0" prefWidth="200.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="matlabPane" maxHeight="528.0" maxWidth="500.0" minHeight="528.0" minWidth="500.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="528.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button layoutX="16.0" layoutY="420.0" mnemonicParsing="false" onAction="#calculateKappa" prefHeight="67.0" prefWidth="81.0" text="Calculate">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ListView fx:id="resultListView" layoutX="111.0" layoutY="415.0" prefHeight="78.0" prefWidth="214.0" />
+                        <RadioButton fx:id="plusPhase" layoutX="334.0" layoutY="421.0" mnemonicParsing="false" text="(+) sign for PHASE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="fitOption" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="minusPhase" layoutX="334.0" layoutY="467.0" mnemonicParsing="false" text="(-) sign for PHASE" toggleGroup="$fitOption" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

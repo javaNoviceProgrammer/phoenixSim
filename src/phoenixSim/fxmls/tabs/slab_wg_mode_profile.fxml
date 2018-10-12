@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.SlabWg.SlabWgModeProfile.SlabWgModeProfileTabController">
+   <tabs>
+      <Tab fx:id="slabWgModeProfileTab" text="Slab Wg Mode Profile">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode Profile of Slab Waveguide" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="133.0" fitWidth="208.0" layoutX="10.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Extras/TE%20modes.JPG" />
+                           </image>
+                        </ImageView>
+                        <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TE modes:" wrappingWidth="183.12109375">
+                           <font>
+                              <Font name="Times New Roman Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TM modes:" wrappingWidth="170.12109375">
+                           <font>
+                              <Font name="Times New Roman Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="144.0" fitWidth="196.0" layoutX="10.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Extras/TM%20modes.JPG" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutX="14.0" layoutY="246.0" prefWidth="200.0" />
+                        <Separator layoutX="14.0" layoutY="453.0" prefWidth="200.0" />
+                        <CheckBox fx:id="normalizedField" layoutX="13.0" layoutY="474.0" mnemonicParsing="false" onAction="#plotField" text="Normalize Field Component" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="matlabPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="26.0" prefWidth="138.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="139.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Group layoutX="-78.0" layoutY="409.0">
+                           <children>
+                              <Text fontSmoothingType="LCD" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Field Component">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                              <RadioButton fx:id="ReEx" layoutX="6.0" layoutY="28.0283203125" mnemonicParsing="false" onAction="#plotField" text="Re(Ex)">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="selectedField" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="ReEy" layoutX="71.0" layoutY="28.0283203125" mnemonicParsing="false" onAction="#plotField" text="Re(Ey)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReEz" layoutX="137.0" layoutY="28.0283203125" mnemonicParsing="false" onAction="#plotField" text="Re(Ez)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImEy" layoutX="71.0" layoutY="58.0283203125" mnemonicParsing="false" onAction="#plotField" text="Im(Ey)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImEz" layoutX="137.0" layoutY="58.0283203125" mnemonicParsing="false" onAction="#plotField" text="Im(Ez)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImEx" layoutX="6.0" layoutY="58.0283203125" mnemonicParsing="false" onAction="#plotField" text="Im(Ex)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReHx" layoutX="203.0" layoutY="30.0" mnemonicParsing="false" onAction="#plotField" text="Re(Hx)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImHx" layoutX="203.0" layoutY="60.0" mnemonicParsing="false" onAction="#plotField" text="Im(Hx)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReHy" layoutX="272.0" layoutY="29.0" mnemonicParsing="false" onAction="#plotField" text="Re(Hy)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImHy" layoutX="272.0" layoutY="59.0" mnemonicParsing="false" onAction="#plotField" text="Im(Hy)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReHz" layoutX="336.0" layoutY="29.0" mnemonicParsing="false" onAction="#plotField" text="Re(Hz)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImHz" layoutX="336.0" layoutY="59.0" mnemonicParsing="false" onAction="#plotField" text="Im(Hz)" toggleGroup="$selectedField" />
+                           </children>
+                        </Group>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

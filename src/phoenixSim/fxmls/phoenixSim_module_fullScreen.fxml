@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.StatusBar?>
+
+<VBox fx:id="mainWindow" prefHeight="654.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.MainModule.FullScreenMode.PhoenixSimModuleController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#exportAsModule" text="Export as Module" />
+                  <MenuItem mnemonicParsing="false" onAction="#importAsModule" text="Import as Module" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="Close">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#closeCurrentTabPressed" text="Current Tab" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeAllTabs" text="All Tabs" />
+                        <MenuItem fx:id="closeApp" mnemonicParsing="false" onAction="#closeModulePressed" text="Module" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Simulation">
+               <items>
+                  <Menu fx:id="newTabMenu1" mnemonicParsing="false" text="Tab">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Materials">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addMaterialsTab" text="Dielectrics" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Layered Media">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addInterfaceTab" text="Single Interface" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Slab WG Modes">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addSlabWgModesTab" text="Slab Wg Modes" />
+                              <MenuItem mnemonicParsing="false" onAction="#addSlabWgModeProfileTab" text="Slab Wg Mode Profile" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#addSlabWgCoupledModesTab" text="Slab Wg Coupled Modes" />
+                              <MenuItem mnemonicParsing="false" onAction="#addSlabWgCoupledModeProfileTab" text="Slab Wg Coupled Mode Profile" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Strip WG Modes">
+                           <items>
+                              <MenuItem fx:id="stripWgModesTab1" mnemonicParsing="false" onAction="#addStripWgModesTab" text="Strip Wg Modes" />
+                              <MenuItem fx:id="stripWgModesTab21" mnemonicParsing="false" onAction="#addStripWgModeProfileTab" text="Strip Wg Mode Profile" />
+                              <MenuItem fx:id="stripWgModesTab211" mnemonicParsing="false" onAction="#addStripWgSensitivityTab" text="Strip Wg Mode Sensitivity" />
+                              <MenuItem fx:id="stripWgModesTab11" mnemonicParsing="false" onAction="#addStripWgCoupledModesTab" text="Strip Wg Coupled Modes" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Directional Coupler">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addWgWgCouplerTab" text="Wg-Wg Coupler" />
+                              <MenuItem mnemonicParsing="false" onAction="#addRingWgCouplerTab" text="Ring-Wg Coupler" />
+                              <MenuItem mnemonicParsing="false" onAction="#addRingRingCouplerTab" text="Ring-Ring Coupler" />
+                              <MenuItem mnemonicParsing="false" onAction="#addRaceTrackCouplerTab" text="RaceTrack Coupler" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Thermal Heater">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterDCTab" text="DC Characteristic" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterFreqTab" text="Freq Characteristic" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterImpulseTab" text="Impulse Response" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterStepTab" text="Step Response" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterSinTab" text="Sin Response" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterPWMTab" text="PWM Response" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Ring Resonators">
+                           <items>
+                              <Menu mnemonicParsing="false" text="Add-Drop">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#addAddDropRingTab" text="First order" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addAddDropRingBSTab" text="First order (BS)" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addAddDropRingSecondOrderTab" text="Second order" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addAddDropRingThirdOrderTab" text="Third order" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addAddDropRingFourthOrderTab" text="Fourth order" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addAddDropRingFifthhOrderTab" text="Fifth order" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="All-Pass">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#addAllPassRingSelfHeatingTab" text="Self Heating" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Module">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#thermalAnalyzerModulePressed" text="Thermal Analyzer" />
+                        <MenuItem mnemonicParsing="false" onAction="#couplerDesignerModulePressed" text="Coupler Designer" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Empyt Module">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addEmptyModuleShareDataBase" text="share DataBase" />
+                        <MenuItem mnemonicParsing="false" onAction="#addEmptyModuleDontShareDataBase" text="new DataBase" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Tree">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Switch Design">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#MZI2x2SwitchPressed" text="MZI 2x2" />
+                              <MenuItem mnemonicParsing="false" onAction="#benes4x4MZIPressed" text="Benes 4x4" />
+                              <MenuItem mnemonicParsing="false" onAction="#benes8x8MZIPressed" text="Benes 8x8" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#benes4x4MZIMappingPressed" text="Benes 4x4 Mapping" />
+                              <MenuItem mnemonicParsing="false" onAction="#benes8x8MZIMappingPressed" text="Benes 8x8 Mapping" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Ring Resonators">
+                           <items>
+                              <Menu mnemonicParsing="false" text="Add-Drop">
+                                 <items>
+                                    <Menu mnemonicParsing="false" text="Design Space">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropSpectrumRadiusKappaPressed" text="Spectrum (Radius+Kappa)" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropDesignSpaceRingGapPressed" text="Design Space (Radius+Gap)" />
+                                          <MenuItem mnemonicParsing="false" onAction="#adrBSSymmetricPressed" text="Back Scattering (Symmetric)" />
+                                          <MenuItem mnemonicParsing="false" onAction="#adrBSAsymmetricPressed" text="Back Scattering (Asymmetric)" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="Filter Synthesis">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropFirstOrderSFG" text="First Order" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropSecondOrderSFG" text="Second Order" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropThirdOrderSFG" text="Third Order" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropFourthOrderSFG" text="Fourth Order" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropFifthOrderSFG" text="Fifth Order" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropSixthOrderSFG" text="Sixth Order" />
+                                          <MenuItem mnemonicParsing="false" onAction="#addDropSeventhOrderSFG" text="Seventh Order" />
+                                       </items>
+                                    </Menu>
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Link Design">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#sipLinkDesignPressed" text="SiP Link" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Thermal Heater">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#heaterPhotoconductance" text="Photo-conductance" />
+                           </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#interconnectSFG" text="Interconnect" />
+                     </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="HPE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addWelcomeTabHPE" text="Welcome" />
+                        <MenuItem mnemonicParsing="false" onAction="#hpeWaveguidesPressed" text="Waveguides" />
+                        <Menu mnemonicParsing="false" text="Coupling">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addHpeSymmetricRingTab" text="Ring-Wg Coupler" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHpeSymmetricRingRingTab" text="Ring-Ring Coupler" />
+                              <MenuItem mnemonicParsing="false" onAction="#hpeRaceTrackCouplerPressed" text="Race-Track Coupler" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Add-Drop Ring">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#hpeAddDropRingPressed" text="Add Drop (SFG)" />
+                              <MenuItem mnemonicParsing="false" onAction="#hpeAddDropBSPressed" text="Add Drop with BS (SFG)" />
+                              <MenuItem mnemonicParsing="false" onAction="#hpeAddDropClosedFormPressed" text="Add Drop (Closed Form)" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#addAddDropFittingSymmetricTab" text="Add Drop - Fitting" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHpeAddDropFittingBSTab" text="Add Drop with BS - Fitting" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Thermo-Optic">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterDCFittingTab" text="Heater DC V-I" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterFreqFittingTab" text="Heater Freq Response" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Electro-Optic">
+                           <items>
+                              <Menu mnemonicParsing="false" text="PIN Diode">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#addPINdcFittingTab" text="DC V-I Curve" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addPINacFittingTab" text="AC Freq Curve" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addPINResShiftFittingTab" text="ResShift vs Current" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+               <items>
+                  <MenuItem fx:id="dataBase" mnemonicParsing="false" onAction="#dataBasePressed" text="Database" />
+                  <MenuItem fx:id="dataBase1" mnemonicParsing="false" onAction="#openInPlotterPressed" text="Plotter" />
+                  <MenuItem fx:id="dataBase11" mnemonicParsing="false" onAction="#importDataPressed" text="Import Data" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="popupPlot1" mnemonicParsing="false" onAction="#popupTabPressed" text="Popup Tab" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="popupPlot11" mnemonicParsing="false" onAction="#saveSnapshot" text="Create Snapshot" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tab">
+               <items>
+                  <MenuItem fx:id="popupPlot" mnemonicParsing="false" onAction="#popupPlotPressed" text="Popup Plot" />
+                  <Menu mnemonicParsing="false" text="Export Plot">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#exportPlotToMATLAB" text="to MATLAB" />
+                        <MenuItem mnemonicParsing="false" onAction="#exportPlotToFile" text="to File" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#savePlot_asJPEG" text="as JPEG" />
+                        <MenuItem mnemonicParsing="false" onAction="#savePlot_asPNG" text="as PNG" />
+                        <MenuItem mnemonicParsing="false" onAction="#savePlot_asSVG" text="as SVG" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Plot">
+                     <items>
+                        <Menu mnemonicParsing="false" text="x-axis">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#xAxis_to_Log" text="Log" />
+                              <MenuItem mnemonicParsing="false" onAction="#xAxis_to_Linear" text="Linear" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="y-axis">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#yAxis_to_Log" text="Log" />
+                              <MenuItem mnemonicParsing="false" onAction="#yAxis_to_Linear" text="Linear" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Marker">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#setMarkerON" text="ON" />
+                              <MenuItem mnemonicParsing="false" onAction="#setMarkerOFF" text="OFF" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Line width">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#setLineWidth" text="Set">
+                                 <graphic>
+                                    <TextField fx:id="lineWidthTextField" prefWidth="50.0" />
+                                 </graphic>
+                              </MenuItem>
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Font size">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#setFontSize" text="Set">
+                                 <graphic>
+                                    <TextField fx:id="fontSizeTextField" prefWidth="50.0" />
+                                 </graphic>
+                              </MenuItem>
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Measurements">
+               <items>
+                  <Menu mnemonicParsing="false" text="Passive Devices">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Add-Drop Ring">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addAddDropFittingSymmetricTab" text="Symmetric-drop" />
+                              <MenuItem mnemonicParsing="false" onAction="#addAddDropFittingSymmetricThruTab" text="Symmetric-thru" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#addAddDropFittingSymmetricBSTab" text="Symmetric-drop (sym BS)" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHpeAddDropFittingBSTab" text="Symmetric-drop (asym BS)" />
+                           </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#addAllPassFittingTab" text="All-Pass Ring" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Active Devices">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Thermo-Optic">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterDCFittingTab" text="Heater DC V-I" />
+                              <MenuItem mnemonicParsing="false" onAction="#addHeaterFreqFittingTab" text="Heater Freq Response" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Electro-Optic">
+                           <items>
+                              <Menu mnemonicParsing="false" text="PIN Diode">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#addPINdcFittingTab" text="DC V-I Curve" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addPINacFittingTab" text="AC Freq Curve" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addPINResShiftFittingTab" text="ResShift vs Current" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Power Penalty">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addBERPenaltyTab" text="BER penalty" />
+                     </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#addDataSmoothingTab" text="Data Smoothing" />
+                  <MenuItem mnemonicParsing="false" onAction="#addDownSamplingTab" text="Down Sampling" />
+                  <Menu mnemonicParsing="false" text="Plot Digitizer">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#plotDigitizerLinearXLinearY" text="LinearX-LinearY" />
+                        <MenuItem mnemonicParsing="false" onAction="#plotDigitizerLogXLinearY" text="LogX-LinearY" />
+                        <MenuItem mnemonicParsing="false" onAction="#plotDigitizerLinearXLogY" text="LinearX-LogY" />
+                        <MenuItem mnemonicParsing="false" onAction="#plotDigitizerLogXLogY" text="LogX-LogY" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Layout">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#gdsDesignerPressed" text="GDS Designer" />
+                  <Menu mnemonicParsing="false" text="Tab">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#tabGDSPressed" text="create GDS cell" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#setDefaultWorkspacePressed" text="Set workspace" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadConfigFilePressed" text="Load config file" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="Tabs">
+                     <items>
+                        <CheckMenuItem fx:id="tabClosingSetting" mnemonicParsing="false" onAction="#setTabsClosingPolicy" text="Enable Tab Closing" />
+                        <CheckMenuItem fx:id="fullScreenMode" mnemonicParsing="false" text="Full Screen Mode" />
+                        <Menu mnemonicParsing="false" text="Positioning">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#tabsOrientationSetToTop" text="Top" />
+                              <MenuItem mnemonicParsing="false" onAction="#tabsOrientationSetToLeft" text="Left" />
+                              <MenuItem mnemonicParsing="false" onAction="#tabsOrientationSetToRight" text="Right" />
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#creditsPressed" text="Credits" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <SplitPane fx:id="splitPane" stylesheets="@../../../Utilities/StyleFiles/splitPane.css" VBox.vgrow="ALWAYS">
+         <items>
+            <TabPane fx:id="tabs" minWidth="-Infinity" prefHeight="658.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" />
+         </items>
+      </SplitPane>
+      <StatusBar fx:id="statusBar" prefHeight="3.0" prefWidth="825.0" text="Ready" VBox.vgrow="NEVER" />
+   </children>
+</VBox>

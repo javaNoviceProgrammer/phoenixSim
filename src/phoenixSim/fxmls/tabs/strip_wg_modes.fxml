@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.StripWg.StripWgModes.StripWgModesTabController">
+   <tabs>
+      <Tab fx:id="stripWgModesTab" text="Strip Wg Modes">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <Pane layoutX="9.0" layoutY="97.0">
+                           <children>
+                              <Label layoutY="4.0" text="width:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="widthTextField" layoutX="56.0" prefHeight="26.0" prefWidth="95.0" promptText="nm" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setWidth" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="widthLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                              <Button fx:id="widthSweepButton" layoutX="155.0" mnemonicParsing="false" onAction="#sweepWidth" text="sweep">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="8.0" layoutY="156.0">
+                           <children>
+                              <Button layoutX="218.0" mnemonicParsing="false" onAction="#setHeight" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <TextField fx:id="heightTextField" layoutX="58.0" prefHeight="26.0" prefWidth="95.0" promptText="nm" />
+                              <Label layoutY="4.0" text="height:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="heightLabel" layoutX="60.0" layoutY="31.0" text="Label" />
+                              <Button fx:id="heightSweepButton" layoutX="157.0" mnemonicParsing="false" onAction="#sweepHeight" text="sweep">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modes of Strip Waveguide" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="41.0" fitWidth="146.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../CouplerDesigner/Extras/groupIndex.png" />
+                           </image>
+                        </ImageView>
+                        <Text fontSmoothingType="LCD" layoutX="7.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Mode">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutX="25.0" layoutY="272.0" prefHeight="12.0" prefWidth="200.0" />
+                        <RadioButton fx:id="TE00RadioButton" layoutX="13.0" layoutY="313.0" mnemonicParsing="false" onAction="#setWgMode" text="TE00">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="selectedMode" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="TE10RadioButton" layoutX="89.0" layoutY="313.0" mnemonicParsing="false" onAction="#setWgMode" text="TE10" toggleGroup="$selectedMode" />
+                        <RadioButton fx:id="TE20RadioButton" layoutX="166.0" layoutY="313.0" mnemonicParsing="false" onAction="#setWgMode" text="TE20" toggleGroup="$selectedMode" />
+                        <RadioButton fx:id="TM10RadioButton" layoutX="89.0" layoutY="343.0" mnemonicParsing="false" onAction="#setWgMode" text="TM10" toggleGroup="$selectedMode" />
+                        <RadioButton fx:id="TM20RadioButton" layoutX="166.0" layoutY="343.0" mnemonicParsing="false" onAction="#setWgMode" text="TM20" toggleGroup="$selectedMode" />
+                        <RadioButton fx:id="TM00RadioButton" layoutX="13.0" layoutY="343.0" mnemonicParsing="false" onAction="#setWgMode" text="TM00" toggleGroup="$selectedMode" />
+                        <Separator layoutX="24.0" layoutY="372.0" prefHeight="12.0" prefWidth="200.0" />
+                        <ImageView fitHeight="129.0" fitWidth="239.0" layoutX="14.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../CouplerDesigner/Extras/waveguide.png" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="8.0" layoutY="215.0">
+                           <children>
+                              <Label layoutY="5.0" text="lambda:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="lambdaTextField" layoutX="59.0" layoutY="1.0" prefHeight="26.0" prefWidth="94.0" promptText="nm" />
+                              <Button layoutX="219.0" layoutY="1.0" mnemonicParsing="false" onAction="#setLambda" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="lambdaLabel" layoutX="61.0" layoutY="33.0" text="Label" />
+                              <Button fx:id="lambdaSweepButton" layoutX="158.0" mnemonicParsing="false" onAction="#sweepLambda" text="sweep">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="wgModeMatlabPlotPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="26.0" prefWidth="138.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="139.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Pane layoutX="40.0" layoutY="410.0">
+                           <children>
+                              <Label text="Plot...">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton fx:id="neffLambdaRadioButton" layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#plotWgMode" text="neff-lambda">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="modePlot" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="ngLambdaRadioButton" layoutX="1.0" layoutY="57.0" mnemonicParsing="false" onAction="#plotWgMode" text="ng-lambda" toggleGroup="$modePlot" />
+                              <RadioButton fx:id="neffWRadioButton" layoutX="120.0" layoutY="27.0" mnemonicParsing="false" onAction="#plotWgMode" text="neff-w" toggleGroup="$modePlot" />
+                              <RadioButton fx:id="ngWRadioButton" layoutX="120.0" layoutY="58.0" mnemonicParsing="false" onAction="#plotWgMode" text="ng-w" toggleGroup="$modePlot" />
+                              <RadioButton fx:id="neffHRadioButton" layoutX="203.0" layoutY="27.0" mnemonicParsing="false" onAction="#plotWgMode" text="neff-h" toggleGroup="$modePlot" />
+                              <RadioButton fx:id="ngHRadioButton" layoutX="204.0" layoutY="58.0" mnemonicParsing="false" onAction="#plotWgMode" text="ng-h" toggleGroup="$modePlot" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.StripWg.StripWgModeProfile.StripWgModeProfileTabController">
+   <tabs>
+      <Tab fx:id="tab" text="Strip Wg Mode Profile">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode Profile of Strip Waveguide" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <CheckBox fx:id="normalizedField" layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#plotField" text="Normalize Field Component" />
+                        <Group layoutX="21.0" layoutY="150.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Extras/stirp_wg_profile.png" />
+                                 </image>
+                              </ImageView>
+                              <RadioButton fx:id="yCut" layoutX="159.0" layoutY="62.0" mnemonicParsing="false" onAction="#setSlabCut" text="Y-cut">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="modeCut" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton layoutX="69.0" layoutY="10.0" mnemonicParsing="false" onAction="#setSlabCut" text="X-cut" toggleGroup="$modeCut" fx:id="xCut" />
+                           </children>
+                        </Group>
+                        <Text layoutX="9.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due to the 2D nature of the mode inside the waveguide, a specific cut (i.e. X-cut or Y-cut) is selected to plot the field profile." wrappingWidth="243.37109375" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="matlabPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="26.0" prefWidth="138.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="139.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Group layoutX="-73.0" layoutY="409.0">
+                           <children>
+                              <Text fontSmoothingType="LCD" layoutX="-38.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Field Component">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                              <RadioButton fx:id="ReEx" layoutX="-41.0" layoutY="28.0283203125" mnemonicParsing="false" onAction="#plotField" text="Re(Ex)">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="selectedField" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="ReEy" layoutX="39.0" layoutY="28.0283203125" mnemonicParsing="false" onAction="#plotField" text="Re(Ey)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReEz" layoutX="118.0" layoutY="28.0283203125" mnemonicParsing="false" onAction="#plotField" text="Re(Ez)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImEy" layoutX="39.0" layoutY="58.0283203125" mnemonicParsing="false" onAction="#plotField" text="Im(Ey)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImEz" layoutX="118.0" layoutY="58.0283203125" mnemonicParsing="false" onAction="#plotField" text="Im(Ez)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImEx" layoutX="-41.0" layoutY="58.0283203125" mnemonicParsing="false" onAction="#plotField" text="Im(Ex)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReHx" layoutX="189.0" layoutY="30.0" mnemonicParsing="false" onAction="#plotField" text="Re(Hx)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImHx" layoutX="189.0" layoutY="60.0" mnemonicParsing="false" onAction="#plotField" text="Im(Hx)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReHy" layoutX="264.0" layoutY="29.0" mnemonicParsing="false" onAction="#plotField" text="Re(Hy)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImHy" layoutX="264.0" layoutY="59.0" mnemonicParsing="false" onAction="#plotField" text="Im(Hy)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ReHz" layoutX="336.0" layoutY="29.0" mnemonicParsing="false" onAction="#plotField" text="Re(Hz)" toggleGroup="$selectedField" />
+                              <RadioButton fx:id="ImHz" layoutX="336.0" layoutY="59.0" mnemonicParsing="false" onAction="#plotField" text="Im(Hz)" toggleGroup="$selectedField" />
+                           </children>
+                        </Group>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

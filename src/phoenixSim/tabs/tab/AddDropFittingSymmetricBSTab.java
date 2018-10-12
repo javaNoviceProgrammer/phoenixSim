@@ -8,12 +8,12 @@ import People.Meisam.GUI.Utilities.SimulationDataBase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 
-public class WelcomeTab extends AbstractTab {
+public class AddDropFittingSymmetricBSTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Welcome/welcome_tab.fxml")) ; ;
-	WelcomeTabController controller ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Measurements/AddDropFitting/SymmetricDropBackScattering/add_drop_fitting_symmetric_BS.fxml")) ; ;
+	AddDropFittingSymmetricBSTabController controller ;
 
-	public WelcomeTab(SimulationDataBase simDataBase){
+	public AddDropFittingSymmetricBSTab(SimulationDataBase simDataBase){
 		try {
 			loader.load() ;
 		} catch (IOException e) {
@@ -21,10 +21,9 @@ public class WelcomeTab extends AbstractTab {
 		}
 		this.controller = loader.getController()  ;
 		controller.setSimDataBase(simDataBase);
-//		controller.initialize();
 	}
 
-	public Tab getTab() {
+	public Tab getTab(){
 		return controller.getTab() ;
 	}
 
@@ -33,28 +32,27 @@ public class WelcomeTab extends AbstractTab {
 	}
 
 	@SuppressWarnings("unchecked")
-	public WelcomeTabController getController() {
+	public AddDropFittingSymmetricBSTabController getController(){
 		return controller ;
 	}
 
-	public void setSimDataBase(SimulationDataBase simDataBase) {
+	public void setSimDataBase(SimulationDataBase simDataBase){
 		controller.setSimDataBase(simDataBase);
 	}
 
-	public SimulationDataBase getSimDataBase() {
+	public SimulationDataBase getSimDataBase(){
 		return controller.getSimDataBase() ;
 	}
 
 	@Override
 	public String getName() {
-		return "WelcomeTab" ;
+		return "AddDropFittingSymmetricBSTab" ;
 	}
 
 	@Override
 	public void popUpTab() {
-		PhoenixSimModule module = new PhoenixSimModule(controller.getSimDataBase()) ;
-		module.getController().closeCurrentTabPressed(); // removing the "welcome tab"
-		module.getController().addWelcomeTab();
+		PhoenixSimModule module = new PhoenixSimModule(controller.getSimDataBase(), false) ;
+		module.getController().addAddDropFittingSymmetricTab();
 	}
 
 }
