@@ -18,12 +18,12 @@ public class PlotterGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        Parent root = FXMLLoader.load(getClass().getResource("plotter.fxml")) ;
+        Parent root = FXMLLoader.load(getClass().getResource("/phoenixSim/fxmls/plotter.fxml")) ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
         window.setTitle("Plotter v1.0");
         window.setResizable(true);
-        window.getIcons().add(new Image("/People/Meisam/GUI/Plotters/MainGUI/Extras/plotter.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/plotter.png")) ;
         window.show();
         window.setOnCloseRequest(e -> {
         	System.exit(1);

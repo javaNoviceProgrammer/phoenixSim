@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.BERPenalty.BERPenaltyTabController">
+   <tabs>
+      <Tab fx:id="tab" text="BER Penalty">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT">
+               <children>
+                  <Pane maxWidth="273.0" minWidth="273.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="273.0">
+                     <children>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="6.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BER Power Penalty" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Pane layoutX="9.0" layoutY="245.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="3.0" prefHeight="19.0" prefWidth="56.0" text="Y data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="yDataCase1TextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setYDataCase1" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseYDataCase1" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label fx:id="yDataCase1Label" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Separator layoutX="37.0" layoutY="133.0" prefWidth="200.0" />
+                        <Text layoutX="4.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power Penalty is extracted by fitting Gaussian noise distribution to the measured data and taking the difference between two cases." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />
+                        <Pane layoutX="9.0" layoutY="181.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="3.0" prefHeight="19.0" prefWidth="56.0" text="X data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" fx:id="xDataCase1TextField" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setXDataCase1" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseXDataCase1" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label layoutX="56.0" layoutY="30.0" text="Label" fx:id="xDataCase1Label" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="361.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="X data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" fx:id="xDataCase2TextField" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setXDataCase2" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#chooseXDataCase2" text="choose from database" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label layoutX="56.0" layoutY="30.0" text="Label" fx:id="xDataCase2Label" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="425.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="Y data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="yDataCase2TextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setYDataCase2" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#chooseYDataCase2" text="choose from database" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label fx:id="yDataCase2Label" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Separator layoutX="37.0" layoutY="305.0" prefWidth="200.0" />
+                        <Label layoutX="12.0" layoutY="145.0" prefHeight="19.0" prefWidth="245.0" text="CASE 1: Log(BER) vs. Prec (dBm)">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="320.0" prefHeight="19.0" prefWidth="250.0" text="CASE 2: Log(BER) vs. Prec (dBm)">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="matlabPane" maxHeight="528.0" maxWidth="500.0" minHeight="528.0" minWidth="500.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="528.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Group layoutX="5.0" layoutY="415.0">
+                           <children>
+                              <Button layoutY="5.0" mnemonicParsing="false" onAction="#calculate" prefHeight="67.0" prefWidth="81.0" text="Calculate">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <ListView fx:id="resultListView" layoutX="95.0" prefHeight="78.0" prefWidth="214.0" />
+                              <Button layoutX="326.0" layoutY="5.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="25.0" prefWidth="146.0" text="Export to Matlab">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="326.0" layoutY="46.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="146.0" text="Open in Plotter">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Group>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

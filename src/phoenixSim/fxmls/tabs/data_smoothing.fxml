@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.DataSmoothing.DataSmoothingTabController">
+   <tabs>
+      <Tab fx:id="tab" text="Data Smoothing">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT">
+               <children>
+                  <Pane maxWidth="273.0" minWidth="273.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="273.0">
+                     <children>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="6.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Smoothing" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Pane layoutX="9.0" layoutY="241.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="3.0" prefHeight="19.0" prefWidth="56.0" text="N right">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nRightTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="integer" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setNRight" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="nRightLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="304.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="order">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="orderTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="integer" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setOrder" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="orderLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Separator layoutX="37.0" layoutY="164.0" prefWidth="200.0" />
+                        <Text layoutX="4.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data smoothing is carried out by applying a Savitzky-Golay filter. This kind of digital filter is based on LMSE method." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />
+                        <Pane layoutX="9.0" layoutY="178.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="3.0" prefHeight="19.0" prefWidth="56.0" text="N left">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nLeftTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="integer" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setNLeft" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="nLeftLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="368.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="X data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" fx:id="xDataTextField" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setXData" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#chooseXData" text="choose from database" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label layoutX="56.0" layoutY="30.0" text="Label" fx:id="xDataLabel" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="428.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="Y data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="yDataTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setYData" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#chooseYData" text="choose from database" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label fx:id="yDataLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="31.0" fitWidth="235.0" layoutX="15.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Extras/SGfilter.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="matlabPane" maxHeight="528.0" maxWidth="500.0" minHeight="528.0" minWidth="500.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="528.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Group layoutX="5.0" layoutY="415.0">
+                           <children>
+                              <Button layoutY="5.0" mnemonicParsing="false" onAction="#calculate" prefHeight="67.0" prefWidth="81.0" text="Calculate">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <ListView fx:id="resultListView" layoutX="95.0" prefHeight="78.0" prefWidth="214.0" />
+                              <Button layoutX="326.0" layoutY="5.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="25.0" prefWidth="146.0" text="Export to Matlab">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="326.0" layoutY="46.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="146.0" text="Open in Plotter">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Group>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

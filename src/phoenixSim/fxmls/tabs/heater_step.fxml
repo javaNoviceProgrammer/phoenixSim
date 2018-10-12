@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tabs" prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Heater.HeaterStep.HeaterStepTabController">
+   <tabs>
+      <Tab fx:id="stepTab" text="Step Response">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="258.0" layoutX="19.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../ThermalHeater/Extras/step_response_eq.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="Thermal Step Response">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="247.0" fitWidth="330.0" layoutX="1.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../ThermalHeater/Extras/step_response.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="44.0" layoutY="298.0" prefHeight="29.0" prefWidth="234.0" text="Plot of heater step voltage" textFill="RED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="11.0" layoutY="224.0">
+                           <children>
+                              <Label layoutY="2.0" text="Set V0:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="stepV0TextField" layoutX="61.0" promptText="Volt" />
+                              <Label fx:id="stepV0Label" layoutX="63.0" layoutY="32.0" text="Label" />
+                              <Button layoutX="221.0" mnemonicParsing="false" onAction="#setV0" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Label layoutX="11.0" layoutY="46.0" prefHeight="17.0" prefWidth="294.0" text="calculated by taking convolution of the temperature" />
+                        <Label layoutX="11.0" layoutY="66.0" prefHeight="17.0" prefWidth="294.0" text="of heater with thermal impulse response" />
+                        <Pane layoutX="8.0" layoutY="164.0">
+                           <children>
+                              <TextField fx:id="stept0TextField" layoutX="64.0" promptText="usec" />
+                              <Label layoutY="2.0" text="Set t0:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="stept0Label" layoutX="66.0" layoutY="31.0" text="Label" />
+                              <Button layoutX="224.0" mnemonicParsing="false" onAction="#setT0" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="stepMatlabPlotPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="25.0" prefWidth="131.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="131.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label layoutX="40.0" layoutY="410.0" text="Plot...">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="stepWaveguidePlotRadioButton" layoutX="41.0" layoutY="438.0" mnemonicParsing="false" onAction="#plotStep" text="Waveguide Temperature">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="stepPlot" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="stepHeaterPlotRadioButton" layoutX="41.0" layoutY="468.0" mnemonicParsing="false" onAction="#plotStep" text="Heater Temperature" toggleGroup="$stepPlot" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

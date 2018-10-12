@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane fx:id="tabs" prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.CouplerDesigner.RingWgCoupler.RingWgCouplerTabController">
+   <tabs>
+      <Tab fx:id="ringWgTab" text="Ring-Wg Coupler">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <Pane layoutX="9.0" layoutY="211.0">
+                           <children>
+                              <Label layoutX="3.0" layoutY="4.0" text="radius:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="radiusTextField" layoutX="58.0" prefHeight="26.0" prefWidth="95.0" promptText="um" />
+                              <Button layoutX="218.0" mnemonicParsing="false" onAction="#setRadius" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="radiusLabel" layoutX="58.0" layoutY="30.0" text="Label" />
+                              <Button layoutX="157.0" mnemonicParsing="false" onAction="#sweepRadius" text="sweep">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coupling of Circular Wg to Straight Wg" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="113.0" fitWidth="239.0" layoutX="18.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Extras/ring_wg_coupler.png" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="9.0" layoutY="268.0">
+                           <children>
+                              <Label layoutX="-1.0" layoutY="4.0" text="min gap:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="dTextField" layoutX="58.0" prefHeight="26.0" prefWidth="95.0" promptText="nm" />
+                              <Button layoutX="218.0" mnemonicParsing="false" onAction="#setD" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="dLabel" layoutX="58.0" layoutY="30.0" text="Label" />
+                              <Button layoutX="157.0" mnemonicParsing="false" onAction="#sweepD" text="sweep">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(d)">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                        <Separator layoutX="25.0" layoutY="321.0" prefHeight="12.0" prefWidth="200.0" />
+                        <Separator layoutX="22.0" layoutY="187.0" prefHeight="12.0" prefWidth="200.0" />
+                        <Text layoutX="9.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In this case, the coupling region is nonuniform and the coupling gap depends on radius of ring and minimum gap size between ring and waveguide. It is assumed that for gap &gt; 500nm there is no coupling." textAlignment="JUSTIFY" wrappingWidth="254.95574951171875" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Extras/ringWg_coupler_eq.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="ringWgMatlabPlotPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0" translateX="45.0">
+                     <children>
+                        <Button layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="26.0" prefWidth="138.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="139.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Pane layoutX="37.0" layoutY="410.0" prefHeight="75.0" prefWidth="252.0">
+                           <children>
+                              <RadioButton fx:id="tLambdaRingWg" layoutX="1.0" layoutY="57.0" mnemonicParsing="false" onAction="#plotRingWg" text="t-lambda">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="ringWgPlot" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="kLambdaRingWg" layoutX="1.0" layoutY="27.0" mnemonicParsing="false" onAction="#plotRingWg" text="k-lambda" toggleGroup="$ringWgPlot" />
+                              <Label text="Plot...">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton fx:id="tdRingWg" layoutX="210.0" layoutY="58.0" mnemonicParsing="false" onAction="#plotRingWg" text="t-d" toggleGroup="$ringWgPlot" />
+                              <RadioButton fx:id="kdRingWg" layoutX="208.0" layoutY="27.0" mnemonicParsing="false" onAction="#plotRingWg" text="k-d" toggleGroup="$ringWgPlot" />
+                              <RadioButton fx:id="kRadiusRingWg" layoutX="105.0" layoutY="29.0" mnemonicParsing="false" onAction="#plotRingWg" text="k-radius" toggleGroup="$ringWgPlot" />
+                              <RadioButton fx:id="tRadiusRingWg" layoutX="106.0" layoutY="57.0" mnemonicParsing="false" onAction="#plotRingWg" text="t-radius" toggleGroup="$ringWgPlot" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

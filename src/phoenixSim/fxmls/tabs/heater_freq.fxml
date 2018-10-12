@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tabs" prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Heater.HeaterFreq.HeaterFreqTabController">
+   <tabs>
+      <Tab fx:id="freqTab" text="Freq Characteristic">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <ImageView fitHeight="43.0" fitWidth="297.0" layoutX="11.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../ThermalHeater/Extras/freq_response_eq.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" text="Thermal Frequency Response">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="14.0" layoutY="173.0">
+                           <children>
+                              <TextField fx:id="f0TextField" layoutX="52.0" promptText="kHz" />
+                              <Label layoutY="4.0" text="Set f0:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="f0Label" layoutX="54.0" layoutY="31.0" text="Label" />
+                              <Button fx:id="f0SetButton" layoutX="212.0" mnemonicParsing="false" onAction="#setf0" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseF0" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="247.0" fitWidth="330.0" layoutX="1.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../ThermalHeater/Extras/freq_response.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="44.0" layoutY="295.0" prefHeight="29.0" prefWidth="234.0" text="Plot of thermal frequency response" textFill="RED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="13.0" layoutY="233.0">
+                           <children>
+                              <Label layoutY="4.0" text="Set v:">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nuTextField" layoutX="53.0" promptText="no units" />
+                              <Label fx:id="nuLabel" layoutX="55.0" layoutY="32.0" text="Label" />
+                              <Button fx:id="nuSetButton" layoutX="213.0" mnemonicParsing="false" onAction="#setNu" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseNu" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="43.0" fitWidth="297.0" layoutX="69.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../ThermalHeater/Extras/freq_response_eq2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="freqMatlabPlotPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button fx:id="exportToMatlabButton1" layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="25.0" prefWidth="131.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="openInPlotterButton1" layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="131.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Pane layoutX="40.0" layoutY="410.0">
+                           <children>
+                              <Label text="Plot...">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton fx:id="ampdBPlotRadioButton" layoutX="1.0" layoutY="28.0" mnemonicParsing="false" onAction="#plotFreq" text="Amplitude (dB)">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="freqPlot" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="phaseRadRadioButton" layoutX="130.0" layoutY="27.0" mnemonicParsing="false" onAction="#plotFreq" text="Phase (rad)" toggleGroup="$freqPlot" />
+                              <RadioButton fx:id="ampPlotRadioButton" layoutX="2.0" layoutY="58.0" mnemonicParsing="false" onAction="#plotFreq" text="Amplitude" toggleGroup="$freqPlot" />
+                              <RadioButton fx:id="phaseDegreeRadioButton" layoutX="131.0" layoutY="58.0" mnemonicParsing="false" onAction="#plotFreq" text="Phase (degree)" toggleGroup="$freqPlot" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

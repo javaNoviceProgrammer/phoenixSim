@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tabs" prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.CouplerDesigner.CouplerDesignerWelcome.CouplerDesignerWecomeTabController">
+   <tabs>
+      <Tab fx:id="tab" text="Welcome">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="127.0" layoutX="14.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../ThermalHeater/Extras/PhoenixSim_logo.png" />
+                     </image>
+                  </ImageView>
+                  <TextArea editable="false" layoutX="9.0" layoutY="14.0" prefHeight="353.0" prefWidth="377.0" text="Welcome to PhoenixSim* Coupler Designer. This tool will allow you to explore the design of waveguide-to-waveguide couplers for straight coupling regions as well as any given nonuniform coupling.&#10;&#10;- &quot;Wg Mode&quot; tab allows you to calculate effective index and group index of strip waveguides&#10;&#10;- &quot;Coupled Modes&quot; tab helps you find the index of fundamental coupeld modes of strip waveguides&#10;&#10;- &quot;Wg-Wg Coupler&quot; allows you to find the power coupling ratios of straight waveguides&#10;&#10;*PhoenixSim is a software tool developed at Lightwave Researach Laboratory at Columbia University. All rights are reserved." wrapText="true" AnchorPane.leftAnchor="9.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="114.0" fitWidth="127.0" layoutX="153.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Extras/logo_PhoenixSim_Mode.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="99.0" fitWidth="296.0" layoutX="458.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../ThermalHeater/Extras/LRL_logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="182.0" fitWidth="379.0" layoutX="415.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Extras/coupler_schematic.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="182.0" fitWidth="379.0" layoutX="415.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Extras/couplings.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="114.0" fitWidth="127.0" layoutX="292.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Extras/logo_PhoenixSim_Device.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

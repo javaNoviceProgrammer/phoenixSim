@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.ElectroOpticFitting.PINdiode.PINdc.PINdcFittingTabController">
+   <tabs>
+      <Tab fx:id="tab" text="PIN V-I Fitting">
+         <content>
+            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane maxWidth="273.0" minWidth="273.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="273.0">
+                     <children>
+                        <Pane>
+                           <children>
+                              <Pane />
+                           </children>
+                        </Pane>
+                        <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PIN V-I Fitting" wrappingWidth="257.791015625">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                        <Pane layoutX="9.0" layoutY="203.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="I data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="iDataTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setIData" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseIData" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label fx:id="iDataLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                              <Label layoutX="4.0" layoutY="24.0" prefHeight="16.0" prefWidth="45.0" text="(mA)">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="9.0" layoutY="263.0">
+                           <children>
+                              <Label layoutX="4.0" layoutY="5.0" prefHeight="16.0" prefWidth="45.0" text="V data">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="vDataTextField" layoutX="58.0" prefHeight="26.0" prefWidth="153.0" promptText="set var name" />
+                              <Button layoutX="216.0" mnemonicParsing="false" onAction="#setVData" text="set">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#chooseVData" text="choose from database" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </Button>
+                              <Label fx:id="vDataLabel" layoutX="56.0" layoutY="30.0" text="Label" />
+                              <Label layoutX="9.0" layoutY="20.0" prefHeight="16.0" prefWidth="45.0" text="(volt)">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Separator layoutX="37.0" layoutY="186.0" prefWidth="200.0" />
+                        <ImageView fitHeight="206.0" fitWidth="279.0" layoutX="12.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Extras/pin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="56.0" fitWidth="262.0" layoutX="5.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Extras/pin_eq.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="5.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The voltage-current curve of a PIN junction has four parameters which will be fitted to the measured data through a robust Least Mean Square Error (LMSE) fitting." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane fx:id="matlabPane" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="500.0" translateX="45.0">
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button layoutX="16.0" layoutY="420.0" mnemonicParsing="false" onAction="#calculate" prefHeight="67.0" prefWidth="81.0" text="Calculate">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ListView fx:id="resultListView" layoutX="111.0" layoutY="415.0" prefHeight="78.0" prefWidth="214.0" />
+                        <Button layoutX="342.0" layoutY="420.0" mnemonicParsing="false" onAction="#exportToMatlabPressed" prefHeight="25.0" prefWidth="146.0" text="Export to Matlab">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="342.0" layoutY="461.0" mnemonicParsing="false" onAction="#openInPlotterPressed" prefHeight="26.0" prefWidth="146.0" text="Open in Plotter">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

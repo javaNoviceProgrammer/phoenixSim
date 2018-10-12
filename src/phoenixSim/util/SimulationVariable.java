@@ -2,8 +2,8 @@ package phoenixSim.util;
 
 import java.util.ArrayList;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import flanagan.io.FileOutput;
+import mathLib.util.MathUtils;
 
 /**
  * Created by meisam on 6/25/17.
@@ -163,37 +163,37 @@ public class SimulationVariable {
     }
 
     public void appendValue(double value){
-        variable = MoreMath.Arrays.append(variable, value) ;
+        variable = MathUtils.Arrays.append(variable, value) ;
         updateVariableList() ;
         updateSize();
     }
 
     public void appendValues(double[] values){
-        variable = MoreMath.Arrays.concat(variable, values) ;
+        variable = MathUtils.Arrays.concat(variable, values) ;
         updateVariableList();
         updateSize();
     }
 
     public void appendInputData(InputData inputData){
-        variable = MoreMath.Arrays.append(variable, inputData.getValue()) ;
+        variable = MathUtils.Arrays.append(variable, inputData.getValue()) ;
         updateVariableList() ;
         updateSize();
     }
 
     public void addValue(double value){
-        variable = MoreMath.Arrays.append(variable, value) ;
+        variable = MathUtils.Arrays.append(variable, value) ;
         updateVariableList() ;
         updateSize();
     }
 
     public void addValues(double[] values){
-        variable = MoreMath.Arrays.concat(variable, values) ;
+        variable = MathUtils.Arrays.concat(variable, values) ;
         updateVariableList();
         updateSize();
     }
 
     public void addInputData(InputData inputData){
-        variable = MoreMath.Arrays.append(variable, inputData.getValue()) ;
+        variable = MathUtils.Arrays.append(variable, inputData.getValue()) ;
         updateVariableList() ;
         updateSize();
     }
@@ -247,7 +247,7 @@ public class SimulationVariable {
             return "[ ]" ;
         }
         else{
-            return MoreMath.Arrays.toString(variable) ;
+            return MathUtils.Arrays.toString(variable) ;
         }
 
     }
@@ -275,7 +275,7 @@ public class SimulationVariable {
     }
 
     public void show(){
-        MoreMath.Arrays.show(variable);
+    	MathUtils.Arrays.show(variable);
     }
 
     public void showFull(){

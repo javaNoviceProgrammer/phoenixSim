@@ -2,9 +2,6 @@ package phoenixSim.util;
 
 import java.io.IOException;
 
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.ExportPlot.ExportToMATLAB.ExportToMatlabController;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +15,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.builder.AbstractController;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.modules.DatabaseModule;
 import phoenixSim.modules.ImportDataModule;
 import phoenixSim.modules.PlotterModule;
@@ -49,13 +49,13 @@ public class PlotterController extends AbstractController {
 
 	//**********************creating some simulation data and database ***************************************
 //    // step 1: create simulation variables
-    double[] x = MoreMath.linspace(-20, 20, 1000) ;
+    double[] x = MathUtils.linspace(-20, 20, 1000) ;
     SimulationVariable varX = new SimulationVariable("X var", x) ;
 
-    double[] y = MoreMath.Arrays.Functions.sin(x) ;
+    double[] y = MathUtils.Arrays.Functions.sin(x) ;
     SimulationVariable varY = new SimulationVariable("Y var", y) ;
 
-    double[] z = MoreMath.Arrays.Functions.asinh(x) ;
+    double[] z = MathUtils.Arrays.Functions.asinh(x) ;
     SimulationVariable varZ = new SimulationVariable("Z var", z) ;
 
 //    // step 2: create simulation data base
@@ -159,17 +159,17 @@ public class PlotterController extends AbstractController {
 
 	@FXML
 	public void saveAsJPEG(){
-		fig.saveAsJPEG(640, 480);
+		fig.saveAsJPEG(FileChooserFX.path, 640, 480);
 	}
 
 	@FXML
 	public void saveAsPNG(){
-		fig.saveAsPNG(640, 480);
+		fig.saveAsPNG(FileChooserFX.path, 640, 480);
 	}
 
 	@FXML
 	public void saveAsSVG(){
-		fig.saveAsSVG(640, 480);
+//		fig.saveAsSVG(FileChooserFX.path, 640, 480);
 	}
 
 	@FXML
@@ -233,15 +233,15 @@ public class PlotterController extends AbstractController {
 	@FXML
 	public void exportToMATLAB(ActionEvent event) throws IOException{
 		// need to load the export to Matlab GUI
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/ExportPlot/ExportToMATLAB/exportToMatlab.fxml")) ;
-		WindowBuilder exportToMatlab = new WindowBuilder(loader) ;
-		Image icon = new Image("/People/Meisam/GUI/Utilities/ExportPlot/ExportToMATLAB/Extras/MatlabIcons/Matlab_Logo.png") ;
-		exportToMatlab.setIcon(icon);
-		exportToMatlab.build("Configure Export to MATLAB", false);
-		ExportToMatlabController controller = loader.getController() ;
-		controller.setVariables(simDataBase.getVariable(xVariable), simDataBase.getVariable(yVariable));
-		controller.setColors(lineColorPicker.getValue(), pointColorPicker.getValue());
-		controller.initialize();
+//		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/ExportPlot/ExportToMATLAB/exportToMatlab.fxml")) ;
+//		WindowBuilder exportToMatlab = new WindowBuilder(loader) ;
+//		Image icon = new Image("/People/Meisam/GUI/Utilities/ExportPlot/ExportToMATLAB/Extras/MatlabIcons/Matlab_Logo.png") ;
+//		exportToMatlab.setIcon(icon);
+//		exportToMatlab.build("Configure Export to MATLAB", false);
+//		ExportToMatlabController controller = loader.getController() ;
+//		controller.setVariables(simDataBase.getVariable(xVariable), simDataBase.getVariable(yVariable));
+//		controller.setColors(lineColorPicker.getValue(), pointColorPicker.getValue());
+//		controller.initialize();
 
 	}
 
@@ -270,13 +270,13 @@ public class PlotterController extends AbstractController {
 
 	@FXML
 	private void importPressed(){
-		ImportDataModule mod = new ImportDataModule(simDataBase) ;
-		mod.getStage().setOnCloseRequest(e -> {
-			for(SimulationVariable x : mod.getController().getSimDataBase().getAllVariables()){
-				simDataBase.addNewVariable(x);
-			}
-			initialize() ;
-		});
+//		ImportDataModule mod = new ImportDataModule(simDataBase) ;
+//		mod.getStage().setOnCloseRequest(e -> {
+//			for(SimulationVariable x : mod.getController().getSimDataBase().getAllVariables()){
+//				simDataBase.addNewVariable(x);
+//			}
+//			initialize() ;
+//		});
 
 	}
 
@@ -288,7 +288,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void abs_y_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy (clone not copy...)
-		yData = MoreMath.Arrays.Functions.abs(yData) ;
+		yData = MathUtils.Arrays.Functions.abs(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -308,7 +308,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void y_square_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy (clone not copy...)
-		yData = MoreMath.Arrays.Functions.pow(yData, 2) ;
+		yData = MathUtils.Arrays.Functions.pow(yData, 2) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -316,7 +316,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void y_cube_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Functions.pow(yData, 3) ;
+		yData = MathUtils.Arrays.Functions.pow(yData, 3) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -324,7 +324,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void sin_y_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Functions.sin(yData) ;
+		yData = MathUtils.Arrays.Functions.sin(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -332,7 +332,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void cos_y_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Functions.cos(yData) ;
+		yData = MathUtils.Arrays.Functions.cos(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -340,7 +340,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void tan_y_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Functions.tan(yData) ;
+		yData = MathUtils.Arrays.Functions.tan(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -348,7 +348,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	private void cot_y_pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Functions.cot(yData) ;
+		yData = MathUtils.Arrays.Functions.cot(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -360,13 +360,13 @@ public class PlotterController extends AbstractController {
 
 	@FXML
 	public void exportToFile(){
-		fig.exportToFile(simDataBase);
+//		fig.exportToFile(simDataBase);
 	}
 
 	@FXML
 	public void to_dB_Pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Conversions.todB(yData) ;
+		yData = MathUtils.Arrays.Conversions.todB(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -374,7 +374,7 @@ public class PlotterController extends AbstractController {
 	@FXML
 	public void from_dB_Pressed(){
 		double[] yDataCopy = yData.clone() ; // first make a copy
-		yData = MoreMath.Arrays.Conversions.fromdB(yData) ;
+		yData = MathUtils.Arrays.Conversions.fromdB(yData) ;
 		addPlot();
 		yData = yDataCopy.clone() ; // now return yData to its original state
 	}
@@ -426,7 +426,7 @@ public class PlotterController extends AbstractController {
 	    @FXML
 	    public void setFontSize(){
 	    	String st = fontSizeTextField.getText() ;
-	    	fig.setFontSize((int) MoreMath.evaluate(st));
+	    	fig.setFontSize((int) MathUtils.evaluate(st));
 	    }
 
 }

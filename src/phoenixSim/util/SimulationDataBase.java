@@ -4,14 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import ch.epfl.general_libraries.utils.SimpleMap;
 import flanagan.io.FileInput;
 import flanagan.io.FileOutput;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.ExportCompleted;
 
 /**
@@ -28,12 +28,12 @@ public class SimulationDataBase {
 
     public SimulationDataBase(){
         // initialize data-base map
-        this.dataBase = new SimpleMap<String, SimulationVariable>() ;
+        this.dataBase = new HashMap<String, SimulationVariable>() ;
     }
 
     public SimulationDataBase(SimulationVariable... var){
         // initialize data-base map
-        this.dataBase = new SimpleMap<String, SimulationVariable>() ;
+        this.dataBase = new HashMap<String, SimulationVariable>() ;
         // add the arguments to the data base
         for (SimulationVariable x : var){
             dataBase.put(x.getName(), x) ;
@@ -42,7 +42,7 @@ public class SimulationDataBase {
 
     public SimulationDataBase(ArrayList<SimulationVariable> var){
         // initialize data-base map
-        this.dataBase = new SimpleMap<String, SimulationVariable>() ;
+        this.dataBase = new HashMap<String, SimulationVariable>() ;
         // add the arguments to the data base
         for (SimulationVariable x : var){
             dataBase.put(x.getName(), x) ;
@@ -257,7 +257,7 @@ public class SimulationDataBase {
     	List<String> allValues = Arrays.asList(valueLine.trim().split("\t")) ;
     	int M = allValues.size() ;
     	for(int i=0; i<M; i++){
-    		values = MoreMath.Arrays.append(values, Double.parseDouble((String) allValues.get(i))) ;
+    		values = MathUtils.Arrays.append(values, Double.parseDouble((String) allValues.get(i))) ;
     	}
     	return values ;
     }
