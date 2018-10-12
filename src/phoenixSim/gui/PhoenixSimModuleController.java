@@ -19,8 +19,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.StandardChartTheme;
 
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.ModuleCreator.ModuleCreator;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.CouplerDesigner.silicon_nitride.ring_wg.RingWgCouplerSiNTab;
 import ch.epfl.general_libraries.results.AbstractResultsDisplayer;
 import ch.epfl.javancox.experiments.builder.ExperimentConfigurationCockpit;
 import ch.epfl.javancox.experiments.builder.tree_model.ObjectConstuctionTreeModel;
@@ -46,6 +44,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import mathLib.plot.util.CustomChartPanel;
 import mathLib.util.CustomJFileChooser;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.CreditsModule;
 import phoenixSim.modules.DatabaseModule;
 import phoenixSim.modules.ExportCompleted;
@@ -98,13 +97,10 @@ import phoenixSim.tabs.tab.StripWgSensitivityTab;
 import phoenixSim.tabs.tab.WelcomeTab;
 import phoenixSim.tabs.tab.WgWgCouplerTab;
 import phoenixSim.util.FileChooserFX;
+import phoenixSim.util.ModuleCreator;
 import phoenixSim.util.OSDetector;
 import phoenixSim.util.PlotDigitizer;
 import phoenixSim.util.SimulationDataBase;
-import postdoc.ring.AddDropSpectrum;
-import postdoc.ring.AllPassERContour;
-import postdoc.ring.AllPassQContour;
-import postdoc.ring.RingWgSpectrum;
 
 public class PhoenixSimModuleController {
 
@@ -306,12 +302,12 @@ public class PhoenixSimModuleController {
 
 	@FXML
 	public void exportPlotToMATLAB() throws IOException{
-		getCurrentTab().getController().getFig().exportToMatlab();
+//		getCurrentTab().getController().getFig().exportToMatlab();
 	}
 
 	@FXML
 	public void exportPlotToFile(){
-		getCurrentTab().getController().getFig().exportToFile();
+//		getCurrentTab().getController().getFig().exportToFile();
 	}
 
     @FXML
@@ -351,17 +347,17 @@ public class PhoenixSimModuleController {
 
     @FXML
     public void savePlot_asJPEG(){
-    	getCurrentTab().getController().getFig().saveAsJPEG(640, 480);
+    	getCurrentTab().getController().getFig().saveAsJPEG(FileChooserFX.path, 640, 480);
     }
 
     @FXML
     public void savePlot_asPNG(){
-    	getCurrentTab().getController().getFig().saveAsPNG(640, 480);
+    	getCurrentTab().getController().getFig().saveAsPNG(FileChooserFX.path, 640, 480);
     }
 
     @FXML
     public void savePlot_asSVG(){
-    	getCurrentTab().getController().getFig().saveAsSVG(640, 480);
+//    	getCurrentTab().getController().getFig().saveAsSVG(FileChooserFX.path, 640, 480);
     }
 
     @FXML
@@ -411,7 +407,7 @@ public class PhoenixSimModuleController {
     @FXML
     public void setFontSize(){
     	String st = fontSizeTextField.getText() ;
-    	getCurrentTab().getController().getFig().setFontSize((int) MoreMath.evaluate(st));
+    	getCurrentTab().getController().getFig().setFontSize((int) MathUtils.evaluate(st));
     }
 
     @FXML
@@ -565,7 +561,6 @@ public class PhoenixSimModuleController {
 			File file = new File(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/programs/scenebuilder-all-8.3.0-all.jar").toURI()) ;
 			Desktop.getDesktop().open(file);
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
     }
 
@@ -576,7 +571,6 @@ public class PhoenixSimModuleController {
     			File file = new File(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/programs/python-3.5.0-macosx10.6.pkg").toURI()) ;
     			Desktop.getDesktop().open(file);
     		} catch (Exception e) {
-    			// TODO: handle exception
     		}
     	}
     	else if(OSDetector.isWindows()){
@@ -584,7 +578,6 @@ public class PhoenixSimModuleController {
     			File file = new File(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/programs/python-3.5.0-amd64.exe").toURI()) ;
     			Desktop.getDesktop().open(file);
     		} catch (Exception e) {
-    			// TODO: handle exception
     		}
     	}
     }
@@ -604,13 +597,13 @@ public class PhoenixSimModuleController {
 
     @FXML
     public void addRingWgCouplerSiNTab() {
-    	RingWgCouplerSiNTab X = new RingWgCouplerSiNTab(simDataBase) ;
-		tabs.getTabs().add(X.getTab()) ;
-		tabs.getSelectionModel().select(X.getTab());
-		openTabs.put(X.getTab(), X) ;
-		orderedTabs.add(X.getTab()) ;
-		// updating status bar
-		updateStatusBar(X.getStatusBar());
+//    	RingWgCouplerSiNTab X = new RingWgCouplerSiNTab(simDataBase) ;
+//		tabs.getTabs().add(X.getTab()) ;
+//		tabs.getSelectionModel().select(X.getTab());
+//		openTabs.put(X.getTab(), X) ;
+//		orderedTabs.add(X.getTab()) ;
+//		// updating status bar
+//		updateStatusBar(X.getStatusBar());
 	}
 
     @FXML
@@ -1507,58 +1500,58 @@ public class PhoenixSimModuleController {
 	
 	@FXML
 	public void allPassRingNASAPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "postdoc" ;
-				String classString = RingWgSpectrum.class.getName() ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-				AbstractResultsDisplayer.showGUI = true ;
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
+//    	Runnable r = new Runnable(){
+//			@Override
+//			public void run() {
+//				String pacakgeString = "postdoc" ;
+//				String classString = RingWgSpectrum.class.getName() ;
+//				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
+//				AbstractResultsDisplayer.showGUI = true ;
+//			}
+//    	} ;
+//    	EventQueue.invokeLater(r);
 	}
 	
 	@FXML
 	public void addDropRingNASAPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "postdoc" ;
-				String classString = AddDropSpectrum.class.getName() ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-				AbstractResultsDisplayer.showGUI = true ;
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
+//    	Runnable r = new Runnable(){
+//			@Override
+//			public void run() {
+//				String pacakgeString = "postdoc" ;
+//				String classString = AddDropSpectrum.class.getName() ;
+//				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
+//				AbstractResultsDisplayer.showGUI = true ;
+//			}
+//    	} ;
+//    	EventQueue.invokeLater(r);
 	}
 	
 	@FXML
 	public void addAllPassRingQContoursPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "postdoc" ;
-				String classString = AllPassQContour.class.getName() ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-				AbstractResultsDisplayer.showGUI = true ;
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
+//    	Runnable r = new Runnable(){
+//			@Override
+//			public void run() {
+//				String pacakgeString = "postdoc" ;
+//				String classString = AllPassQContour.class.getName() ;
+//				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
+//				AbstractResultsDisplayer.showGUI = true ;
+//			}
+//    	} ;
+//    	EventQueue.invokeLater(r);
 	}
 	
 	@FXML
 	public void addAllPassRingERContoursPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "postdoc" ;
-				String classString = AllPassERContour.class.getName() ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-				AbstractResultsDisplayer.showGUI = true ;
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
+//    	Runnable r = new Runnable(){
+//			@Override
+//			public void run() {
+//				String pacakgeString = "postdoc" ;
+//				String classString = AllPassERContour.class.getName() ;
+//				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
+//				AbstractResultsDisplayer.showGUI = true ;
+//			}
+//    	} ;
+//    	EventQueue.invokeLater(r);
 	}
 
 

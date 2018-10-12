@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import org.controlsfx.control.StatusBar?>
+
+<BorderPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.MainModule.PhoenixSimModuleController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="closeApp" mnemonicParsing="false" onAction="#closeModulePressed" text="Close Module" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+               <items>
+                  <MenuItem fx:id="dataBase" mnemonicParsing="false" onAction="#dataBasePressed" text="Database" />
+                  <MenuItem fx:id="dataBase1" mnemonicParsing="false" onAction="#openInPlotterPressed" text="Plotter" />
+                  <MenuItem fx:id="dataBase11" mnemonicParsing="false" onAction="#importDataPressed" text="Import Data" />
+                  <MenuItem fx:id="popupPlot11" mnemonicParsing="false" onAction="#saveSnapshot" text="Create Snapshot" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tab">
+               <items>
+                  <MenuItem fx:id="popupPlot" mnemonicParsing="false" onAction="#popupPlotPressed" text="Popup Plot" />
+                  <Menu mnemonicParsing="false" text="Export Plot">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#exportPlotToMATLAB" text="to MATLAB" />
+                        <MenuItem mnemonicParsing="false" onAction="#exportPlotToFile" text="to File" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#savePlot_asJPEG" text="as JPEG" />
+                        <MenuItem mnemonicParsing="false" onAction="#savePlot_asPNG" text="as PNG" />
+                        <MenuItem mnemonicParsing="false" onAction="#savePlot_asSVG" text="as SVG" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Plot">
+                     <items>
+                        <Menu mnemonicParsing="false" text="x-axis">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#xAxis_to_Log" text="Log" />
+                              <MenuItem mnemonicParsing="false" onAction="#xAxis_to_Linear" text="Linear" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="y-axis">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#yAxis_to_Log" text="Log" />
+                              <MenuItem mnemonicParsing="false" onAction="#yAxis_to_Linear" text="Linear" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Marker">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#setMarkerON" text="ON" />
+                              <MenuItem mnemonicParsing="false" onAction="#setMarkerOFF" text="OFF" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Line width">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#setLineWidth" text="Set">
+                                 <graphic>
+                                    <TextField fx:id="lineWidthTextField" prefWidth="50.0" />
+                                 </graphic>
+                              </MenuItem>
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Font size">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#setFontSize" text="Set">
+                                 <graphic>
+                                    <TextField fx:id="fontSizeTextField" prefWidth="50.0" />
+                                 </graphic>
+                              </MenuItem>
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Layout">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#tabGDSPressed" text="create GDS cell" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#creditsPressed" text="Credits" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane fx:id="tabs" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <StatusBar fx:id="statusBar" prefHeight="24.0" prefWidth="823.0" text="Ready" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

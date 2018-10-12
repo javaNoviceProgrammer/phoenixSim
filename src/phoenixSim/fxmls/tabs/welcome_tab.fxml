@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabs" prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Welcome.WelcomeTabController">
+<TabPane fx:id="tabs" prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.WelcomeTabController">
    <tabs>
       <Tab fx:id="welcomeTab" text="Welcome">
          <content>
@@ -16,7 +16,7 @@
                <children>
                   <ImageView fitHeight="114.0" fitWidth="127.0" layoutX="14.0" layoutY="391.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="46.997833251953125">
                      <image>
-                        <Image url="@../../../ThermalHeater/Extras/PhoenixSim_logo.png" />
+                        <Image url="@../../extras/PhoenixSim_logo.png" />
                      </image>
                   </ImageView>
                   <TextArea editable="false" layoutX="9.0" layoutY="14.0" prefHeight="353.0" prefWidth="377.0" text="Welcome to PhoenixSim*! This tool allows you to analyze the behavior of devices and systems that are commonly used in silicon photonics platform.&#10;&#10;- This is a modular simulation environment where you can open as many tabs as possible and perform specific calculations in each tab. &#10;&#10;- Database allows tabs to share parameters and results with each other. You can find the database in &quot;Tools&quot; menu.&#10;&#10;- At any point during your simulatoin, you can save the database to a file and load it at a later time to resume your simulations.&#10;" wrapText="true" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="437.0" AnchorPane.topAnchor="14.0">
@@ -26,22 +26,22 @@
                   </TextArea>
                   <ImageView fitHeight="114.0" fitWidth="127.0" layoutX="159.0" layoutY="391.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="47.99566650390625">
                      <image>
-                        <Image url="@../CouplerDesigner/Extras/logo_PhoenixSim_Mode.png" />
+                        <Image url="@../../extras/logo_PhoenixSim_Mode.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="114.0" fitWidth="127.0" layoutX="305.0" layoutY="391.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="48.307952880859375">
                      <image>
-                        <Image url="@../CouplerDesigner/Extras/logo_PhoenixSim_Device.png" />
+                        <Image url="@../../extras/logo_PhoenixSim_Device.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="109.0" fitWidth="395.0" layoutX="468.0" layoutY="383.544189453125" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="45.455810546875">
                      <image>
-                        <Image url="@../../../ThermalHeater/Extras/LRL_logo.png" />
+                        <Image url="@../../extras/LRL_logo.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="251.0" fitWidth="372.0" layoutX="420.0" layoutY="66.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="66.0">
                      <image>
-                        <Image url="@Extras/intel_photonics.jpg" />
+                        <Image url="@../../extras/intel_photonics.jpg" />
                      </image>
                   </ImageView>
                </children>

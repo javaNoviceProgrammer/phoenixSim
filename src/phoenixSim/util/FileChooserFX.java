@@ -14,8 +14,8 @@ public class FileChooserFX {
     FileChooser fc ;
     File selectedFile ;
     File[] selectedFiles ;
+    
     // default path for opening and saving --> workspace
-//    public static String path = System.getProperty("user.home") + "/Desktop" ;
     public static String path = System.getProperty("user.home") + File.separator +"Desktop" ;
 
     public FileChooserFX(){

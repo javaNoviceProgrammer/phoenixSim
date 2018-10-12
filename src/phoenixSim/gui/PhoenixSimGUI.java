@@ -18,7 +18,7 @@ public class PhoenixSimGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/MainModule/phoenixSim_module.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/phoenixSim_module.fxml")) ;
         Parent root = loader.load() ;
         Scene scene = new Scene(root) ;
 //        Scene scene = new Scene(root, 1200,900) ;
@@ -26,7 +26,7 @@ public class PhoenixSimGUI extends Application {
         window.setTitle("PhoenixSim v1.0 - Main Window");
         window.setResizable(false);
 //        window.setResizable(true);
-        window.getIcons().add(new Image("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/PhoenixSim_logo.png")) ;
 
         PhoenixSimModuleController controller = loader.getController() ;
         controller.addWelcomeTab();
