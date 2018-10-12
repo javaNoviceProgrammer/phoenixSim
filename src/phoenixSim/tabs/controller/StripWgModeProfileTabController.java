@@ -1,12 +1,9 @@
 package phoenixSim.tabs.controller;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.PlotterModule.PlotterModule;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
+
 import PhotonicElements.EffectiveIndexMethod.ModeProfile.SlabWg.ProfileSlabWgTE;
 import PhotonicElements.EffectiveIndexMethod.ModeProfile.SlabWg.ProfileSlabWgTM;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.SlabWg.ModeSlabWgTE;
@@ -23,6 +20,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import mathLib.plot.MatlabChart;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 public class StripWgModeProfileTabController extends AbstractTabController {
 

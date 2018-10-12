@@ -3,7 +3,6 @@ package phoenixSim.modules;
 import java.io.IOException;
 
 import People.Meisam.GUI.Utilities.Interfaces.ActionInterface;
-import People.Meisam.GUI.Utilities.VariableSelector.VariableSelectorController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.VariableSelectorController;
 
 public class VariableSelectorModule {
 

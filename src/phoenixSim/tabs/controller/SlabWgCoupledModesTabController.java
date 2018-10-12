@@ -1,14 +1,9 @@
 package phoenixSim.tabs.controller;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.DataInput.MainGUI.DataCollectorController;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MainGUI.PlotterController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
+
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.CoupledSlab.ModeCoupledSlabWgTE_fast;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.CoupledSlab.ModeCoupledSlabWgTM_fast;
 import PhotonicElements.EffectiveIndexMethod.Structures.CoupledSlabWg;
@@ -23,6 +18,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import mathLib.plot.MatlabChart;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.DataCollectorController;
+import phoenixSim.util.PlotterController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 public class SlabWgCoupledModesTabController extends AbstractTabController {
 

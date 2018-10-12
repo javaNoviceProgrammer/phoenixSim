@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.CheckComboBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.Utilities.VariableSelector.VariableSelectorController">
+   <children>
+      <Separator layoutX="6.0" layoutY="161.0" prefHeight="74.0" prefWidth="404.0" />
+      <Text layoutX="29.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Variable:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <CheckComboBox fx:id="valuesComboBox" layoutX="153.0" layoutY="165.0" prefHeight="25.0" prefWidth="246.0" />
+      <ImageView fitHeight="79.0" fitWidth="85.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Extras/icon.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="12.0" layoutY="102.0" prefHeight="3.0" prefWidth="401.0" />
+      <ComboBox fx:id="variableComboBox" layoutX="153.0" layoutY="124.0" onAction="#setVariable" prefHeight="25.0" prefWidth="246.0" />
+      <Text layoutX="119.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Variable &amp; Values From Database" wrappingWidth="299.21484375">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="selectValues" layoutX="13.0" layoutY="169.0" mnemonicParsing="false" onAction="#setValuesComboBox" text="Select Values:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="valuesChoice" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="selectAllValues" layoutX="13.0" layoutY="207.0" mnemonicParsing="false" text="Select All Values" toggleGroup="$valuesChoice">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="setExitButton" layoutX="277.0" layoutY="206.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Set &amp; Exit">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

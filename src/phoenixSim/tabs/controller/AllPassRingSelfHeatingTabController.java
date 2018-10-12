@@ -1,12 +1,12 @@
 package phoenixSim.tabs.controller;
 
+import static PhotonicElements.Utilities.MathLibraries.MoreMath.* ;
+import static java.lang.Math.PI;
+
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.PlotterModule.PlotterModule;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
+
 import PhotonicElements.RingStructures.AddDrop.Graph.AddDropSecondOrder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,8 +15,11 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
-import static PhotonicElements.Utilities.MathLibraries.MoreMath.* ;
-import static java.lang.Math.* ;
+import mathLib.plot.MatlabChart;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 public class AllPassRingSelfHeatingTabController extends AbstractTabController {
 

@@ -5,22 +5,18 @@ import java.io.IOException;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
 import phoenixSim.builder.AbstractController;
-import phoenixSim.builder.WindowBuilder;
 import phoenixSim.modules.DatabaseModule;
-import phoenixSim.modules.ImportDataModule;
 import phoenixSim.modules.PlotterModule;
 
 public class PlotterController extends AbstractController {

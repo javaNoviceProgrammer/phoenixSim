@@ -1,26 +1,15 @@
 package phoenixSim.tabs.controller;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import GDS.Elements.AbstractElement;
-import GDS.Elements.DataBase.Entry;
+
 import GDS.Elements.BasicElements.DirectionalCoupler;
 import GDS.Elements.Positioning.Port;
 import GDS.Elements.Positioning.Position;
 import GDS.Headers.Footer;
-import GDS.Headers.Header;
-import GDS.Layout.Cells.Cell;
 import GDS.PDK.AbstractLayerMap;
 import GDS.PDK.AIMLayerMap.SiliconLevelMasks.SEAM;
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.DataInput.MainGUI.DataCollectorController;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MainGUI.PlotterController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.OSDetector;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
-import People.Meisam.GUI.Utilities.ExportPlot.JavaFXFileChooser.FileChooserFX;
 import PhotonicElements.DirectionalCoupler.DistributedCoupler.DistributedCouplerStripWg;
 import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
@@ -31,6 +20,14 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import mathLib.plot.MatlabChart;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.DataCollectorController;
+import phoenixSim.util.FileChooserFX;
+import phoenixSim.util.OSDetector;
+import phoenixSim.util.PlotterController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 public class WgWgCouplerTabController extends AbstractTabController {
 

@@ -1,14 +1,9 @@
 package phoenixSim.tabs.controller;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.DataInput.MainGUI.DataCollectorController;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.PlotterModule.PlotterModule;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
+
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.StripWg.ModeStripWgTE;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.StripWg.ModeStripWgTM;
 import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
@@ -23,6 +18,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import mathLib.plot.MatlabChart;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.DataCollectorController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 /*
  * This tab interacts with the database with the following simulation variables:

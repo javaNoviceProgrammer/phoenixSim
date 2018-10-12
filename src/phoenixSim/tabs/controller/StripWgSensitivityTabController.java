@@ -1,10 +1,7 @@
 package phoenixSim.tabs.controller;
 
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
+
 import PhotonicElements.EffectiveIndexMethod.ModeSensitivity.StripWg.NeffVariationStripWgTE;
 import PhotonicElements.EffectiveIndexMethod.ModeSensitivity.StripWg.NeffVariationStripWgTM;
 import PhotonicElements.Utilities.Wavelength;
@@ -14,6 +11,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import mathLib.plot.MatlabChart;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 public class StripWgSensitivityTabController extends AbstractTabController {
 

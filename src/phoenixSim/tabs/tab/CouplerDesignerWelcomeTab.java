@@ -1,11 +1,14 @@
 package phoenixSim.tabs.tab;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTab;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
+import phoenixSim.tabs.AbstractTab;
+import phoenixSim.tabs.controller.CouplerDesignerWecomeTabController;
+import phoenixSim.util.SimulationDataBase;
 
 public class CouplerDesignerWelcomeTab extends AbstractTab {
 

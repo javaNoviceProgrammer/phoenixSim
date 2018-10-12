@@ -1,21 +1,23 @@
 package phoenixSim.tabs.controller;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.PlotterModule.PlotterModule;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.VariableSelectorModule.VariableSelectorModule;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
+
 import People.Meisam.GUI.Utilities.Interfaces.ActionInterface;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.filters.SavitzyGolayFilter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.SavitzyGolayFilter;
+import mathLib.plot.MatlabChart;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.VariableSelectorModule;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
 
 public class DataSmoothingTabController extends AbstractTabController {
 

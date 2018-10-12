@@ -4,17 +4,8 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import People.Meisam.GUI.Builders.WindowBuilder;
-import People.Meisam.GUI.PhoenixSim.ModulesLibrary.PlotterModule.PlotterModule;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTabController;
-import People.Meisam.GUI.Plotters.MatlabPlot.MatlabChart;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
-import People.Meisam.GUI.Utilities.SimulationVariable;
-import People.Meisam.GUI.Utilities.VariableSelector.VariableSelectorController;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Function;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.fitters.MarquardtFitter;
 import flanagan.interpolation.LinearInterpolation;
 import flanagan.roots.RealRoot;
 import flanagan.roots.RealRootFunction;
@@ -26,6 +17,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.MarquardtFitter;
+import mathLib.plot.MatlabChart;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.tabs.AbstractTabController;
+import phoenixSim.util.SimulationDataBase;
+import phoenixSim.util.SimulationVariable;
+import phoenixSim.util.VariableSelectorController;
 
 public class AllPassFittingTabController extends AbstractTabController {
 

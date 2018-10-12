@@ -1,12 +1,15 @@
 package phoenixSim.tabs.tab;
 
 import java.io.IOException;
+
 import org.controlsfx.control.StatusBar;
-import People.Meisam.GUI.PhoenixSim.MainModule.PhoenixSimModule;
-import People.Meisam.GUI.PhoenixSim.TabsLibrary.AbstractTab;
-import People.Meisam.GUI.Utilities.SimulationDataBase;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
+import phoenixSim.gui.PhoenixSimModule;
+import phoenixSim.tabs.AbstractTab;
+import phoenixSim.tabs.controller.AddDropRingTabController;
+import phoenixSim.util.SimulationDataBase;
 
 public class AddDropRingTab extends AbstractTab {
 
