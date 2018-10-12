@@ -1,18 +1,19 @@
 package phoenixSim.util;
 
+import java.awt.Component;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
+
 import flanagan.analysis.ErrorProp;
 import flanagan.circuits.Phasor;
 import flanagan.complex.Complex;
 import flanagan.complex.ComplexErrorProp;
 import flanagan.math.Fmath;
 import mathLib.util.MathUtils;
-
-import java.awt.Component;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
 
 public class Db {
 	private static boolean inputTypeInfo = true;

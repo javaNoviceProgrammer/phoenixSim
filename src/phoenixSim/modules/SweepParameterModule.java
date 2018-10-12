@@ -2,7 +2,6 @@ package phoenixSim.modules;
 
 import java.io.IOException;
 
-import People.Meisam.GUI.Utilities.Interfaces.ActionInterface;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.util.DataCollectorController;
 
 public class SweepParameterModule {

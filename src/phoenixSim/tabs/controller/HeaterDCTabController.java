@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import People.Meisam.GUI.Utilities.Interfaces.ActionInterface;
 import PhotonicElements.Heater.Model.Structure.SelfHeating;
 import PhotonicElements.Heater.Model.VoltageFunc.AbstractVoltage;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
@@ -17,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.PlotterController;

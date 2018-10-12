@@ -1,6 +1,5 @@
 package phoenixSim.util.ribbon;
 
-import People.Meisam.GUI.Utilities.RibbonFX.skin.RibbonGroupSkin;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -8,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.Skin;
+import phoenixSim.util.ribbon.skin.RibbonGroupSkin;
 
 /**
  * Created by pedro_000 on 1/20/14.

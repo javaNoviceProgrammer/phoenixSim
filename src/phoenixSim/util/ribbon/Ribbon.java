@@ -3,13 +3,13 @@ package phoenixSim.util.ribbon;
 import java.util.Collection;
 import java.util.HashMap;
 
-import People.Meisam.GUI.Utilities.RibbonFX.skin.RibbonSkin;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import phoenixSim.util.ribbon.skin.RibbonSkin;
 
 /**
  * Created by pedro_000 on 1/18/14.

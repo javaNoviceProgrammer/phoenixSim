@@ -1,11 +1,11 @@
 package phoenixSim.util.ribbon;
 
-import People.Meisam.GUI.Utilities.RibbonFX.skin.QuickAccessBarSkin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import phoenixSim.util.ribbon.skin.QuickAccessBarSkin;
 
 /**
  * Created by pedro_000 on 2/19/14.

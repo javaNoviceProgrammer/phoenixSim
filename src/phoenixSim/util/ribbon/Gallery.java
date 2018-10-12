@@ -1,6 +1,5 @@
 package phoenixSim.util.ribbon;
 
-import People.Meisam.GUI.Utilities.RibbonFX.skin.GallerySkin;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -9,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import phoenixSim.util.ribbon.skin.GallerySkin;
 
 /**
  * Created by pedro_000 on 1/13/2015.

@@ -21,7 +21,6 @@ import org.jfree.chart.StandardChartTheme;
 
 import People.Meisam.GUI.PhoenixSim.ModulesLibrary.ModuleCreator.ModuleCreator;
 import People.Meisam.GUI.PhoenixSim.TabsLibrary.CouplerDesigner.silicon_nitride.ring_wg.RingWgCouplerSiNTab;
-import People.Meisam.GUI.Utilities.plotDigitizer.PlotDigitizer;
 import ch.epfl.general_libraries.results.AbstractResultsDisplayer;
 import ch.epfl.javancox.experiments.builder.ExperimentConfigurationCockpit;
 import ch.epfl.javancox.experiments.builder.tree_model.ObjectConstuctionTreeModel;
@@ -100,6 +99,7 @@ import phoenixSim.tabs.tab.WelcomeTab;
 import phoenixSim.tabs.tab.WgWgCouplerTab;
 import phoenixSim.util.FileChooserFX;
 import phoenixSim.util.OSDetector;
+import phoenixSim.util.PlotDigitizer;
 import phoenixSim.util.SimulationDataBase;
 import postdoc.ring.AddDropSpectrum;
 import postdoc.ring.AllPassERContour;

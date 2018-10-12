@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import People.Meisam.GUI.Utilities.Interfaces.ActionInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -12,6 +11,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
