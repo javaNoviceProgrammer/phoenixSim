@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.spreadsheet.SpreadsheetView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDropped="#setOnDragDropped" onDragOver="#setOnDragOver" prefHeight="591.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.Utilities.ImportData.ImportDataController">
+   <children>
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#chooseFilePressed" text="Choose File..." />
+                  <MenuItem mnemonicParsing="false" onAction="#saveToDatabasePressed" text="Save to Database" />
+                  <MenuItem mnemonicParsing="false" onAction="#closePressed" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Tools">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#databasePressed" text="Database" />
+                  <MenuItem mnemonicParsing="false" onAction="#plotterPressed" text="Plotter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SpreadsheetView fx:id="table" layoutY="28.0" prefHeight="568.0" prefWidth="600.0" rowHeaderWidth="40.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
+   </children>
+</AnchorPane>

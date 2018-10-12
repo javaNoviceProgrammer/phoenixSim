@@ -2,18 +2,18 @@ package phoenixSim.util;
 
 import org.controlsfx.control.CheckComboBox;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
+import mathLib.util.MathUtils;
 
 public class VariableSelectorController {
 
 //	SimulationDataBase simDataBase = new SimulationDataBase() ;
 
-	SimulationVariable xVar = new SimulationVariable("xVar", "Variable X", MoreMath.linspace(-10, 10, 1000)) ;
-	SimulationVariable yVar = new SimulationVariable("yVar", "variable Y", MoreMath.Arrays.Functions.sin(xVar.getAllValues())) ;
+	SimulationVariable xVar = new SimulationVariable("xVar", "Variable X", MathUtils.linspace(-10, 10, 1000)) ;
+	SimulationVariable yVar = new SimulationVariable("yVar", "variable Y", MathUtils.Arrays.Functions.sin(xVar.getAllValues())) ;
 	SimulationDataBase simDataBase = new SimulationDataBase(xVar, yVar) ;
 
 	double[] values ;
@@ -65,12 +65,12 @@ public class VariableSelectorController {
 	public double[] getValues(){
 		double[] values = new double[0] ;
 		if(selectAllValues.isSelected()){
-			values = MoreMath.Arrays.concat(values, simDataBase.getVariableValues(variable)) ;
+			values = MathUtils.Arrays.concat(values, simDataBase.getVariableValues(variable)) ;
 		}
 		else if(selectValues.isSelected()){
 			for(double x : valuesComboBox.getItems()){
 				if(valuesComboBox.getCheckModel().isChecked(x)){
-					values = MoreMath.Arrays.append(values, x) ;
+					values = MathUtils.Arrays.append(values, x) ;
 				}
 			}
 		}
