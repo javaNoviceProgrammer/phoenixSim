@@ -138,7 +138,7 @@ public class FileListView {
         final String ext = getFileExt(fname);
         Image fileIcon ;
         if(ext == null){
-        	fileIcon = new Image(Object.class.getClass().getResourceAsStream("/People/Meisam/GUI/Utilities/Icons/folder.png")) ;
+        	fileIcon = new Image(Object.class.getClass().getResourceAsStream("/phoenixSim/extras/folder.png")) ;
         }
         else{
 	        fileIcon = mapOfFileExtToSmallIcon.get(ext);

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import phoenixSim.builder.AbstractController;
+import phoenixSim.builder.WindowBuilder;
 
 public class GeneralCreditsController extends AbstractController {
 	
@@ -22,9 +23,9 @@ public class GeneralCreditsController extends AbstractController {
 	
 	@FXML
 	public void feedbackPressed() throws Exception{
-    	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Credits/FeedbackForm/feedback_form.fxml")) ;
+    	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/feedback_form.fxml")) ;
     	WindowBuilder credits = new WindowBuilder(loader) ;
-    	credits.setIcon("/People/Meisam/GUI/Credits/FeedbackForm/Extras/feedback.png");
+    	credits.setIcon("/phoenixSim/extras/feedback.png");
     	credits.build("Feedback Form", false);
 	}
 	
