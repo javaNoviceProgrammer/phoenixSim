@@ -3,7 +3,6 @@ package phoenixSim.util;
 import java.io.File;
 import java.io.IOException;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -21,6 +20,8 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.util.Callback;
+import mathLib.util.MathUtils;
+import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import phoenixSim.builder.AbstractController;
 import phoenixSim.modules.ImportDataModule;
@@ -44,13 +45,13 @@ public class DatabaseTableController extends AbstractController {
 //
 //    //**********************creating some simulation data and database ***************************************
     // step 1: create simulation variables
-    double[] x = MoreMath.linspace(-20, 20, 5) ;
+    double[] x = MathUtils.linspace(-20, 20, 5) ;
     SimulationVariable varX = new SimulationVariable("varX", "variable x", x) ;
 
-    double[] y = MoreMath.Arrays.Functions.sin(x) ;
+    double[] y = MathUtils.Arrays.Functions.sin(x) ;
     SimulationVariable varY = new SimulationVariable("varY", "variable y", y) ;
 
-    double[] z = MoreMath.linspace(-10, 10, 3) ;
+    double[] z = MathUtils.linspace(-10, 10, 3) ;
     SimulationVariable varZ = new SimulationVariable("varZ", "variable z", z) ;
 
     // step 2: create simulation data base

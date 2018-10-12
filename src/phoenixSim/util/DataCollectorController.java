@@ -1,6 +1,5 @@
 package phoenixSim.util;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import mathLib.util.MathUtils;
 import phoenixSim.builder.AbstractController;
 
 public class DataCollectorController extends AbstractController {
@@ -68,11 +68,11 @@ public class DataCollectorController extends AbstractController {
 
 		if(stepSelected) {
 			stepSize = Double.parseDouble(stepPointsTextField.getText()) ;
-			x = MoreMath.linspace(startValue, endValue, stepSize);
+			x = MathUtils.linspace(startValue, endValue, stepSize);
 		}
 		else {
 			numPoints = Integer.parseInt(stepPointsTextField.getText()) ;
-			x = MoreMath.linspace(startValue, endValue, numPoints);
+			x = MathUtils.linspace(startValue, endValue, numPoints);
 		}
 
 			setUpTable(x) ;

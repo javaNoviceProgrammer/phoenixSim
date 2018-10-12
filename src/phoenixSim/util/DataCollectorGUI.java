@@ -1,12 +1,12 @@
 package phoenixSim.util;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import mathLib.util.MathUtils;
 
 public class DataCollectorGUI extends Application {
 
@@ -21,7 +21,7 @@ public class DataCollectorGUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage ;
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
+		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/dataCollector.fxml")) ;
         Parent root = loader.load() ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
@@ -29,12 +29,12 @@ public class DataCollectorGUI extends Application {
         window.setTitle("Data Collector GUI");
         // better to disable resizable
         window.setResizable(false);
-        window.getIcons().add(new Image("/People/Meisam/GUI/DataInput/Extras/dataCollector.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/dataCollector.png")) ;
         window.show();
         DataCollectorController controller = loader.getController() ;
         controller.getExitButton().setOnAction(e -> {
         	window.close();
-        	MoreMath.Arrays.show(controller.getAllValues());
+        	MathUtils.Arrays.show(controller.getAllValues());
 		});
 	}
 
