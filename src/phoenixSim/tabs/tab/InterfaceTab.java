@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class InterfaceTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Interface/interface.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/interface.fxml")) ;
 	InterfaceTabController controller ;
 
 	public InterfaceTab(SimulationDataBase simDataBase){

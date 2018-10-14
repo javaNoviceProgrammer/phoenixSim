@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class DownSamplingTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Measurements/DownSampling/down_sampling.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/down_sampling.fxml")) ;
 	DownSamplingTabController controller ;
 
 	public DownSamplingTab(SimulationDataBase simDataBase){

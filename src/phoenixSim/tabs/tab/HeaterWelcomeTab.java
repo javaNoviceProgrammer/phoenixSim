@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class HeaterWelcomeTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Heater/HeaterWelcome/heater_welcome.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/heater_welcome.fxml")) ;
 	HeaterWelcomeTabController controller ;
 
 	public HeaterWelcomeTab(SimulationDataBase simDataBase){

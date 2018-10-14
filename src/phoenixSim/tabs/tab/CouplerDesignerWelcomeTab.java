@@ -12,7 +12,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class CouplerDesignerWelcomeTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/CouplerDesigner/CouplerDesignerWelcome/coupler_designer_welcome_tab.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/coupler_designer_welcome_tab.fxml")) ;
 	CouplerDesignerWecomeTabController controller ;
 
 	public CouplerDesignerWelcomeTab(SimulationDataBase simDataBase){

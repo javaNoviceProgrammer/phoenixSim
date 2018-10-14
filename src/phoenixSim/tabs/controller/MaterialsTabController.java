@@ -4,14 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Materials.Dielectric.AbstractDielectric;
-import PhotonicElements.Materials.Dielectric.Air;
-import PhotonicElements.Materials.Dielectric.LiNbO3_ExtraOrdinary;
-import PhotonicElements.Materials.Dielectric.LiNbO3_Ordinary;
-import PhotonicElements.Materials.Dielectric.Silica;
-import PhotonicElements.Materials.Dielectric.Silicon;
-import PhotonicElements.Materials.Dielectric.SiliconNitride;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -23,11 +15,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.material.AbstractDielectric;
+import photonics.material.Air;
+import photonics.material.LiNbO3_ExtraOrdinary;
+import photonics.material.LiNbO3_Ordinary;
+import photonics.material.Silica;
+import photonics.material.Silicon;
+import photonics.material.SiliconNitride;
+import photonics.util.Wavelength;
 
 public class MaterialsTabController extends AbstractTabController {
 
@@ -207,7 +208,7 @@ public class MaterialsTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

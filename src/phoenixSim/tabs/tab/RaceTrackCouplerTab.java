@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class RaceTrackCouplerTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/CouplerDesigner/RaceTrack/race_track_coupler.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/race_track_coupler.fxml")) ; ;
 	RaceTrackCouplerTabController controller ;
 
 	public RaceTrackCouplerTab(SimulationDataBase simDataBase){

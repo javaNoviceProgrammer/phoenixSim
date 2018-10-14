@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class AddDropRingFifthOrderTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/RingResonator/AddDropFifthOrder/add_drop_ring_fifth_order.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/add_drop_ring_fifth_order.fxml")) ;
 	AddDropRingFifthOrderTabController controller ;
 
 	public AddDropRingFifthOrderTab(SimulationDataBase simDataBase){

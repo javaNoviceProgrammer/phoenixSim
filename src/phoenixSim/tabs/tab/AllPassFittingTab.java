@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class AllPassFittingTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Measurements/AllPassFitting/all_pass_fitting.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/all_pass_fitting.fxml")) ; ;
 	AllPassFittingTabController controller ;
 
 	public AllPassFittingTab(SimulationDataBase simDataBase){

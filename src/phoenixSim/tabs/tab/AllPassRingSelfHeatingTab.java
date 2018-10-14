@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class AllPassRingSelfHeatingTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/RingResonator/AllPassSelfHeating/all_pass_ring_self_heating.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/all_pass_ring_self_heating.fxml")) ;
 	AllPassRingSelfHeatingTabController controller ;
 
 	public AllPassRingSelfHeatingTab(SimulationDataBase simDataBase){

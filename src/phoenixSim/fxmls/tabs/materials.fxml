@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Materials.MaterialsTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.MaterialsTabController">
    <tabs>
       <Tab fx:id="materialsTab" text="Dielectric Materials">
          <content>
@@ -69,7 +69,7 @@
                         </Text>
                         <ImageView fitHeight="37.0" fitWidth="264.0" layoutX="4.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Extras/sellmier_eq.png" />
+                              <Image url="@../../extras/sellmier_eq.png" />
                            </image>
                         </ImageView>
                         <Text layoutX="6.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sellmeier equation is an empirical relationship between refractive index and wavelength for a particular transparent medium. The equation is used to determine the dispersion of light in the medium." textAlignment="JUSTIFY" wrappingWidth="257.921875">
@@ -81,7 +81,7 @@
                         <Separator layoutX="11.0" layoutY="315.0" prefHeight="17.0" prefWidth="249.0" />
                         <ImageView fitHeight="190.0" fitWidth="257.0" layoutX="5.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Extras/440px-Cauchy-equation-1.svg.png" />
+                              <Image url="@../../extras/440px-Cauchy-equation-1.svg.png" />
                            </image>
                         </ImageView>
                      </children>

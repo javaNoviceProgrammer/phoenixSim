@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class HeaterImpulseTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Heater/HeaterImpulse/heater_impulse.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/heater_impulse.fxml")) ; ;
 	HeaterImpulseTabController controller ;
 
 	public HeaterImpulseTab(SimulationDataBase simDataBase){

@@ -13,8 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class MaterialsTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Materials/materials.fxml")) ;
-//	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Materials/materials_new.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/materials.fxml")) ;
 	MaterialsTabController controller ;
 
 	public MaterialsTab(SimulationDataBase simDataBase){

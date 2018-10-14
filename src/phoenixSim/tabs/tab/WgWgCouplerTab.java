@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class WgWgCouplerTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/CouplerDesigner/WgWgCoupler/wg_wg_coupler.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/wg_wg_coupler.fxml")) ; ;
 	WgWgCouplerTabController controller ;
 
 	public WgWgCouplerTab(SimulationDataBase simDataBase){

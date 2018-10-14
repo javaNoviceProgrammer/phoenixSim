@@ -239,7 +239,7 @@ public class PhoenixSimModuleController {
 	    JFrame chartFrame = new JFrame() ;
 	    chartFrame.add(cpanel) ;
 	    chartFrame.setSize(640, 450);
-        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/People/Meisam/GUI/Plotters/MatlabPlotter/Extras/presentation.png"));
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/phoenixSim/extras/presentation.png"));
         chartFrame.setIconImage(image);
         chartFrame.setTitle("Plot Viewer v1.0");
         chartFrame.setVisible(true);
@@ -1453,7 +1453,7 @@ public class PhoenixSimModuleController {
     	} ;
     	EventQueue.invokeLater(r);
 	}
-	
+
 	@FXML
 	public void modeSlabWgTMPressed(){
     	Runnable r = new Runnable(){
@@ -1467,7 +1467,7 @@ public class PhoenixSimModuleController {
     	} ;
     	EventQueue.invokeLater(r);
 	}
-	
+
 	@FXML
 	public void modeStripWgTEPressed(){
     	Runnable r = new Runnable(){
@@ -1481,7 +1481,7 @@ public class PhoenixSimModuleController {
     	} ;
     	EventQueue.invokeLater(r);
 	}
-	
+
 	@FXML
 	public void modeStripWgTMPressed(){
     	Runnable r = new Runnable(){
@@ -1495,9 +1495,9 @@ public class PhoenixSimModuleController {
     	} ;
     	EventQueue.invokeLater(r);
 	}
-	
+
 	//*******************NASA project******************************
-	
+
 	@FXML
 	public void allPassRingNASAPressed(){
 //    	Runnable r = new Runnable(){
@@ -1511,7 +1511,7 @@ public class PhoenixSimModuleController {
 //    	} ;
 //    	EventQueue.invokeLater(r);
 	}
-	
+
 	@FXML
 	public void addDropRingNASAPressed(){
 //    	Runnable r = new Runnable(){
@@ -1525,7 +1525,7 @@ public class PhoenixSimModuleController {
 //    	} ;
 //    	EventQueue.invokeLater(r);
 	}
-	
+
 	@FXML
 	public void addAllPassRingQContoursPressed(){
 //    	Runnable r = new Runnable(){
@@ -1539,7 +1539,7 @@ public class PhoenixSimModuleController {
 //    	} ;
 //    	EventQueue.invokeLater(r);
 	}
-	
+
 	@FXML
 	public void addAllPassRingERContoursPressed(){
 //    	Runnable r = new Runnable(){

@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class AddDropRingThirdOrderTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/RingResonator/AddDropRingThirdOrder/add_drop_ring_third_order.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/add_drop_ring_third_order.fxml")) ;
 	AddDropRingThirdOrderTabController controller ;
 
 	public AddDropRingThirdOrderTab(SimulationDataBase simDataBase){

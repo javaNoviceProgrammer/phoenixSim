@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class BERPenaltyTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Measurements/BERPenalty/ber_power_penalty.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/ber_power_penalty.fxml")) ;
 	BERPenaltyTabController controller ;
 
 	public BERPenaltyTab(SimulationDataBase simDataBase){

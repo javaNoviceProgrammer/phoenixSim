@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class RingRingCouplerTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/CouplerDesigner/RingRingCoupler/ring_ring_coupler.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/ring_ring_coupler.fxml")) ; ;
 	RingRingCouplerTabController controller ;
 
 	public RingRingCouplerTab(SimulationDataBase simDataBase){

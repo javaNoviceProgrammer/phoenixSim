@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class HeaterDCFittingTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Measurements/HeaterFitting/DCResponse/heater_dc_fitting.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/heater_dc_fitting.fxml")) ; ;
 	HeaterDCFittingTabController controller ;
 
 	public HeaterDCFittingTab(SimulationDataBase simDataBase){

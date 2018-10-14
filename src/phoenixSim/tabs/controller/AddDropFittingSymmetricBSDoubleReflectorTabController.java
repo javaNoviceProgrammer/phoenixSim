@@ -4,11 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.RingStructures.BackScattering.AddDropBackScatteringAsymmetricAbstract;
-import PhotonicElements.Utilities.Wavelength;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
-import PhotonicElements.Waveguides.TerminatorAndReflector.LumpedReflector;
 import flanagan.interpolation.LinearInterpolation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -17,8 +12,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
@@ -157,7 +155,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + minLambda_nm + " nm");
 			} catch (Exception e) {
-	            double minLambda_nm = MoreMath.evaluate(st) ;
+	            double minLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + String.format("%.4f", minLambda_nm) + " nm");
 			}
@@ -173,7 +171,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + maxLambda_nm + " nm");
 			} catch (Exception e) {
-	            double maxLambda_nm = MoreMath.evaluate(st) ;
+	            double maxLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + String.format("%.4f", maxLambda_nm) + " nm");
 			}
@@ -189,7 +187,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + centerLambda_nm + " nm");
 			} catch (Exception e) {
-	            double centerLambda_nm = MoreMath.evaluate(st) ;
+	            double centerLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + String.format("%.4f", centerLambda_nm) + " nm");
 			}
@@ -205,7 +203,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
                 simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
                 fsrLabel.setText("FSR is set to " + fsr_nm + " nm");
 			} catch (Exception e) {
-	            double fsr_nm = MoreMath.evaluate(st) ;
+	            double fsr_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
 	            fsrLabel.setText("FSR is set to " + String.format("%.4f", fsr_nm) + " nm");
 			}
@@ -223,8 +221,8 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 
 		// first interpolate data points
 		LinearInterpolation interpolator = new LinearInterpolation(xData.getAllValues(), yData.getAllValues()) ;
-		
-		LinearInterpolation.supress(); 
+
+		LinearInterpolation.supress();
 		int M_start = 0, M_end = xData.getLength()-1 ;
 		while(M_start<=xData.getLength()){
 			if(xData.getValue(M_start)<lambda_min_nm){M_start++ ;}
@@ -242,8 +240,8 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 		}
 		lambda_min_nm = xData.getValue(M_start) ;
 		lambda_max_nm = xData.getValue(M_end) ;
-		double[] lambda_nm = MoreMath.linspace(lambda_min_nm, lambda_max_nm, 100) ;
-		
+		double[] lambda_nm = MathUtils.linspace(lambda_min_nm, lambda_max_nm, 100) ;
+
 		double[] y_dB = new double[lambda_nm.length] ;
 		double[][] lambdaValues_nm = new double[lambda_nm.length][1] ;
 		for(int i=0; i<y_dB.length; i++){
@@ -251,7 +249,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 			lambdaValues_nm[i][0] = lambda_nm[i] ;
 		}
 		// step 2: setup curve fitting to the normalized measurement
-		Function fitFunc = new Function(){
+		LeastSquareFunction fitFunc = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double lambdaNm = values[0] ; // wavelength
@@ -261,8 +259,8 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 				double r1 = parameters[2] ; // lumped reflector field reflection
 //				double r2 = parameters[3] ; // lumped reflector field reflection
 				double offset_dB = parameters[3] ;
-				adr = new AddDropBackScatteringAsymmetricAbstract(new Wavelength(lambdaNm), lambda_res_nm, FSR_nm, kappa, kappa, L, new LumpedReflector(r1,0), new LumpedReflector(r1, phi)); 
-				double transDrop_dB = MoreMath.Conversions.todB(adr.S41.absSquared()) ;
+				adr = new AddDropBackScatteringAsymmetricAbstract(new Wavelength(lambdaNm), lambda_res_nm, FSR_nm, kappa, kappa, L, new LumpedReflector(r1,0), new LumpedReflector(r1, phi));
+				double transDrop_dB = MathUtils.Conversions.todB(adr.S41.absSquared()) ;
 				return (transDrop_dB + offset_dB);
 			}
 
@@ -276,8 +274,8 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 				return 1;
 			}
 		} ;
-//		Fitter fit = new NonLinearSolver(fitFunc) ;
-		Fitter fit = new MarquardtFitter(fitFunc) ;
+//		LeastSquareFitter fit = new NonLinearSolver(fitFunc) ;
+		LeastSquareFitter fit = new MarquardtFitter(fitFunc) ;
 		fit.setData(lambdaValues_nm, y_dB);
 //		fit.setParameters(new double[]{0.1, 0.97, 0.01, -30});
 		if(plusPhase.isSelected()){
@@ -286,7 +284,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 		else{
 			fit.setParameters(new double[]{0.1, -0.1, 0.1, -30});
 		}
-		
+
 		fit.fitData();
 
 		double kappa = fit.getParameters()[0] ;
@@ -306,10 +304,10 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 		double[] fitted_plot = new double[lambda_nm.length] ;
 		for(int i=0; i<fitted_plot.length; i++){
 			adr = new AddDropBackScatteringAsymmetricAbstract(new Wavelength(lambda_nm[i]), lambda_res_nm, FSR_nm, kappa, kappa, 1, new LumpedReflector(r1, 0), new LumpedReflector(r1, phi)) ;
-			fitted_plot[i] = MoreMath.Conversions.todB(adr.S41.absSquared()) + offset_dB ;
+			fitted_plot[i] = MathUtils.Conversions.todB(adr.S41.absSquared()) + offset_dB ;
 		}
 		simDataBase.addNewVariable(new SimulationVariable("fitted_drop_(dBm)", "Drop Power (dBm)", fitted_plot));
-		
+
 		fig.plot(lambda_nm, fitted_plot, "r", 3f);
 		fig.RenderPlot();
 		fig.xlabel("Wavelength (nm)");
@@ -330,7 +328,7 @@ public class AddDropFittingSymmetricBSDoubleReflectorTabController extends Abstr
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

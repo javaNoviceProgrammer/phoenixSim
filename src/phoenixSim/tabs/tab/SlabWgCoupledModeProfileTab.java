@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class SlabWgCoupledModeProfileTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/SlabWg/SlabWgCoupledModeProfile/slab_wg_coupled_mode_profile.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/slab_wg_coupled_mode_profile.fxml")) ; ;
 	SlabWgCoupledModeProfileTabController controller ;
 
 	public SlabWgCoupledModeProfileTab(SimulationDataBase simDataBase){

@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class AddDropFittingSymmetricBSTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/TabsLibrary/Measurements/AddDropFitting/SymmetricDropBackScattering/add_drop_fitting_symmetric_BS.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/add_drop_fitting_symmetric_BS.fxml")) ; ;
 	AddDropFittingSymmetricBSTabController controller ;
 
 	public AddDropFittingSymmetricBSTab(SimulationDataBase simDataBase){
