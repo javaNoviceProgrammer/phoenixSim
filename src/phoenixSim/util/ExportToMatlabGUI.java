@@ -18,11 +18,11 @@ public class ExportToMatlabGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        Parent root = FXMLLoader.load(getClass().getResource("exportToMatlab.fxml")) ;
+        Parent root = FXMLLoader.load(getClass().getResource("/phoenixSim/fxmls/exportToMatlab.fxml")) ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
         window.setTitle("Configure Export to MATLAB");
-        window.getIcons().add(new Image(getClass().getResourceAsStream("/People/Meisam/GUI/Utilities/ExportPlot/ExportToMATLAB/Extras/MatlabIcons/Matlab_Logo.png"))) ;
+        window.getIcons().add(new Image(getClass().getResourceAsStream("/phoenixSim/extras/Matlab_Logo.png"))) ;
         window.setResizable(false);
         window.show();
     }

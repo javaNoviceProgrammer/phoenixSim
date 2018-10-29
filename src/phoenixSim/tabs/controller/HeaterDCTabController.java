@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Heater.Model.Structure.SelfHeating;
-import PhotonicElements.Heater.Model.VoltageFunc.AbstractVoltage;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -16,12 +13,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.heater.struct.SelfHeating;
+import photonics.heater.voltage.AbstractVoltage;
 
 public class HeaterDCTabController extends AbstractTabController {
 
@@ -100,7 +101,7 @@ public class HeaterDCTabController extends AbstractTabController {
                 simDataBase.addNewVariable(new SimulationVariable("kv", new double[]{kv}));
                 kvLabel.setText("Kv is set to " + kv + " /Volt^2");
 			} catch (Exception e) {
-	    		double kv = MoreMath.evaluate(st) ;
+	    		double kv = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("kv", new double[]{kv}));
 	            kvLabel.setText("Kv is set to " + String.format("%.4f", kv) + " /Volt^2");
 			}
@@ -139,7 +140,7 @@ public class HeaterDCTabController extends AbstractTabController {
                     dcPlot.getSelectedToggle().setSelected(false);
                 }
 			} catch (Exception e) {
-	            double Rlinear = MoreMath.evaluate(st) ;
+	            double Rlinear = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("Rlinear", new double[]{Rlinear}));
 	            RlinearLabel.setText("R is set to " + String.format("%.4f", Rlinear) + " Ohms");
 	            if(dcToggleIsSelected()){
@@ -176,7 +177,7 @@ public class HeaterDCTabController extends AbstractTabController {
                 simDataBase.addNewVariable(new SimulationVariable("alphaH", new double[]{alphaH}));
                 aHLabel.setText("aH is set to " + alphaH + " /Kelvin");
 			} catch (Exception e) {
-	            double alphaH = MoreMath.evaluate(st) ;
+	            double alphaH = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("alphaH", new double[]{alphaH}));
 	            aHLabel.setText("aH is set to " + String.format("%.4f", alphaH) + " /Kelvin");
 			}
@@ -207,14 +208,14 @@ public class HeaterDCTabController extends AbstractTabController {
     @FXML
     private void plotDC(){
         if(checkFilledTextsInDCTab()){
-            double[] VH_V = MoreMath.linspace(0, 5, 1000) ;
+            double[] VH_V = MathUtils.linspace(0, 5, 1000) ;
             double alphaH = simDataBase.getVariable("alphaH").getValue(0) ;
             double kv = simDataBase.getVariable("kv").getValue(0) ;
             double Rlinear = simDataBase.getVariable("Rlinear").getValue(0) ;
             selfHeating = new SelfHeating(alphaH, kv, Rlinear) ;
             double[] IH_mA = selfHeating.getCurrent_mA(VH_V) ;
             double[] deltaTH_K = selfHeating.getDeltaT(VH_V) ;
-            double[] heaterPower_mW = MoreMath.Arrays.times(VH_V, IH_mA) ;
+            double[] heaterPower_mW = MathUtils.Arrays.times(VH_V, IH_mA) ;
             simDataBase.addNewVariable(new SimulationVariable("VH_(V)", "Heater Voltage (V)", VH_V));
             simDataBase.addNewVariable(new SimulationVariable("IH_(mA)", "Heater Current (mA)", IH_mA));
             simDataBase.addNewVariable(new SimulationVariable("PH_(mW)", "Heater Power (mW)", heaterPower_mW));
@@ -258,7 +259,7 @@ public class HeaterDCTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figDC.exportToMatlab();
+//    	figDC.exportToMatlab();
     }
 
     @FXML

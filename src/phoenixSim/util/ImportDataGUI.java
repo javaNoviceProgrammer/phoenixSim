@@ -18,13 +18,13 @@ public class ImportDataGUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/ImportData/import_data.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/import_data.fxml")) ;
         Parent root = loader.load() ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
         window.setTitle("Import Data");
         window.setResizable(true);
-        window.getIcons().add(new Image("/People/Meisam/GUI/Utilities/ImportData/Extras/import.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/import.png")) ;
         
         window.show();
 

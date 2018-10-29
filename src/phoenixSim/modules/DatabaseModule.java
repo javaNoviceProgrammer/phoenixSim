@@ -9,12 +9,12 @@ import phoenixSim.util.SimulationDataBase;
 
 public class DatabaseModule {
 
-    FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/DataBaseTable/DataBase_v1_0/database_table.fxml")) ;
+    FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/database_table.fxml")) ;
     WindowBuilder builder = new WindowBuilder(loader) ;
     public DatabaseTableController controller ;
 
 	public DatabaseModule(SimulationDataBase simDataBase){
-      builder.setIcon("/People/Meisam/GUI/Utilities/DataBaseTable/Extras/database.png");
+      builder.setIcon("/phoenixSim/extras/database.png");
       try {
 		builder.build_NoModality("Simulation DataBase v1.0", true);
 	} catch (IOException e2) {
