@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.SlabWg.SlabWgModeProfile.SlabWgModeProfileTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.SlabWgModeProfileTabController">
    <tabs>
       <Tab fx:id="slabWgModeProfileTab" text="Slab Wg Mode Profile">
          <content>
@@ -37,7 +37,7 @@
                         </Text>
                         <ImageView fitHeight="133.0" fitWidth="208.0" layoutX="10.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Extras/TE%20modes.JPG" />
+                              <Image url="@../../extras/TE%20modes.JPG" />
                            </image>
                         </ImageView>
                         <Text fontSmoothingType="LCD" layoutX="11.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TE modes:" wrappingWidth="183.12109375">
@@ -52,7 +52,7 @@
                         </Text>
                         <ImageView fitHeight="144.0" fitWidth="196.0" layoutX="10.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Extras/TM%20modes.JPG" />
+                              <Image url="@../../extras/TM%20modes.JPG" />
                            </image>
                         </ImageView>
                         <Separator layoutX="14.0" layoutY="246.0" prefWidth="200.0" />

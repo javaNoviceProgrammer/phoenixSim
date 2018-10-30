@@ -4,24 +4,23 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.ModeProfile.SlabWg.ProfileSlabWgTE;
-import PhotonicElements.EffectiveIndexMethod.ModeProfile.SlabWg.ProfileSlabWgTM;
-import PhotonicElements.EffectiveIndexMethod.Structures.SlabWg;
-import PhotonicElements.Materials.Dielectric.Silica;
-import PhotonicElements.Materials.Dielectric.Silicon;
-import PhotonicElements.Utilities.Wavelength;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
+import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
-import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.material.Silica;
+import photonics.material.Silicon;
+import photonics.slab.ProfileSlabWgTE;
+import photonics.slab.ProfileSlabWgTM;
+import photonics.slab.SlabWg;
+import photonics.util.Wavelength;
 
 public class SlabWgModeProfileTabController extends AbstractTabController {
 
@@ -79,7 +78,7 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 		String mode = simDataBase.getVariable("mode").getAlias() ;
 		SlabWg slab = new SlabWg(new Wavelength(lambda_nm[0]), width_nm[0], new Silica(), new Silicon(), new Silica()) ;
 		double[] neff = simDataBase.getVariable("neff_()").getAllValues() ;
-		SimulationVariable x_nm = new SimulationVariable("x_(nm)", "X (nm)", MoreMath.linspace(-5*width_nm[0], 5*width_nm[0], 5000))  ;
+		SimulationVariable x_nm = new SimulationVariable("x_(nm)", "X (nm)", MathUtils.linspace(-5*width_nm[0], 5*width_nm[0], 5000))  ;
 		simDataBase.addNewVariable(x_nm);
 		double[] field = new double[x_nm.getLength()] ;
 		if(ReEx.isSelected()){
@@ -94,8 +93,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Re_Ex_normalized = new SimulationVariable("Re_Ex_normalized", "Re(Ex)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Re_Ex_normalized = new SimulationVariable("Re_Ex_normalized", "Re(Ex)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Re_Ex_normalized);
 				figWgModeProfile = createPlot(x_nm, Re_Ex_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -120,8 +119,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Im_Ex_normalized = new SimulationVariable("Im_Ex_normalized", "Im(Ex)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Im_Ex_normalized = new SimulationVariable("Im_Ex_normalized", "Im(Ex)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Im_Ex_normalized);
 				figWgModeProfile = createPlot(x_nm, Im_Ex_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -146,8 +145,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Re_Ey_normalized = new SimulationVariable("Re_Ey_normalized", "Re(Ey)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Re_Ey_normalized = new SimulationVariable("Re_Ey_normalized", "Re(Ey)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Re_Ey_normalized);
 				figWgModeProfile = createPlot(x_nm, Re_Ey_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -172,8 +171,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Im_Ey_normalized = new SimulationVariable("Im_Ey_normalized", "Im(Ey)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Im_Ey_normalized = new SimulationVariable("Im_Ey_normalized", "Im(Ey)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Im_Ey_normalized);
 				figWgModeProfile = createPlot(x_nm, Im_Ey_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -198,8 +197,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Re_Ez_normalized = new SimulationVariable("Re_Ez_normalized", "Re(Ez)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Re_Ez_normalized = new SimulationVariable("Re_Ez_normalized", "Re(Ez)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Re_Ez_normalized);
 				figWgModeProfile = createPlot(x_nm, Re_Ez_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -224,8 +223,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Im_Ez_normalized = new SimulationVariable("Im_Ez_normalized", "Im(Ez)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Im_Ez_normalized = new SimulationVariable("Im_Ez_normalized", "Im(Ez)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Im_Ez_normalized);
 				figWgModeProfile = createPlot(x_nm, Im_Ez_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -250,8 +249,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Re_Hx_normalized = new SimulationVariable("Re_Hx_normalized", "Re(Hx)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Re_Hx_normalized = new SimulationVariable("Re_Hx_normalized", "Re(Hx)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Re_Hx_normalized);
 				figWgModeProfile = createPlot(x_nm, Re_Hx_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -276,8 +275,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Im_Hx_normalized = new SimulationVariable("Im_Hx_normalized", "Im(Hx)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Im_Hx_normalized = new SimulationVariable("Im_Hx_normalized", "Im(Hx)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Im_Hx_normalized);
 				figWgModeProfile = createPlot(x_nm, Im_Hx_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -302,8 +301,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Re_Hy_normalized = new SimulationVariable("Re_Hy_normalized", "Re(Hy)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Re_Hy_normalized = new SimulationVariable("Re_Hy_normalized", "Re(Hy)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Re_Hy_normalized);
 				figWgModeProfile = createPlot(x_nm, Re_Hy_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -328,8 +327,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Im_Hy_normalized = new SimulationVariable("Im_Hy_normalized", "Im(Hy)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Im_Hy_normalized = new SimulationVariable("Im_Hy_normalized", "Im(Hy)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Im_Hy_normalized);
 				figWgModeProfile = createPlot(x_nm, Im_Hy_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -354,8 +353,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Re_Hz_normalized = new SimulationVariable("Re_Hz_normalized", "Re(Hz)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Re_Hz_normalized = new SimulationVariable("Re_Hz_normalized", "Re(Hz)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Re_Hz_normalized);
 				figWgModeProfile = createPlot(x_nm, Re_Hz_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -380,8 +379,8 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 				}
 			}
 			if(normalizedField.isSelected()){
-				double norm = MoreMath.Arrays.FindMaximum.getValue(MoreMath.Arrays.Functions.abs(field)) ;
-				SimulationVariable Im_Hz_normalized = new SimulationVariable("Im_Hz_normalized", "Im(Hz)-Normalized", MoreMath.Arrays.times(field, 1/norm)) ;
+				double norm = MathUtils.Arrays.FindMaximum.getValue(MathUtils.Arrays.Functions.abs(field)) ;
+				SimulationVariable Im_Hz_normalized = new SimulationVariable("Im_Hz_normalized", "Im(Hz)-Normalized", MathUtils.Arrays.times(field, 1/norm)) ;
 				simDataBase.addNewVariable(Im_Hz_normalized);
 				figWgModeProfile = createPlot(x_nm, Im_Hz_normalized) ;
 				showPlot(figWgModeProfile, matlabPane);
@@ -397,22 +396,15 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 
 	}
 
-//    private void showPlot(MatlabChart fig, Pane pane){
-//        int width = 500, height = 400 ;
-//        pane.getChildren().remove(fig.getChartSwingNode(width, height)) ;
-//        pane.getChildren().add(fig.getChartSwingNode(width, height)) ;
-//        pane.setPrefSize((double) width, (double) height);
-//    }
-
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
         double[] field = y.getAllValues() ;
-		double[] x0 = MoreMath.Arrays.setValue(0, 10) ;
-		double[] y0 = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(field), MoreMath.Arrays.FindMaximum.getValue(field), x0.length) ;
+		double[] x0 = MathUtils.Arrays.setValue(0, 10) ;
+		double[] y0 = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(field), MathUtils.Arrays.FindMaximum.getValue(field), x0.length) ;
 		fig.plot(x0, y0, ".r");
-		double[] x1 = MoreMath.Arrays.setValue(simDataBase.getVariable("width_(nm)").getAllValues()[0], 10) ;
-		double[] y1 = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(field), MoreMath.Arrays.FindMaximum.getValue(field), x1.length) ;
+		double[] x1 = MathUtils.Arrays.setValue(simDataBase.getVariable("width_(nm)").getAllValues()[0], 10) ;
+		double[] y1 = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(field), MathUtils.Arrays.FindMaximum.getValue(field), x1.length) ;
 		fig.plot(x1, y1, ".r");
         fig.RenderPlot();
         fig.xlabel(x.getAlias());
@@ -422,18 +414,12 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figWgModeProfile.exportToMatlab();
+//    	figWgModeProfile.exportToMatlab();
     }
 
     @FXML
     public void openInPlotterPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Plotters/MainGUI/plotter.fxml")) ;
-        WindowBuilder plotter = new WindowBuilder(loader) ;
-        plotter.setIcon("/People/Meisam/GUI/Plotters/MainGUI/Extras/plotter.png");
-        plotter.build("Plotter v0.5 Beta", true);
-        PlotterController controller = (PlotterController) plotter.getController() ;
-        controller.setDataBase(simDataBase);
-        controller.initialize();
+        new PlotterModule(simDataBase) ;
     }
 
 	@Override

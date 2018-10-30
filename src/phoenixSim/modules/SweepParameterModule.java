@@ -18,7 +18,7 @@ public class SweepParameterModule {
 	Stage window = new Stage() ;
 
 	public SweepParameterModule(){
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/dataCollector.fxml")) ;
         Parent root;
 		try {
 			root = loader.load();
@@ -29,7 +29,7 @@ public class SweepParameterModule {
 		}
         window.setTitle("Data Collector");
         window.setResizable(false);
-        window.getIcons().add(new Image("/People/Meisam/GUI/DataInput/Extras/dataCollector.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/dataCollector.png")) ;
         controller = loader.getController() ;
         controller.initialize();
         window.initModality(Modality.APPLICATION_MODAL);
