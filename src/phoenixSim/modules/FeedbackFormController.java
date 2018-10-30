@@ -110,9 +110,9 @@ public class FeedbackFormController extends AbstractController {
 		transport.sendMessage(message, message.getAllRecipients());
 		transport.close();
 		
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Credits/FeedbackForm/Confirmation/sent_confirmation.fxml")) ;
+		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/sent_confirmation.fxml")) ;
 		WindowBuilder confirmation = new WindowBuilder(loader) ;
-		confirmation.setIcon("/People/Meisam/GUI/Credits/FeedbackForm/Extras/email.png");
+		confirmation.setIcon("/phoenixSim/extras/email.png");
 		try {
 			confirmation.build("Confirmation Status", false);
 		} catch (IOException e) {

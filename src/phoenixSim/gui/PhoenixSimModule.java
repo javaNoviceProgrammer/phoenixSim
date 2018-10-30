@@ -9,13 +9,13 @@ import phoenixSim.util.SimulationDataBase;
 
 public class PhoenixSimModule {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/MainModule/phoenixSim_module.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/phoenixSim_module.fxml")) ; ;
 	PhoenixSimModuleController controller ;
 
 	// this constructor is used if database is not shared
 	public PhoenixSimModule(){
 		WindowBuilder builder = new WindowBuilder(loader) ;
-		builder.setIcon("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png");
+		builder.setIcon("/phoenixSim/extras/PhoenixSim_logo.png");
 		try {
 			builder.build_NoModality("PhoenixSim v1.0", false);
 		} catch (IOException e) {
@@ -31,7 +31,7 @@ public class PhoenixSimModule {
 	// this constructor is used if database is shared between modules
 	public PhoenixSimModule(SimulationDataBase simDataBase){
 		WindowBuilder builder = new WindowBuilder(loader) ;
-		builder.setIcon("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png");
+		builder.setIcon("/phoenixSim/extras/PhoenixSim_logo.png");
 		try {
 			builder.build_NoModality("PhoenixSim v1.0", false);
 		} catch (IOException e) {
@@ -47,7 +47,7 @@ public class PhoenixSimModule {
 
 	public PhoenixSimModule(SimulationDataBase simDataBase, boolean addWelcomeTab){
 		WindowBuilder builder = new WindowBuilder(loader) ;
-		builder.setIcon("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png");
+		builder.setIcon("/phoenixSim/extras/PhoenixSim_logo.png");
 		try {
 			builder.build_NoModality("PhoenixSim v1.0", false);
 		} catch (IOException e) {

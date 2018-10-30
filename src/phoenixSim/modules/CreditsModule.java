@@ -7,11 +7,11 @@ import phoenixSim.builder.WindowBuilder;
 
 public class CreditsModule {
 
-    FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Credits/GeneralCredits/general_credits.fxml")) ;
+    FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/general_credits.fxml")) ;
     WindowBuilder credits = new WindowBuilder(loader) ;
 
     public CreditsModule(){
-        credits.setIcon("/People/Meisam/GUI/Credits/GeneralCredits/Extras/gift-box.png");
+        credits.setIcon("/phoenixSim/extras/gift-box.png");
         try {
 			credits.build_NoModality("Credits", false);
 		} catch (IOException e) {

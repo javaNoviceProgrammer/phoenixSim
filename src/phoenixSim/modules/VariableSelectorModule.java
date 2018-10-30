@@ -19,7 +19,7 @@ public class VariableSelectorModule {
 	Stage window = new Stage() ;
 
 	public VariableSelectorModule(SimulationDataBase simDataBase){
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/variable_selector.fxml")) ;
         Parent root;
 		try {
 			root = loader.load();
@@ -30,7 +30,7 @@ public class VariableSelectorModule {
 		}
         window.setTitle("Select Variable & Values");
         window.setResizable(false);
-        window.getIcons().add(new Image("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/icon.png")) ;
         controller = loader.getController() ;
         controller.setSimDataBase(simDataBase);
         controller.initialize();

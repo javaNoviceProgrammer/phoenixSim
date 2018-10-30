@@ -18,13 +18,13 @@ public class GeneralCreditsGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Credits/GeneralCredits/general_credits.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixsim/fxmls/general_credits.fxml")) ;
         Parent root = loader.load() ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
         window.setTitle("Credits");
         window.setResizable(false);
-        window.getIcons().add(new Image("/People/Meisam/GUI/Credits/GeneralCredits/Extras/gift-box.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/gift-box.png")) ;
         window.show();
         
         window.setOnCloseRequest(e -> {

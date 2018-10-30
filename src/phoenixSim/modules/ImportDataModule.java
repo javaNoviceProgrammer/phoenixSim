@@ -16,7 +16,7 @@ public class ImportDataModule {
 	Stage window = new Stage() ;
 	
 	public ImportDataModule(SimulationDataBase simDataBase){	
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/ImportData/import_data.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/import_data.fxml")) ;
         Parent root;
 		try {
 			root = loader.load();
@@ -27,7 +27,7 @@ public class ImportDataModule {
 		}
         window.setTitle("Import Data");
         window.setResizable(true);
-        window.getIcons().add(new Image("/People/Meisam/GUI/Utilities/ImportData/Extras/import.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/import.png")) ;
         controller = loader.getController() ;
         controller.setSimDataBase(simDataBase);
         controller.initialize();
