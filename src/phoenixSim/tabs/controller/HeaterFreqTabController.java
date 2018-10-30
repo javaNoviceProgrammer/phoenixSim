@@ -4,11 +4,7 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Heater.Model.ImpulseResponseModel.ImpulseResponse1D_Modified_FFT;
-import PhotonicElements.Heater.Model.Structure.SelfHeating;
-import PhotonicElements.Heater.Model.TransientResponseModel.TransientResponse;
-import PhotonicElements.Heater.Model.VoltageFunc.AbstractVoltage;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
+import gds.util.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -23,6 +19,10 @@ import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.heater.impulse.ImpulseResponse1D_Modified_FFT;
+import photonics.heater.struct.SelfHeating;
+import photonics.heater.trans.TransientResponse;
+import photonics.heater.voltage.AbstractVoltage;
 
 public class HeaterFreqTabController extends AbstractTabController {
 
@@ -202,7 +202,7 @@ public class HeaterFreqTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figFreq.exportToMatlab();
+//    	figFreq.exportToMatlab();
     }
 
     @FXML

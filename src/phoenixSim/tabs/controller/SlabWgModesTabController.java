@@ -4,12 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.SlabWg.ModeSlabWgTE;
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.SlabWg.ModeSlabWgTM;
-import PhotonicElements.EffectiveIndexMethod.Structures.SlabWg;
-import PhotonicElements.Materials.Dielectric.Silica;
-import PhotonicElements.Materials.Dielectric.Silicon;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -19,11 +13,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.material.Silica;
+import photonics.material.Silicon;
+import photonics.slab.ModeSlabWgTE;
+import photonics.slab.ModeSlabWgTM;
+import photonics.slab.SlabWg;
+import photonics.util.Wavelength;
 
 public class SlabWgModesTabController extends AbstractTabController {
 
@@ -114,9 +115,9 @@ public class SlabWgModesTabController extends AbstractTabController {
 
     @FXML
     public void sweepWidth() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/dataCollector.fxml")) ;
         WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
+        window.setIcon("/phoenixSim/extras/dataCollector.png");
         window.build("Data Collector", false);
         DataCollectorController controller = loader.getController() ;
         controller.initialize();
@@ -154,9 +155,9 @@ public class SlabWgModesTabController extends AbstractTabController {
     }
 
     public void sweepLambda() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/dataCollector.fxml")) ;
         WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
+        window.setIcon("/phoenixSim/extras/dataCollector.png");
         window.build("Data Collector", false);
         DataCollectorController controller = loader.getController() ;
         controller.initialize();
@@ -388,7 +389,7 @@ public class SlabWgModesTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figWgMode.exportToMatlab();
+//    	figWgMode.exportToMatlab();
     }
 
     @FXML
