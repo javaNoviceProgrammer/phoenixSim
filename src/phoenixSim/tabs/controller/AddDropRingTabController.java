@@ -1,6 +1,5 @@
 package phoenixSim.tabs.controller;
 
-import static PhotonicElements.Utilities.MathLibraries.MoreMath.* ;
 import static java.lang.Math.PI;
 
 import java.awt.EventQueue;
@@ -11,15 +10,18 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import org.controlsfx.control.StatusBar;
-
-import GDS.Elements.BasicElements.AddDropRing;
-import GDS.Elements.Positioning.Port;
-import GDS.Elements.Positioning.Position;
-import GDS.Headers.Footer;
-import GDS.PDK.AbstractLayerMap;
-import GDS.PDK.AIMLayerMap.SiliconLevelMasks.SEAM;
-import PhotonicElements.RingDesignSpace.AddDrop.AddDropRingGeneral;
+import static mathLib.util.MathUtils.*;
 import flanagan.interpolation.LinearInterpolation;
+import gds.elements.AbstractElement;
+import gds.elements.DataBase.Entry;
+import gds.elements.basics.AddDropRing;
+import gds.elements.positioning.Port;
+import gds.elements.positioning.Position;
+import gds.headers.Footer;
+import gds.headers.Header;
+import gds.layout.cells.Cell;
+import gds.pdk.AbstractLayerMap;
+import gds.pdk.generic.GeneralLayer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -34,6 +36,7 @@ import phoenixSim.util.FileChooserFX;
 import phoenixSim.util.OSDetector;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.ring.AddDropRingGeneral;
 
 public class AddDropRingTabController extends AbstractTabController {
 
@@ -229,7 +232,7 @@ public class AddDropRingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML
@@ -251,7 +254,7 @@ public class AddDropRingTabController extends AbstractTabController {
 			double inputGap_nm = interpolator.interpolate(inputKappa) ;
 			double outputGap_nm = interpolator.interpolate(outputKappa) ;
 			double radius_um = simDataBase.getVariable("radius_(um)").getValue(0) ;
-			AddDropRing element = new AddDropRing("AddDropRing", new AbstractLayerMap[]{new SEAM()}, "port1", new Port(new Position(0, 0), width_um, 180), new Entry(width_um), new Entry(radius_um), new Entry(inputGap_nm), new Entry(outputGap_nm)) ;
+			AddDropRing element = new AddDropRing("AddDropRing", new AbstractLayerMap[]{new GeneralLayer("general", 1, 0)}, "port1", new Port(new Position(0, 0), width_um, 180), new Entry(width_um), new Entry(radius_um), new Entry(inputGap_nm), new Entry(outputGap_nm)) ;
 			// step2: file chooser
 			FileChooserFX fc = new FileChooserFX() ;
 			fc.setExtension("gds");

@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.RingResonator.AddDropRingFirstOrder.AddDropRingTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.AddDropRingTabController">
    <tabs>
       <Tab fx:id="tab" text="Add-Drop Ring">
          <content>
@@ -118,7 +118,7 @@
                         <Separator layoutX="34.0" layoutY="338.0" prefWidth="200.0" />
                         <ImageView fitHeight="157.0" fitWidth="161.0" layoutX="57.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Extras/adr.png" />
+                              <Image url="@../../extras/adr.png" />
                            </image>
                         </ImageView>
                      </children>
