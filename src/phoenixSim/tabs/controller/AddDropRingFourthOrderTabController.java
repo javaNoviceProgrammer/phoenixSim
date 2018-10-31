@@ -1,13 +1,12 @@
 package phoenixSim.tabs.controller;
 
-import static PhotonicElements.Utilities.MathLibraries.MoreMath.* ;
 import static java.lang.Math.PI;
+import static mathLib.util.MathUtils.evaluate;
 
 import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.RingStructures.AddDrop.Graph.AddDropFourthOrder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -16,10 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils.Conversions;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.ring.AddDropFourthOrder;
 
 public class AddDropRingFourthOrderTabController extends AbstractTabController {
 
@@ -288,7 +289,7 @@ public class AddDropRingFourthOrderTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

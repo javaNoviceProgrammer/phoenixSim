@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="115.0" fitWidth="108.0" layoutX="492.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Extras/feedback.png" />
+            <Image url="@../extras/feedback.png" />
          </image>
       </ImageView>
       <Text fontSmoothingType="LCD" layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Give us your feedback...">
