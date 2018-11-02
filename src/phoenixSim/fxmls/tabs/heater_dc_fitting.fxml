@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.HeaterFitting.DCResponse.HeaterDCFittingTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.HeaterDCFittingTabController">
    <tabs>
       <Tab fx:id="tab" text="Heater V-I Fitting">
          <content>
@@ -95,12 +95,12 @@
                         <Separator layoutX="37.0" layoutY="186.0" prefWidth="200.0" />
                         <ImageView fitHeight="164.0" fitWidth="268.0" layoutX="2.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../ThermalHeater/Extras/V_I_heater.png" />
+                              <Image url="@../../extras/V_I_heater.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="41.0" fitWidth="257.0" layoutX="5.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../ThermalHeater/Extras/V_I_heater_eq.png" />
+                              <Image url="@../../extras/V_I_heater_eq.png" />
                            </image>
                         </ImageView>
                         <Text layoutX="5.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The voltage-current curve of a heater element has two parameters (R, Kv) which will be fitted to the measured data through a robust Least Mean Square Error (LMSE) fitting." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />

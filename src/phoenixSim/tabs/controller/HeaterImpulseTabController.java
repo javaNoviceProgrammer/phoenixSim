@@ -4,10 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Heater.Model.ImpulseResponseModel.ImpulseResponse1D_Modified_FFT;
-import PhotonicElements.Heater.Model.Structure.SelfHeating;
-import PhotonicElements.Heater.Model.VoltageFunc.AbstractVoltage;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -16,10 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.heater.impulse.ImpulseResponse1D_Modified_FFT;
+import photonics.heater.struct.SelfHeating;
+import photonics.heater.voltage.AbstractVoltage;
 
 public class HeaterImpulseTabController extends AbstractTabController {
 
@@ -104,12 +104,12 @@ public class HeaterImpulseTabController extends AbstractTabController {
         double nu = simDataBase.getVariable("nu").getValue(0) ;
         impulse = new ImpulseResponse1D_Modified_FFT(f0, nu) ;
         impulse.buildModel(); // building the time response
-//        double[] time_usec = MoreMath.linspace(tStart_usec, tEnd_usec, 1000) ;
+//        double[] time_usec = MathUtils.linspace(tStart_usec, tEnd_usec, 1000) ;
         double[] time_usec = impulse.time_usec ;
 //        double[] Iwg = impulse.getTimeResponse(time_usec) ;
         double[] Iwg = impulse.Iwg ;
-        double Iwg_max = MoreMath.Arrays.FindMaximum.getValue(Iwg) ;
-        double[] Iwg_normalized = MoreMath.Arrays.times(Iwg, 1/Iwg_max) ;
+        double Iwg_max = MathUtils.Arrays.FindMaximum.getValue(Iwg) ;
+        double[] Iwg_normalized = MathUtils.Arrays.times(Iwg, 1/Iwg_max) ;
         simDataBase.addNewVariable(new SimulationVariable("Iwg", "Impulse Response", Iwg));
         simDataBase.addNewVariable(new SimulationVariable("Iwg_normalized", "Normalized Impulse Response", Iwg_normalized));
         simDataBase.addNewVariable(new SimulationVariable("time_(usec)", "Time (usec)", time_usec));
@@ -138,7 +138,7 @@ public class HeaterImpulseTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figImpulse.exportToMatlab();
+//    	figImpulse.exportToMatlab();
     }
 
     @FXML

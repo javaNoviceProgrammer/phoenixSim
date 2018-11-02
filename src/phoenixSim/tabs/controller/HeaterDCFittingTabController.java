@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -13,8 +11,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.NonLinearSolver;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
+import phoenixSim.builder.WindowBuilder;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -82,9 +84,9 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseIData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
+		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/variable_selector.fxml")) ;
 		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
+		varSelect.setIcon("/phoenixSim/extras/icon.png");
 		varSelect.build("Select Variable & Values", false);
 		VariableSelectorController controller = loader.getController() ;
 		controller.setSimDataBase(simDataBase);
@@ -115,9 +117,9 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseVData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
+		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/variable_selector.fxml")) ;
 		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
+		varSelect.setIcon("/phoenixSim/extras/icon.png");
 		varSelect.build("Select Variable & Values", false);
 		VariableSelectorController controller = loader.getController() ;
 		controller.setSimDataBase(simDataBase);
@@ -142,7 +144,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 			V_volt[i][0] = voltage_V[i] ;
 		}
 
-		Function I = new Function(){
+		LeastSquareFunction I = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double Kv = parameters[0] ; // 1/V^2 units
@@ -161,8 +163,8 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 			}
 		} ;
 
-		Fitter fit = new NonLinearSolver(I) ;
-//		Fitter fit = new MarquardtFitter(I) ;
+		LeastSquareFitter fit = new NonLinearSolver(I) ;
+//		LeastSquareFitter fit = new MarquardtFitter(I) ;
 		fit.setData(V_volt, current_mA);
 		fit.setParameters(new double[]{0.1, 0.1});
 		fit.fitData();
@@ -176,7 +178,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 		resultListView.getItems().add("Kv = " + String.format("%2.4f", Kv)) ;
 		resultListView.getItems().add("Rlinear (Ohm) = " + String.format("%2.4f", Rlinear_kOhm*1e3)) ;
 
-		double[] V_values = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(voltage_V), MoreMath.Arrays.FindMaximum.getValue(voltage_V), 1000) ;
+		double[] V_values = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(voltage_V), MathUtils.Arrays.FindMaximum.getValue(voltage_V), 1000) ;
 		double[] I_values = new double[V_values.length] ;
 		for(int i=0; i<V_values.length; i++){
 			I_values[i] = V_values[i]/Rlinear_kOhm * 2/(1+Math.sqrt(1+Kv*V_values[i]*V_values[i])) ;
@@ -205,7 +207,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

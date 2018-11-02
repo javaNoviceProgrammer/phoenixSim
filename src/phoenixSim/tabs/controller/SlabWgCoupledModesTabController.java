@@ -20,8 +20,8 @@ import phoenixSim.util.SimulationVariable;
 import photonics.material.Silica;
 import photonics.material.Silicon;
 import photonics.slab.CoupledSlabWg;
-import photonics.slab.ModeCoupledSlabWgTE_fast;
-import photonics.slab.ModeCoupledSlabWgTM_fast;
+import photonics.slab.ModeCoupledSlabWgTE;
+import photonics.slab.ModeCoupledSlabWgTM;
 import photonics.util.Wavelength;
 
 public class SlabWgCoupledModesTabController extends AbstractTabController {
@@ -190,12 +190,12 @@ public class SlabWgCoupledModesTabController extends AbstractTabController {
         Wavelength inputLambda = new Wavelength(lambda_nm) ;
         if(modeType == "TE0" || modeType == "TE1" || modeType == "TE2" || modeType == "TE3"){
             CoupledSlabWg coupledSlab = new CoupledSlabWg(width_nm, width_nm, gap_nm, sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda)) ;
-            ModeCoupledSlabWgTE_fast modeSolver = new ModeCoupledSlabWgTE_fast(inputLambda, coupledSlab) ;
+            ModeCoupledSlabWgTE modeSolver = new ModeCoupledSlabWgTE(inputLambda, coupledSlab) ;
             neffEven = modeSolver.findNeffEven(m_index) ;
         }
         else if(modeType == "TM0" || modeType == "TM1" || modeType == "TM2" || modeType == "TM3"){
             CoupledSlabWg coupledSlab = new CoupledSlabWg(width_nm, width_nm, gap_nm, sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda)) ;
-            ModeCoupledSlabWgTM_fast modeSolver = new ModeCoupledSlabWgTM_fast(inputLambda, coupledSlab) ;
+            ModeCoupledSlabWgTM modeSolver = new ModeCoupledSlabWgTM(inputLambda, coupledSlab) ;
             neffEven = modeSolver.findNeffEven(m_index) ;
         }
     	return neffEven ;
@@ -210,12 +210,12 @@ public class SlabWgCoupledModesTabController extends AbstractTabController {
         Wavelength inputLambda = new Wavelength(lambda_nm) ;
         if(modeType == "TE0" || modeType == "TE1" || modeType == "TE2" || modeType == "TE3"){
             CoupledSlabWg coupledSlab = new CoupledSlabWg(width_nm, width_nm, gap_nm, sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda)) ;
-            ModeCoupledSlabWgTE_fast modeSolver = new ModeCoupledSlabWgTE_fast(inputLambda, coupledSlab) ;
+            ModeCoupledSlabWgTE modeSolver = new ModeCoupledSlabWgTE(inputLambda, coupledSlab) ;
             neffOdd = modeSolver.findNeffOdd(m_index) ;
         }
         else if(modeType == "TM0" || modeType == "TM1" || modeType == "TM2" || modeType == "TM3"){
             CoupledSlabWg coupledSlab = new CoupledSlabWg(width_nm, width_nm, gap_nm, sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda), si.getIndex(inputLambda), sio2.getIndex(inputLambda)) ;
-            ModeCoupledSlabWgTM_fast modeSolver = new ModeCoupledSlabWgTM_fast(inputLambda, coupledSlab) ;
+            ModeCoupledSlabWgTM modeSolver = new ModeCoupledSlabWgTM(inputLambda, coupledSlab) ;
             neffOdd = modeSolver.findNeffOdd(m_index) ;
         }
     	return neffOdd ;
