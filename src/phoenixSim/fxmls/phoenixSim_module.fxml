@@ -356,10 +356,9 @@
                   </Menu>
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Utilities">
+            <Menu mnemonicParsing="false" text="Plugins">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#sceneBuilderPressed" text="Scene Builder" />
-                  <MenuItem mnemonicParsing="false" onAction="#pythonInstallerPressed" text="Install Python 3.5" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Load..." />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
