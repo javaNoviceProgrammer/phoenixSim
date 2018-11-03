@@ -4,7 +4,6 @@ import org.controlsfx.control.StatusBar;
 
 import PhotonicElements.EffectiveIndexMethod.ModeSensitivity.StripWg.NeffVariationStripWgTE;
 import PhotonicElements.EffectiveIndexMethod.ModeSensitivity.StripWg.NeffVariationStripWgTM;
-import PhotonicElements.Utilities.Wavelength;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
@@ -15,6 +14,7 @@ import mathLib.plot.MatlabChart;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class StripWgSensitivityTabController extends AbstractTabController {
 

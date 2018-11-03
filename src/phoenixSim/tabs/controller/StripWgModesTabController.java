@@ -7,7 +7,6 @@ import org.controlsfx.control.StatusBar;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.StripWg.ModeStripWgTE;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.StripWg.ModeStripWgTM;
 import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -22,6 +21,7 @@ import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 /*
  * This tab interacts with the database with the following simulation variables:

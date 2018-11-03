@@ -7,9 +7,6 @@ import org.controlsfx.control.StatusBar;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.CoupledStrip.ModeCoupledStripWgTE_fast;
 import PhotonicElements.EffectiveIndexMethod.ModeSolver.CoupledStrip.ModeCoupledStripWgTM_fast;
 import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
-import PhotonicElements.Materials.Dielectric.Silica;
-import PhotonicElements.Materials.Dielectric.SiliconNitride;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -24,6 +21,9 @@ import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.material.Silica;
+import photonics.material.SiliconNitride;
+import photonics.util.Wavelength;
 
 public class StripWgCoupledModesSiNTabController extends AbstractTabController {
 

@@ -11,7 +11,6 @@ import GDS.Headers.Footer;
 import GDS.PDK.AbstractLayerMap;
 import GDS.PDK.AIMLayerMap.SiliconLevelMasks.SEAM;
 import PhotonicElements.DirectionalCoupler.RingWgCoupling.RingWgCoupler;
-import PhotonicElements.Utilities.Wavelength;
 import PhotonicElements.Waveguides.WaveguideProperties.WgProperties;
 import flanagan.interpolation.CubicSpline;
 import javafx.fxml.FXML;
@@ -30,6 +29,7 @@ import phoenixSim.util.OSDetector;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class RingWgCouplerTabController extends AbstractTabController {
 

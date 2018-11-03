@@ -4,15 +4,7 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.ModeProfile.SlabWg.ProfileSlabWgTE;
-import PhotonicElements.EffectiveIndexMethod.ModeProfile.SlabWg.ProfileSlabWgTM;
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.SlabWg.ModeSlabWgTE;
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.SlabWg.ModeSlabWgTM;
-import PhotonicElements.EffectiveIndexMethod.Structures.SlabWg;
 import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
-import PhotonicElements.Materials.Dielectric.Silica;
-import PhotonicElements.Materials.Dielectric.Silicon;
-import PhotonicElements.Utilities.Wavelength;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -25,6 +17,14 @@ import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.material.Silica;
+import photonics.material.Silicon;
+import photonics.slab.ModeSlabWgTE;
+import photonics.slab.ModeSlabWgTM;
+import photonics.slab.ProfileSlabWgTE;
+import photonics.slab.ProfileSlabWgTM;
+import photonics.slab.SlabWg;
+import photonics.util.Wavelength;
 
 public class StripWgModeProfileTabController extends AbstractTabController {
 

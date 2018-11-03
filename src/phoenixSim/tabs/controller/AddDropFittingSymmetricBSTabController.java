@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.controlsfx.control.StatusBar;
 
 import PhotonicElements.RingStructures.BackScattering.ClosedForm.AddDropBS;
-import PhotonicElements.Utilities.Wavelength;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import PhotonicElements.Waveguides.TerminatorAndReflector.LumpedReflector;
@@ -25,6 +24,7 @@ import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class AddDropFittingSymmetricBSTabController extends AbstractTabController {
 

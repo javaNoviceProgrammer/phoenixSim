@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Heater.Model.ImpulseResponseModel.ImpulseResponse1D_Modified_new;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import javafx.fxml.FXML;
@@ -21,6 +20,7 @@ import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.heater.impulse.ImpulseResponse1D_Modified_new;
 
 public class HeaterFreqFittingTabController extends AbstractTabController {
 

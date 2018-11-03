@@ -1,7 +1,8 @@
 package phoenixSim.tabs.controller;
 
 import static java.lang.Math.PI;
-import static mathLib.util.MathUtils.*;
+import static mathLib.util.MathUtils.evaluate;
+
 import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils.Conversions;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;

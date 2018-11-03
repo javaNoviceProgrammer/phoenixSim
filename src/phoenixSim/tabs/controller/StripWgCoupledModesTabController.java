@@ -10,7 +10,6 @@ import PhotonicElements.EffectiveIndexMethod.NeffDataBase.NeffCoupledStripWg_400
 import PhotonicElements.EffectiveIndexMethod.NeffDataBase.NeffCoupledStripWg_450X220_COMSOL;
 import PhotonicElements.EffectiveIndexMethod.NeffDataBase.NeffCoupledStripWg_500X220_COMSOL;
 import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
@@ -27,6 +26,7 @@ import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class StripWgCoupledModesTabController extends AbstractTabController {
 

@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.controlsfx.control.StatusBar;
 
 import PhotonicElements.DirectionalCoupler.RingWgCoupling.RingRingCoupler;
-import PhotonicElements.Utilities.Wavelength;
 import PhotonicElements.Waveguides.WaveguideProperties.WgProperties;
 import flanagan.interpolation.CubicSpline;
 import javafx.fxml.FXML;
@@ -22,6 +21,7 @@ import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class RingRingCouplerTabController extends AbstractTabController {
 

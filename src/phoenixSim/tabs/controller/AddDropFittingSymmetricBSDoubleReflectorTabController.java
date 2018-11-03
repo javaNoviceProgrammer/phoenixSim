@@ -23,6 +23,7 @@ import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class AddDropFittingSymmetricBSDoubleReflectorTabController extends AbstractTabController {
 

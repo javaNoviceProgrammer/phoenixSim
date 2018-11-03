@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.InterfaceTransferMatrix.TransferMatrixTE;
-import PhotonicElements.EffectiveIndexMethod.InterfaceTransferMatrix.TransferMatrixTM;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -21,6 +18,9 @@ import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.transfer.TransferMatrixTE;
+import photonics.transfer.TransferMatrixTM;
+import photonics.util.Wavelength;
 
 public class InterfaceTabController extends AbstractTabController {
 

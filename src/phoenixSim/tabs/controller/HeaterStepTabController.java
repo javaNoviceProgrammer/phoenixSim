@@ -4,11 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Heater.Model.ImpulseResponseModel.ImpulseResponse1D_Modified_FFT;
-import PhotonicElements.Heater.Model.Structure.SelfHeating;
-import PhotonicElements.Heater.Model.TransientResponseModel.TransientResponse_FFT;
-import PhotonicElements.Heater.Model.VoltageFunc.AbstractVoltage;
-import PhotonicElements.Heater.Model.VoltageFunc.StepVoltage;
 import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -22,6 +17,11 @@ import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.heater.impulse.ImpulseResponse1D_Modified_FFT;
+import photonics.heater.struct.SelfHeating;
+import photonics.heater.trans.TransientResponse_FFT;
+import photonics.heater.voltage.AbstractVoltage;
+import photonics.heater.voltage.StepVoltage;
 
 public class HeaterStepTabController extends AbstractTabController {
 

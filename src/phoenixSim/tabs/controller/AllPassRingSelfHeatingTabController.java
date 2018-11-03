@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.RingStructures.AddDrop.Graph.AddDropSecondOrder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -20,6 +19,7 @@ import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.ring.AddDropSecondOrder;
 
 public class AllPassRingSelfHeatingTabController extends AbstractTabController {
 

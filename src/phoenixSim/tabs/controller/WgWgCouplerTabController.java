@@ -11,7 +11,6 @@ import GDS.Headers.Footer;
 import GDS.PDK.AbstractLayerMap;
 import GDS.PDK.AIMLayerMap.SiliconLevelMasks.SEAM;
 import PhotonicElements.DirectionalCoupler.DistributedCoupler.DistributedCouplerStripWg;
-import PhotonicElements.Utilities.Wavelength;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -28,6 +27,7 @@ import phoenixSim.util.OSDetector;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.util.Wavelength;
 
 public class WgWgCouplerTabController extends AbstractTabController {
 
