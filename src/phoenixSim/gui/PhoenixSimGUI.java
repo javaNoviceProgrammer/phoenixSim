@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class PhoenixSimGUI extends Application {
@@ -31,9 +30,6 @@ public class PhoenixSimGUI extends Application {
 
         PhoenixSimModuleController controller = loader.getController() ;
         controller.addWelcomeTab();
-
-        Font.loadFont(Object.class.getClass().getResourceAsStream("/phoenixSim/extras/fonts/segoeui.ttf"), 12) ;
-        scene.getStylesheets().add(getClass().getResource("/phoenixSim/extras/styles/fontStyle.css").toExternalForm()) ;
         
         window.show();
 

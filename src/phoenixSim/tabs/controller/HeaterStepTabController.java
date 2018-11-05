@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -13,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -119,7 +119,7 @@ public class HeaterStepTabController extends AbstractTabController {
         double Rlinear = simDataBase.getVariable("Rlinear").getValue(0) ;
         selfHeating = new SelfHeating(alphaH, kv, Rlinear) ;
         double[] deltaT_H = selfHeating.getDeltaT(heaterStepVoltage_V) ;
-        double[] step_dc_response = MoreMath.Arrays.times(deltaT_H, (nu-1)/nu) ;
+        double[] step_dc_response = MathUtils.Arrays.times(deltaT_H, (nu-1)/nu) ;
         simDataBase.addNewVariable(new SimulationVariable("heater_step_temperature_(K)", "Heater Temperature (K)", deltaT_H));
         simDataBase.addNewVariable(new SimulationVariable("wg_step_dc_temperature_(K)", step_dc_response));
         simDataBase.addNewVariable(new SimulationVariable("heater_step_voltage_(V)", heaterStepVoltage_V));
@@ -157,7 +157,7 @@ public class HeaterStepTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figStep.exportToMatlab();
+//    	figStep.exportToMatlab();
     }
 
     @FXML

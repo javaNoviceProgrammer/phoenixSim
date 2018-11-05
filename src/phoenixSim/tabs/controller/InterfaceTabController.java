@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.controlsfx.control.StatusBar;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
@@ -13,9 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
-import phoenixSim.util.DataCollectorController;
-import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
 import photonics.transfer.TransferMatrixTE;
@@ -134,26 +134,18 @@ public class InterfaceTabController extends AbstractTabController {
 
     @FXML
     public void sweepN1() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-                if(simDataBase.variableExists("n1_()")){
-                    simDataBase.removeVariable(simDataBase.getVariable("n1_()"));
-                }
-                simDataBase.addNewVariable(new SimulationVariable("n1_()", "n1 Index", controller.getAllValues()));
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(new ActionInterface() {
+			
+			@Override
+			public void setExitAction() {
+                simDataBase.addNewVariable(new SimulationVariable("n1_()", "n1 Index", sweep.getController().getAllValues()));
                 // clear text field and update label
                 n1TextField.clear();
                 n1Label.setText("n1 is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+			}
+		});
+    	
         if(plotSelected()){
         	plot.getSelectedToggle().setSelected(false);
         }
@@ -162,26 +154,18 @@ public class InterfaceTabController extends AbstractTabController {
 
     @FXML
     public void sweepN2() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-                if(simDataBase.variableExists("n2_()")){
-                    simDataBase.removeVariable(simDataBase.getVariable("n2_()"));
-                }
-                simDataBase.addNewVariable(new SimulationVariable("n2_()", "n2 Index", controller.getAllValues()));
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(new ActionInterface() {
+			
+			@Override
+			public void setExitAction() {
+                simDataBase.addNewVariable(new SimulationVariable("n2_()", "n2 Index", sweep.getController().getAllValues()));
                 // clear text field and update label
                 n2TextField.clear();
                 n2Label.setText("n2 is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+			}
+		});
+    	
         if(plotSelected()){
         	plot.getSelectedToggle().setSelected(false);
         }
@@ -190,26 +174,18 @@ public class InterfaceTabController extends AbstractTabController {
 
     @FXML
     public void sweepThetai() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-                if(simDataBase.variableExists("thetai_(degree)")){
-                    simDataBase.removeVariable(simDataBase.getVariable("thetai_(degree)"));
-                }
-                simDataBase.addNewVariable(new SimulationVariable("thetai_(degree)", "Incidence Angle (degree)", controller.getAllValues()));
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(new ActionInterface() {
+			
+			@Override
+			public void setExitAction() {
+                simDataBase.addNewVariable(new SimulationVariable("thetai_(degree)", "Incidence Angle (degree)", sweep.getController().getAllValues()));
                 // clear text field and update label
                 thetaiTextField.clear();
                 thetaiLabel.setText("theta_i is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+			}
+		});
+
         if(plotSelected()){
         	plot.getSelectedToggle().setSelected(false);
         }
@@ -292,14 +268,6 @@ public class InterfaceTabController extends AbstractTabController {
     	}
     }
 
-
-//    private void showPlot(MatlabChart fig, Pane pane){
-//        int width = 500, height = 400 ;
-//        pane.getChildren().remove(fig.getChartSwingNode(width, height)) ;
-//        pane.getChildren().add(fig.getChartSwingNode(width, height)) ;
-//        pane.setPrefSize((double) width, (double) height);
-//    }
-
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
@@ -311,18 +279,12 @@ public class InterfaceTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML
     public void openInPlotterPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Plotters/MainGUI/plotter.fxml")) ;
-        WindowBuilder plotter = new WindowBuilder(loader) ;
-        plotter.setIcon("/People/Meisam/GUI/Plotters/MainGUI/Extras/plotter.png");
-        plotter.build("Plotter v0.5 Beta", true);
-        PlotterController controller = (PlotterController) plotter.getController() ;
-        controller.setDataBase(simDataBase);
-        controller.initialize();
+    	new PlotterModule(simDataBase) ;
     }
 
 	@Override

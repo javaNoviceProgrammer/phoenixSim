@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -13,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -151,7 +151,7 @@ public class HeaterSinTabController extends AbstractTabController {
         selfHeating = new SelfHeating(alphaH, kv, Rlinear) ;
         double[] deltaT_H = selfHeating.getDeltaT(heaterSinVoltage_V) ;
         double[] deltaT_H_dc = selfHeating.getDeltaT(v_dc) ;
-        double[] sin_dc_response = MoreMath.Arrays.times(deltaT_H_dc, (nu-1)/nu) ;
+        double[] sin_dc_response = MathUtils.Arrays.times(deltaT_H_dc, (nu-1)/nu) ;
         simDataBase.addNewVariable(new SimulationVariable("heater_sin_temperature_(K)", "Heater Temperature (K)", deltaT_H));
         simDataBase.addNewVariable(new SimulationVariable("wg_sin_dc_temperature_(K)", sin_dc_response));
         simDataBase.addNewVariable(new SimulationVariable("heater_sin_voltage_(V)", heaterSinVoltage_V));
@@ -187,7 +187,7 @@ public class HeaterSinTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figSin.exportToMatlab();
+//    	figSin.exportToMatlab();
     }
 
     @FXML

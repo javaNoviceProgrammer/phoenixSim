@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Interface.InterfaceTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.InterfaceTabController">
    <tabs>
       <Tab fx:id="interfaceTab" text="Dielectric Interface">
          <content>
@@ -95,9 +95,9 @@
                         </Group>
                         <Separator layoutX="25.0" layoutY="228.0" prefHeight="12.0" prefWidth="200.0" />
                         <Separator layoutX="24.0" layoutY="296.0" prefHeight="12.0" prefWidth="200.0" />
-                        <ImageView fitHeight="186.0" fitWidth="263.0" layoutX="13.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="186.0" fitWidth="263.0" layoutX="13.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Extras/interface.png" />
+                              <Image url="@../../extras/interface.png" />
                            </image>
                         </ImageView>
                         <Pane layoutX="8.0" layoutY="168.0">

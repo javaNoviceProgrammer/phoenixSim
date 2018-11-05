@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.HeaterFitting.FreqResponse.HeaterFreqFittingTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.HeaterFreqFittingTabController">
    <tabs>
       <Tab fx:id="tab" text="Heater Freq Fitting">
          <content>
@@ -95,14 +95,14 @@
                         </Pane>
                         <Separator layoutX="37.0" layoutY="206.0" prefWidth="200.0" />
                         <Text layoutX="6.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The voltage-Freq curve of a heater element has two parameters (f0, v) which will be fitted to the measured data through a robust Least Mean Square Error (LMSE) fitting." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />
-                        <ImageView fitHeight="30.0" fitWidth="273.0" layoutX="5.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="273.0" layoutX="5.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../ThermalHeater/Extras/freq_response_eq.png" />
+                              <Image url="@../../extras/freq_response_eq.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="163.0" fitWidth="255.0" layoutX="4.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../ThermalHeater/Extras/freq_response.png" />
+                              <Image url="@../../extras/freq_response.png" />
                            </image>
                         </ImageView>
                      </children>

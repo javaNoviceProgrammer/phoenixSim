@@ -4,16 +4,17 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.NonLinearSolver;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
@@ -69,14 +70,14 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
 
 	@SuppressWarnings("unused")
 	private SimulationVariable simVarTodB(SimulationVariable var){
-		double[] values = MoreMath.Arrays.Conversions.todB(var.getAllValues()) ;
+		double[] values = MathUtils.Arrays.Conversions.todB(var.getAllValues()) ;
 		return new SimulationVariable(var.getName(), var.getAlias(), values) ;
 	}
 
 	private SimulationVariable simVarTodB_normalized(SimulationVariable var){
-		double[] values = MoreMath.Arrays.Conversions.todB(var.getAllValues());
-		double maxVal = MoreMath.Arrays.FindMaximum.getValue(values) ;
-		double[] values_normalized = MoreMath.Arrays.plus(values, -maxVal) ;
+		double[] values = MathUtils.Arrays.Conversions.todB(var.getAllValues());
+		double maxVal = MathUtils.Arrays.FindMaximum.getValue(values) ;
+		double[] values_normalized = MathUtils.Arrays.plus(values, -maxVal) ;
 		return new SimulationVariable(var.getName(), var.getAlias(), values_normalized) ;
 	}
 
@@ -150,14 +151,14 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
 
 		double[] freq_kHz = freqData.getAllValues() ;
 		double[] voltage_V = vData.getAllValues() ;
-		double[] voltage_V_normalized = MoreMath.Arrays.times(voltage_V, 1/MoreMath.Arrays.FindMaximum.getValue(voltage_V)) ;
+		double[] voltage_V_normalized = MathUtils.Arrays.times(voltage_V, 1/MathUtils.Arrays.FindMaximum.getValue(voltage_V)) ;
 		double[][] freqValues_kHz = new double[freq_kHz.length][1] ;
 		for(int i=0; i<freq_kHz.length; i++){
 			freqValues_kHz[i][0] = freq_kHz[i] ;
 		}
 
 		// normalized frequency response
-		Function freqResponse = new Function(){
+		LeastSquareFunction freqResponse = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double f0 = parameters[0] ; // kHz units
@@ -177,8 +178,8 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
 			}
 		} ;
 
-		Fitter fit = new NonLinearSolver(freqResponse) ;
-//		Fitter fit = new MarquardtFitter(freqResponse) ;
+		LeastSquareFitter fit = new NonLinearSolver(freqResponse) ;
+//		LeastSquareFitter fit = new MarquardtFitter(freqResponse) ;
 		fit.setData(freqValues_kHz, voltage_V_normalized);
 		fit.setParameters(new double[]{100, 10});
 		fit.fitData();
@@ -194,9 +195,9 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
 
 		ImpulseResponse1D_Modified_new impulseResponse = new ImpulseResponse1D_Modified_new(f0_kHz, nu) ;
 
-		double[] freq_values_kHz = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(freq_kHz), MoreMath.Arrays.FindMaximum.getValue(freq_kHz), 1000) ;
+		double[] freq_values_kHz = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(freq_kHz), MathUtils.Arrays.FindMaximum.getValue(freq_kHz), 1000) ;
 		double[] V_values = new double[freq_values_kHz.length] ;
-		V_values = impulseResponse.getFreqResponse(MoreMath.Arrays.times(freq_values_kHz, 1e3)) ;
+		V_values = impulseResponse.getFreqResponse(MathUtils.Arrays.times(freq_values_kHz, 1e3)) ;
 
 		freqFit = new SimulationVariable("freq_fit_(kHz)", "Fitted Freq (kHz)", freq_values_kHz) ;
 		vFit = new SimulationVariable("V_fit_(V)", "Fitted Voltage (V)", V_values) ;
@@ -223,7 +224,7 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

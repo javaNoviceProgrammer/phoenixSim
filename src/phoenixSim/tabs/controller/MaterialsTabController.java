@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.controlsfx.control.StatusBar;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -15,10 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
-import phoenixSim.builder.WindowBuilder;
+import mathLib.util.MathUtils;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
-import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
 import photonics.material.AbstractDielectric;
@@ -128,9 +128,9 @@ public class MaterialsTabController extends AbstractTabController {
 
     @FXML
     public void setLambda(){
-        // textbox is used for singnle entry
+
         if(!lambdaTextField.getText().isEmpty()){
-            double lambda_nm = Double.parseDouble(lambdaTextField.getText()) ;
+            double lambda_nm = MathUtils.evaluate(lambdaTextField.getText()) ;
             simDataBase.addNewVariable(new SimulationVariable("lambda_(nm)", "Wavelength (nm)", new double[]{lambda_nm}));
             lambdaLabel.setText("lambda is set to " + lambda_nm + " nm");
         }
@@ -140,26 +140,18 @@ public class MaterialsTabController extends AbstractTabController {
     }
 
     public void sweepLambda() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-                if(simDataBase.variableExists("lambda_(nm)")){
-                    simDataBase.removeVariable(simDataBase.getVariable("lambda_(nm)"));
-                }
-                simDataBase.addNewVariable(new SimulationVariable("lambda_(nm)", "Wavelength (nm)", controller.getAllValues()));
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(new ActionInterface() {
+			
+			@Override
+			public void setExitAction() {
+                simDataBase.addNewVariable(new SimulationVariable("lambda_(nm)", "Wavelength (nm)", sweep.getController().getAllValues()));
                 // clear text field and update label
                 lambdaTextField.clear();
                 lambdaLabel.setText("lambda is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+			}
+		});
+
         if(plotToggleSelected()){
             plot.getSelectedToggle().setSelected(false);
         }

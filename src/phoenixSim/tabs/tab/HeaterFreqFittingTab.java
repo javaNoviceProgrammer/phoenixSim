@@ -8,13 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 import phoenixSim.gui.PhoenixSimModule;
 import phoenixSim.tabs.AbstractTab;
+import phoenixSim.tabs.controller.HeaterFreqFittingTabController;
 import phoenixSim.tabs.controller.HeaterFreqTabController;
 import phoenixSim.util.SimulationDataBase;
 
 public class HeaterFreqFittingTab extends AbstractTab {
 
 	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/heater_freq_fitting.fxml")) ;
-	HeaterFreqTabController controller ;
+	HeaterFreqFittingTabController controller ;
 
 	public HeaterFreqFittingTab(SimulationDataBase simDataBase){
 		try {
@@ -36,7 +37,7 @@ public class HeaterFreqFittingTab extends AbstractTab {
 	}
 
 	@SuppressWarnings("unchecked")
-	public HeaterFreqTabController getController(){
+	public HeaterFreqFittingTabController getController(){
 		return controller ;
 	}
 

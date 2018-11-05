@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -13,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -121,7 +121,7 @@ public class HeaterPWMTabController extends AbstractTabController {
         double tStart_usec = simDataBase.getVariable("tStart_(usec)").getValue(0) ;
         double tEnd_usec = simDataBase.getVariable("tEnd_(usec)").getValue(0) ;
         double tPeriod_usec = (1.0/(freq*1e3))*1e6 ;
-        int numPeriods = (int) (MoreMath.Arrays.FindMaximum.getValue(time_usec)/tPeriod_usec)+1 ;
+        int numPeriods = (int) (MathUtils.Arrays.FindMaximum.getValue(time_usec)/tPeriod_usec)+1 ;
         int M = time_usec.length ;
         double[] heaterPWMVoltage_V = new double[M] ;
         voltage = new PulseTrainVoltage(D, tPeriod_usec, numPeriods, 0, Vp) ;
@@ -137,7 +137,7 @@ public class HeaterPWMTabController extends AbstractTabController {
         double[] deltaT_H = selfHeating.getDeltaT(heaterPWMVoltage_V) ;
         simDataBase.addNewVariable(new SimulationVariable("heater_pwm_temperature_(K)", "Heater Temperature (K)", deltaT_H));
         simDataBase.addNewVariable(new SimulationVariable("heater_pwm_voltage_(V)", heaterPWMVoltage_V));
-        double[] deltaT_wg = MoreMath.Arrays.times(deltaT_H, (nu-1)/nu) ;
+        double[] deltaT_wg = MathUtils.Arrays.times(deltaT_H, (nu-1)/nu) ;
         simDataBase.addNewVariable(new SimulationVariable("wg_pwm_ideal_(K)", "Waveguide PWM Ideal (K)", deltaT_wg));
 
         if(pwmPlot.getSelectedToggle().equals(pwmWaveguidePlotRadioButton)){
@@ -171,7 +171,7 @@ public class HeaterPWMTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figPWM.exportToMatlab();
+//    	figPWM.exportToMatlab();
     }
 
     @FXML
