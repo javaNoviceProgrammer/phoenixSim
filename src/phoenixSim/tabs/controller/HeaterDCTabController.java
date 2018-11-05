@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.controlsfx.control.StatusBar;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
@@ -14,11 +13,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import phoenixSim.builder.WindowBuilder;
 import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
-import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
 import photonics.heater.struct.SelfHeating;
@@ -241,13 +239,6 @@ public class HeaterDCTabController extends AbstractTabController {
 
     }
 
-//    private void showPlot(MatlabChart fig, Pane pane){
-//        int width = 500, height = 400 ;
-//        pane.getChildren().remove(fig.getChartSwingNode(width, height)) ;
-//        pane.getChildren().add(fig.getChartSwingNode(width, height)) ;
-//        pane.setPrefSize((double) width, (double) height);
-//    }
-
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
@@ -264,13 +255,7 @@ public class HeaterDCTabController extends AbstractTabController {
 
     @FXML
     public void openInPlotterPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Plotters/MainGUI/plotter.fxml")) ;
-        WindowBuilder plotter = new WindowBuilder(loader) ;
-        plotter.setIcon("/People/Meisam/GUI/Plotters/MainGUI/Extras/plotter.png");
-        plotter.build("Plotter v0.5 Beta", true);
-        PlotterController controller = (PlotterController) plotter.getController() ;
-        controller.setDataBase(simDataBase);
-        controller.initialize();
+        new PlotterModule(simDataBase) ;
     }
 
     public StatusBar getStatusBar(){
