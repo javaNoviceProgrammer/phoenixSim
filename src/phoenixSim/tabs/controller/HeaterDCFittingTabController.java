@@ -59,7 +59,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -190,7 +190,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 		simDataBase.addNewVariable(vFit);
 
 		fig.plot(iFit.getAllValues(), vFit.getAllValues(), "r", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.xlabel("Current (mA)");
 		fig.ylabel("Voltage (V)");
 		showPlot(fig, matlabPane);
@@ -199,7 +199,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("Current (mA)");
         fig.ylabel("Voltage (V)");
         return fig ;

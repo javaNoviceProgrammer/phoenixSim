@@ -68,7 +68,7 @@ public class StripWgModeProfileTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         figWgModeProfile = fig ;
@@ -489,7 +489,7 @@ public class StripWgModeProfileTabController extends AbstractTabController {
 		double[] x1 = MoreMath.Arrays.setValue(slab.getWidthNm(), 10) ;
 		double[] y1 = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(field), MoreMath.Arrays.FindMaximum.getValue(field), x1.length) ;
 		fig.plot(x1, y1, ".r");
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel(x.getAlias());
         fig.ylabel(y.getAlias());
         return fig ;

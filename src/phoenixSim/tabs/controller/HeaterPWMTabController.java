@@ -65,7 +65,7 @@ public class HeaterPWMTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         figPWM = fig ;
@@ -149,7 +149,7 @@ public class HeaterPWMTabController extends AbstractTabController {
             simDataBase.addNewVariable(new SimulationVariable("wg_pwm_temperature_(K)", "Waveguide Temperature (K)", response));
             MatlabChart fig = new MatlabChart() ;
             fig.plot(simDataBase.getVariableValues("time_(usec)"), simDataBase.getVariableValues("wg_pwm_temperature_(K)"));
-            fig.RenderPlot();
+            fig.renderPlot();
             fig.xlabel("Time (usec)");
             fig.ylabel("Waveguide Temperature");
             fig.xlim(tStart_usec, tEnd_usec);
@@ -159,7 +159,7 @@ public class HeaterPWMTabController extends AbstractTabController {
         else if(pwmPlot.getSelectedToggle().equals(pwmHeaterPlotRadioButton)){
             MatlabChart fig = new MatlabChart() ;
             fig.plot(simDataBase.getVariableValues("time_(usec)"), simDataBase.getVariableValues("heater_pwm_temperature_(K)"));
-            fig.RenderPlot();
+            fig.renderPlot();
             fig.xlabel("Time (usec)");
             fig.ylabel("Heater Temperature");
             fig.xlim(tStart_usec, tEnd_usec);

@@ -58,7 +58,7 @@ public class PINdcFittingTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -199,7 +199,7 @@ public class PINdcFittingTabController extends AbstractTabController {
 		simDataBase.addNewVariable(vFit);
 
 		fig.plot(vFit.getAllValues(), iFit.getAllValues(), "r", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.ylabel("Current (mA)");
 		fig.xlabel("Voltage (V)");
 		showPlot(fig, matlabPane);
@@ -208,7 +208,7 @@ public class PINdcFittingTabController extends AbstractTabController {
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(y.getAllValues(), x.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.ylabel("Current (mA)");
         fig.xlabel("Voltage (V)");
         return fig ;

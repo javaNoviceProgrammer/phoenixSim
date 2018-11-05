@@ -77,7 +77,7 @@ public class AddDropFittingSymmetricBSTabController extends AbstractTabControlle
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -304,7 +304,7 @@ public class AddDropFittingSymmetricBSTabController extends AbstractTabControlle
 			}
 			simDataBase.addNewVariable(new SimulationVariable("fitted_drop_(dBm)", "Drop Power (dBm)", fitted_plot));
 			fig.plot(lambda_nm, fitted_plot, "r", 3f);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel("Wavelength (nm)");
 			fig.ylabel("Drop (dBm)");
 			showPlot(fig, matlabPane);
@@ -316,7 +316,7 @@ public class AddDropFittingSymmetricBSTabController extends AbstractTabControlle
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel(x.getAlias());
         fig.ylabel(y.getAlias());
         return fig ;

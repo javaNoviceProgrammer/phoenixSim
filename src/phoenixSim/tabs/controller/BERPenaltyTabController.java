@@ -66,7 +66,7 @@ public class BERPenaltyTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -227,7 +227,7 @@ public class BERPenaltyTabController extends AbstractTabController {
 		simDataBase.addNewVariable(yDataCase1Fitted);
 
 		fig.plot(prec1_dense_dBm, logBER1_dense, "r.", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.xlabel("Prec (dBm)");
 		fig.ylabel("Log10(BER)");
 		// step2: create interpolator for fitted case 1
@@ -259,7 +259,7 @@ public class BERPenaltyTabController extends AbstractTabController {
 		simDataBase.addNewVariable(yDataCase2Fitted);
 
 		fig.plot(prec2_dense_dBm, logBER2_dense, "r.", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 //		fig.xlabel("Prec (dBm)");
 //		fig.ylabel("Log10(BER)");
 		// step4: create interpolator for fitted case 2
@@ -329,13 +329,13 @@ public class BERPenaltyTabController extends AbstractTabController {
 		MatlabChart fig = new MatlabChart() ;
 		if(xDataCase1 != null && yDataCase1 != null && xDataCase1.getLength() == yDataCase1.getLength()){
 			fig.plot(xDataCase1.getAllValues(), yDataCase1.getAllValues(), 3f);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel("Prec (dBm)");
 			fig.ylabel("Log10(BER)");
 		}
 		if(xDataCase2 != null && yDataCase2 != null && xDataCase2.getLength() == yDataCase2.getLength()){
 			fig.plot(xDataCase2.getAllValues(), yDataCase2.getAllValues(), 3f);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel("Prec (dBm)");
 			fig.ylabel("Log10(BER)");
 		}

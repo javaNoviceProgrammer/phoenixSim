@@ -58,7 +58,7 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -205,7 +205,7 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
 		simDataBase.addNewVariable(vFit);
 
 		fig.plot(freqFit.getAllValues(), simVarTodB_normalized(vFit).getAllValues(), "r", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.xlabel("Frequency (kHz)");
 		fig.ylabel("Voltage Response (dB-volt)");
 		fig.setXAxis_to_Log();
@@ -215,7 +215,7 @@ public class HeaterFreqFittingTabController extends AbstractTabController {
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("Frequency (kHz)");
         fig.ylabel("Voltage Response (dB-volt)");
         fig.setXAxis_to_Log();

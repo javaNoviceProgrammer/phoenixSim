@@ -58,7 +58,7 @@ public class PINResShiftFittingTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -195,7 +195,7 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 		simDataBase.addNewVariable(vFit);
 
 		fig.plot(iFit.getAllValues(), vFit.getAllValues(), "r", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.xlabel("Current (mA)");
 		fig.ylabel("Res Shift (nm)");
 		showPlot(fig, matlabPane);
@@ -204,7 +204,7 @@ public class PINResShiftFittingTabController extends AbstractTabController {
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("Current (mA)");
         fig.ylabel("Res Shift (nm)");
         return fig ;

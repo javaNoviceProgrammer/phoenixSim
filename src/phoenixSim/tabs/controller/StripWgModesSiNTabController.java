@@ -85,7 +85,7 @@ public class StripWgModesSiNTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         figWgMode = fig ;
@@ -427,7 +427,7 @@ public class StripWgModesSiNTabController extends AbstractTabController {
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel(x.getAlias());
         fig.ylabel(y.getAlias());
         return fig ;

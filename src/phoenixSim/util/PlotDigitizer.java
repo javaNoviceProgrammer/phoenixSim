@@ -681,7 +681,7 @@ public class PlotDigitizer extends Canvas implements MouseListener {
 	private void plotDigitisedPoints() {
 		MatlabChart fig = new MatlabChart() ;
 		fig.plot(this.xPositions, this.yPositions, "b", 3f, "Data Points");
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.markerON(0);
 		fig.setFigLineWidth(0, 0.5f);
 //		fig.legendON();
@@ -702,7 +702,7 @@ public class PlotDigitizer extends Canvas implements MouseListener {
 		MatlabChart fig = new MatlabChart() ;
 		fig.plot(this.xPositions, this.yPositions, "b", 1f, "Data Points");
 		fig.plot(this.xInterp, this.yInterp, "r", 3f, "Interpolation");
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.markerON(0);
 		fig.setFigLineWidth(0, 0f);
 		fig.xlabel("X data");

@@ -60,7 +60,7 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         figWgModeProfile = fig ;
@@ -406,7 +406,7 @@ public class SlabWgModeProfileTabController extends AbstractTabController {
 		double[] x1 = MathUtils.Arrays.setValue(simDataBase.getVariable("width_(nm)").getAllValues()[0], 10) ;
 		double[] y1 = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(field), MathUtils.Arrays.FindMaximum.getValue(field), x1.length) ;
 		fig.plot(x1, y1, ".r");
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel(x.getAlias());
         fig.ylabel(y.getAlias());
         return fig ;

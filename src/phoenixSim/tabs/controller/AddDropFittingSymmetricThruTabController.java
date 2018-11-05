@@ -75,7 +75,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -295,7 +295,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 			fitted_plot = MoreMath.Arrays.plus(fitted_plot, y_dB_min+ER_dB) ;
 			simDataBase.addNewVariable(new SimulationVariable("fitted_thru_(dBm)", "Thru Power (dBm)", fitted_plot));
 			fig.plot(lambda_nm, fitted_plot, "r", 3f);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel("Wavelength (nm)");
 			fig.ylabel("Thru (dBm)");
 			showPlot(fig, matlabPane);
@@ -321,7 +321,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel(x.getAlias());
         fig.ylabel(y.getAlias());
         return fig ;

@@ -68,7 +68,7 @@ public class HeaterSinTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         figSin = fig ;
@@ -166,7 +166,7 @@ public class HeaterSinTabController extends AbstractTabController {
             MatlabChart fig = new MatlabChart() ;
             fig.plot(simDataBase.getVariableValues("time_(usec)"), simDataBase.getVariableValues("wg_sin_temperature_(K)"));
             fig.plot(simDataBase.getVariableValues("time_(usec)"), simDataBase.getVariableValues("wg_sin_dc_temperature_(K)"), ":r", 1.0f, "");
-            fig.RenderPlot();
+            fig.renderPlot();
             fig.xlabel("Time (usec)");
             fig.ylabel("Waveguide Temperature");
             fig.xlim(tStart_usec, tEnd_usec);
@@ -176,7 +176,7 @@ public class HeaterSinTabController extends AbstractTabController {
         else if(sinPlot.getSelectedToggle().equals(sinHeaterPlotRadioButton)){
             MatlabChart fig = new MatlabChart() ;
             fig.plot(simDataBase.getVariableValues("time_(usec)"), simDataBase.getVariableValues("heater_sin_temperature_(K)"));
-            fig.RenderPlot();
+            fig.renderPlot();
             fig.xlabel("Time (usec)");
             fig.ylabel("Heater Temperature");
             fig.xlim(tStart_usec, tEnd_usec);

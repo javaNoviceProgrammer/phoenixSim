@@ -58,7 +58,7 @@ public class PINacFittingTabController extends AbstractTabController {
         double[] y = {} ;
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         this.fig = fig ;
@@ -207,7 +207,7 @@ public class PINacFittingTabController extends AbstractTabController {
 		simDataBase.addNewVariable(vFit);
 
 		fig.plot(iFit.getAllValues(), vFit.getAllValues(), "r", 3f);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.xlabel("Freq (Ghz)");
 		fig.ylabel("ZL (Ohm)");
 		showPlot(fig, matlabPane);
@@ -216,7 +216,7 @@ public class PINacFittingTabController extends AbstractTabController {
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
-        fig.RenderPlot();
+        fig.renderPlot();
 		fig.xlabel("Freq (Ghz)");
 		fig.ylabel("ZL (Ohm)");
         return fig ;

@@ -92,7 +92,7 @@ public class PlotterController extends AbstractController {
         double[] x = {} ;
         double[] y = {} ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         showPlot();
@@ -106,7 +106,7 @@ public class PlotterController extends AbstractController {
         double[] x = {} ;
         double[] y = {} ;
         fig.plot(x, y);
-        fig.RenderPlot();
+        fig.renderPlot();
         fig.xlabel("");
         fig.ylabel("");
         showPlot();
@@ -128,7 +128,7 @@ public class PlotterController extends AbstractController {
 		if(!holdFig){
 			fig = new MatlabChart() ; // creating new plot
 			fig.plot(xData, yData);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel(simDataBase.getVariable(xVariable).getAlias());
 			fig.ylabel(simDataBase.getVariable(yVariable).getAlias());
 
@@ -147,7 +147,7 @@ public class PlotterController extends AbstractController {
 
 	private void addPlot(){
 		fig.plot(xData, yData);
-		fig.RenderPlot();
+		fig.renderPlot();
 		fig.xlabel(simDataBase.getVariable(xVariable).getAlias());
 		fig.ylabel(simDataBase.getVariable(yVariable).getAlias());
 		showPlot() ;
@@ -211,14 +211,14 @@ public class PlotterController extends AbstractController {
 	private void addPlotPressed(){
 		if(holdFig){
 			fig.plot(xData, yData);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel(simDataBase.getVariable(xVariable).getAlias());
 			fig.ylabel(simDataBase.getVariable(yVariable).getAlias());
 		}
 		else{
 			fig = new MatlabChart() ; // creating new plot
 			fig.plot(xData, yData);
-			fig.RenderPlot();
+			fig.renderPlot();
 			fig.xlabel(simDataBase.getVariable(xVariable).getAlias());
 			fig.ylabel(simDataBase.getVariable(yVariable).getAlias());
 		}
