@@ -9,7 +9,6 @@ import javafx.scene.control.Tab;
 import phoenixSim.gui.PhoenixSimModule;
 import phoenixSim.tabs.AbstractTab;
 import phoenixSim.tabs.controller.HeaterFreqFittingTabController;
-import phoenixSim.tabs.controller.HeaterFreqTabController;
 import phoenixSim.util.SimulationDataBase;
 
 public class HeaterFreqFittingTab extends AbstractTab {
