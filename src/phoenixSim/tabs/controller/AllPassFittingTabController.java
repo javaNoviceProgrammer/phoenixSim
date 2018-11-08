@@ -4,26 +4,27 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import flanagan.interpolation.LinearInterpolation;
 import flanagan.roots.RealRoot;
 import flanagan.roots.RealRootFunction;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
-import phoenixSim.util.VariableSelectorController;
 
 public class AllPassFittingTabController extends AbstractTabController {
 
@@ -70,6 +71,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 		minLambdaLabel.setText("");
 		maxLambdaLabel.setText("");
 		centerLambdaLabel.setText("");
+		fsrLabel.setText("");
         // initialize plot
         double[] x = {} ;
         double[] y = {} ;
@@ -115,44 +117,41 @@ public class AllPassFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseXData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			xData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
-			xDataLabel.setText("X data is set to '" + xData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
-			if(xData != null && yData != null){
-				fig = createPlot(xData, yData) ;
-				showPlot(fig, matlabPane);
+		VariableSelectorModule selector = new VariableSelectorModule(simDataBase) ;
+		ActionInterface exitAction = new ActionInterface() {
+			@Override
+			public void setExitAction() {
+				xData = new SimulationVariable(selector.getController().getVariable().getName(), 
+						selector.getController().getVariable().getAlias(), selector.getController().getValues()) ;
+				xDataLabel.setText("X data is set to '" + xData.getName() + "'");
+				if(xData != null && yData != null){
+					fig = createPlot(xData, yData) ;
+					showPlot(fig, matlabPane);
+				}
 			}
-		});
-
-
+		};
+		
+		selector.setExitAction(exitAction);
 	}
 
 	@FXML
 	public void chooseYData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			yData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
-			yDataLabel.setText("Y data is set to '" + yData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
-			if(xData != null && yData != null){
-				fig = createPlot(xData, yData) ;
-				showPlot(fig, matlabPane);
+
+		VariableSelectorModule selector = new VariableSelectorModule(simDataBase) ;
+		ActionInterface exitAction = new ActionInterface() {
+			@Override
+			public void setExitAction() {
+				yData = new SimulationVariable(selector.getController().getVariable().getName(), 
+						selector.getController().getVariable().getAlias(), selector.getController().getValues()) ;
+				yDataLabel.setText("Y data is set to '" + yData.getName() + "'");
+				if(xData != null && yData != null){
+					fig = createPlot(xData, yData) ;
+					showPlot(fig, matlabPane);
+				}
 			}
-		});
+		};
+		
+		selector.setExitAction(exitAction);
 
 	}
 
@@ -165,7 +164,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + minLambda_nm + " nm");
 			} catch (Exception e) {
-	            double minLambda_nm = MoreMath.evaluate(st) ;
+	            double minLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + String.format("%.4f", minLambda_nm) + " nm");
 			}
@@ -181,7 +180,7 @@ public class AllPassFittingTabController extends AbstractTabController {
                 simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
                 maxLambdaLabel.setText("max is set to " + maxLambda_nm + " nm");
 			} catch (Exception e) {
-	            double maxLambda_nm = MoreMath.evaluate(st) ;
+	            double maxLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + String.format("%.4f", maxLambda_nm) + " nm");
 			}
@@ -197,7 +196,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + centerLambda_nm + " nm");
 			} catch (Exception e) {
-	            double centerLambda_nm = MoreMath.evaluate(st) ;
+	            double centerLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + String.format("%.4f", centerLambda_nm) + " nm");
 			}
@@ -213,7 +212,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 	            simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
 	            fsrLabel.setText("FSR is set to " + fsr_nm + " nm");
 			} catch (Exception e) {
-	            double fsr_nm = MoreMath.evaluate(st) ;
+	            double fsr_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
 	            fsrLabel.setText("FSR is set to " + String.format("%.4f", fsr_nm) + " nm");
 			}
@@ -228,7 +227,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 		double lambda_min_nm = simDataBase.getVariable("minLambda_(nm)").getValue(0) ;
 		double lambda_max_nm = simDataBase.getVariable("maxLambda_(nm)").getValue(0) ;
 		double lambda_res_nm = simDataBase.getVariable("centerLambda_(nm)").getValue(0) ;
-		double[] lambda_nm = MoreMath.linspace(lambda_min_nm, lambda_max_nm, 1000) ;
+		double[] lambda_nm = MathUtils.linspace(lambda_min_nm, lambda_max_nm, 1000) ;
 		double FSR_nm = simDataBase.getVariable("FSR_(nm)").getValue(0) ;
 
 		if(fitTodB.isSelected()){
@@ -239,20 +238,20 @@ public class AllPassFittingTabController extends AbstractTabController {
 			double[][] lambda_nm_values = new double[lambda_nm.length][1] ;
 			for(int i=0; i<y_dB.length; i++){
 				y_dB[i] = interpolator.interpolate(lambda_nm[i]) ;
-				y_nondB[i] = MoreMath.Conversions.fromdB(y_dB[i]) ;
+				y_nondB[i] = MathUtils.Conversions.fromdB(y_dB[i]) ;
 				lambda_nm_values[i][0] = lambda_nm[i] ;
 			}
-			double y_dB_min = MoreMath.Arrays.FindMinimum.getValue(y_dB) ;
-			double y_dB_max = MoreMath.Arrays.FindMaximum.getValue(y_dB) ;
+			double y_dB_min = MathUtils.Arrays.FindMinimum.getValue(y_dB) ;
+			double y_dB_max = MathUtils.Arrays.FindMaximum.getValue(y_dB) ;
 			// step 1: find BW & ER
 			double ER_dB = (interpolator.interpolate(lambda_min_nm) + y_dB_max)/2 - interpolator.interpolate(lambda_res_nm) ;
-			double er = MoreMath.Conversions.fromdB(ER_dB) ;
-			Function fitFunc = new Function(){
+			double er = MathUtils.Conversions.fromdB(ER_dB) ;
+			LeastSquareFunction fitFunc = new LeastSquareFunction(){
 				@Override
 				public double evaluate(double[] values, double[] parameters) {
 					double BW = parameters[0] ; // nm units
 					double lambda_nm = values[0] ; // only one variable - nm units
-					double tr_dB = MoreMath.Conversions.todB(getLorentzian(BW, er, lambda_nm, lambda_res_nm)) + y_dB_min + ER_dB ;
+					double tr_dB = MathUtils.Conversions.todB(getLorentzian(BW, er, lambda_nm, lambda_res_nm)) + y_dB_min + ER_dB ;
 					return tr_dB ;
 				}
 				@Override
@@ -264,8 +263,8 @@ public class AllPassFittingTabController extends AbstractTabController {
 					return 1;
 				}
 			} ;
-//			Fitter fit = new NonLinearSolver(fitFunc) ;
-			Fitter fit = new MarquardtFitter(fitFunc) ;
+//			LeastSquareFitter fit = new NonLinearSolver(fitFunc) ;
+			LeastSquareFitter fit = new MarquardtFitter(fitFunc) ;
 			fit.setData(lambda_nm_values, y_dB);
 			fit.setParameters(new double[]{1});
 			fit.fitData();
@@ -307,8 +306,8 @@ public class AllPassFittingTabController extends AbstractTabController {
 			resultListView.getItems().add("L = " + String.format("%2.4f", L)) ;
 
 			// finally plotting
-			double[] fitted_plot = MoreMath.Arrays.Conversions.todB(getLorentzian(BW_nm, er, lambda_nm, lambda_res_nm)) ;
-			fitted_plot = MoreMath.Arrays.plus(fitted_plot, y_dB_min+ER_dB) ;
+			double[] fitted_plot = MathUtils.Arrays.Conversions.todB(getLorentzian(BW_nm, er, lambda_nm, lambda_res_nm)) ;
+			fitted_plot = MathUtils.Arrays.plus(fitted_plot, y_dB_min+ER_dB) ;
 			simDataBase.addNewVariable(new SimulationVariable("fitted_thru_(dBm)", "Thru Power (dBm)", fitted_plot));
 			simDataBase.addNewVariable(new SimulationVariable("fitted_lambda_(nm)", "Wavelength (nm)", fitted_plot));
 			fig.plot(lambda_nm, fitted_plot, "r", 3f);
@@ -348,7 +347,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

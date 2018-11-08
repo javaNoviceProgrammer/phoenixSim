@@ -13,10 +13,14 @@ import javax.swing.JOptionPane;
 import org.controlsfx.control.StatusBar;
 
 import flanagan.interpolation.LinearInterpolation;
+import gds.elements.AbstractElement;
+import gds.elements.DataBase.Entry;
 import gds.elements.basics.AddDropRing;
 import gds.elements.positioning.Port;
 import gds.elements.positioning.Position;
 import gds.headers.Footer;
+import gds.headers.Header;
+import gds.layout.cells.Cell;
 import gds.pdk.AbstractLayerMap;
 import gds.pdk.generic.GeneralLayer;
 import javafx.fxml.FXML;
