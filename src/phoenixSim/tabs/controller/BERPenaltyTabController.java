@@ -5,8 +5,6 @@ import java.io.IOException;
 import org.apache.commons.math3.special.Erf;
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import flanagan.interpolation.LinearInterpolation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,8 +12,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
@@ -199,7 +200,7 @@ public class BERPenaltyTabController extends AbstractTabController {
 
 		double qBER_min = getQberFromBER(Math.pow(10, -1)) ;
 		double qBER_max = getQberFromBER(Math.pow(10, -13)) ;
-		double[] qBER_dense = MoreMath.linspace(qBER_min, qBER_max, 1000) ;
+		double[] qBER_dense = MathUtils.linspace(qBER_min, qBER_max, 1000) ;
 		// step1: fit Gaussian BER to case 1
 		double[] prec1_dBm = xDataCase1.getAllValues() ;
 		double[] logBerCase1 = yDataCase1.getAllValues() ;
@@ -297,7 +298,7 @@ public class BERPenaltyTabController extends AbstractTabController {
 			qValues[i][0] = qMeasured[i] ;
 		}
 		// step2: setting up fitting polynomial of degree M by least square fitting
-		Function Prec = new Function(){
+		LeastSquareFunction Prec = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double x = values[0]; // only one variable
@@ -318,9 +319,9 @@ public class BERPenaltyTabController extends AbstractTabController {
 				return 1;
 			}
 		} ;
-		Fitter fit = new MarquardtFitter(Prec) ;
+		LeastSquareFitter fit = new MarquardtFitter(Prec) ;
 		fit.setData(qValues, prec_dBm);
-		fit.setParameters(MoreMath.Arrays.setValue(0, numParams));
+		fit.setParameters(MathUtils.Arrays.setValue(0, numParams));
 		fit.fitData();
 		return fit.getParameters() ;
 	}
@@ -345,7 +346,7 @@ public class BERPenaltyTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

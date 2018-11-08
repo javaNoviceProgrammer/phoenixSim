@@ -1,6 +1,6 @@
 package phoenixSim.tabs.controller;
 
-import static PhotonicElements.Utilities.MathLibraries.MoreMath.* ;
+import static mathLib.util.MathUtils.*;
 import static java.lang.Math.PI;
 
 import java.io.IOException;
@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.StringUtils;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -93,7 +94,7 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
         	try {
                 double kappa = evaluate(kappaTextField.getText()) ;
                 simDataBase.addNewVariable(new SimulationVariable("kappa_()", "Kappa ()", new double[]{kappa}));
-                kappaLabel.setText("kappa is set to " + kappa + "");
+                kappaLabel.setText("kappa is set to " + StringUtils.fixedWidthDoubletoString(kappa, 4) + "");
 			} catch (Exception e) {
 				kappaTextField.setStyle("-fx-text-inner-color: red");
 				kappaTextField.setOnKeyTyped(event->{
@@ -113,11 +114,11 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
         	try {
                 double loss = evaluate(lossTextField.getText()) ;
                 simDataBase.addNewVariable(new SimulationVariable("loss_(dB/cm)", "Loss (dB/cm)", new double[]{loss}));
-                lossLabel.setText("loss is set to " + loss + "");
+                lossLabel.setText("loss is set to " + StringUtils.fixedWidthDoubletoString(loss, 4) + " dB/cm");
 			} catch (Exception e) {
 				lossTextField.setStyle("-fx-text-inner-color: red;");
 				lossTextField.setOnKeyTyped(event->{
-					lossTextField.setStyle("-fx-text-inner-color: black");
+				lossTextField.setStyle("-fx-text-inner-color: black");
 				});
 			}
 
@@ -133,11 +134,11 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
         	try {
                 double radius = evaluate(radiusTextField.getText()) ;
                 simDataBase.addNewVariable(new SimulationVariable("radius_(um)", "Radius (um)", new double[]{radius}));
-                radiusLabel.setText("radius is set to " + radius + "");
+                radiusLabel.setText("radius is set to " + StringUtils.fixedWidthDoubletoString(radius, 4) + " um");
 			} catch (Exception e) {
 				radiusTextField.setStyle("-fx-text-inner-color: red;");
 				radiusTextField.setOnKeyTyped(event->{
-					radiusTextField.setStyle("-fx-text-inner-color: black");
+				radiusTextField.setStyle("-fx-text-inner-color: black");
 				});
 			}
 
@@ -154,11 +155,11 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
         	try {
                 double fsr_nm = evaluate(fsrTextField.getText()) ;
                 simDataBase.addNewVariable(new SimulationVariable("fsr_(nm)", "FSR (nm)", new double[]{fsr_nm}));
-                fsrLabel.setText("FSR is set to " + fsr_nm + " nm");
+                fsrLabel.setText("FSR is set to " + StringUtils.fixedWidthDoubletoString(fsr_nm, 4) + " nm");
 			} catch (Exception e) {
 				fsrTextField.setStyle("-fx-text-inner-color: red;");
 				fsrTextField.setOnKeyTyped(event->{
-					fsrTextField.setStyle("-fx-text-inner-color: black");
+				fsrTextField.setStyle("-fx-text-inner-color: black");
 				});
 			}
 
@@ -174,11 +175,11 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
         	try {
                 double eff = evaluate(efficiencyTextField.getText()) ;
                 simDataBase.addNewVariable(new SimulationVariable("eff_(nm/mW)", "Efficiency (nm/mW)", new double[]{eff}));
-                efficiencyLabel.setText("Efficiency is set to " + eff + " nm/mW");
+                efficiencyLabel.setText("Efficiency is set to " + StringUtils.fixedWidthDoubletoString(eff, 4) + " nm/mW");
 			} catch (Exception e) {
 				efficiencyTextField.setStyle("-fx-text-inner-color: red;");
 				efficiencyTextField.setOnKeyTyped(event->{
-					efficiencyTextField.setStyle("-fx-text-inner-color: black");
+				efficiencyTextField.setStyle("-fx-text-inner-color: black");
 				});
 			}
 
@@ -194,11 +195,11 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
         	try {
                 double power = evaluate(powerTextField.getText()) ;
                 simDataBase.addNewVariable(new SimulationVariable("power_(dBm)", "Power (dBm)", new double[]{power}));
-                powerLabel.setText("Power is set to " + power + " dBm");
+                powerLabel.setText("Power is set to " + StringUtils.fixedWidthDoubletoString(power, 4) + " dBm");
 			} catch (Exception e) {
 				powerTextField.setStyle("-fx-text-inner-color: red;");
 				powerTextField.setOnKeyTyped(event->{
-					powerTextField.setStyle("-fx-text-inner-color: black");
+				powerTextField.setStyle("-fx-text-inner-color: black");
 				});
 			}
 
@@ -265,7 +266,7 @@ public class AllPassRingSelfHeatingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML
