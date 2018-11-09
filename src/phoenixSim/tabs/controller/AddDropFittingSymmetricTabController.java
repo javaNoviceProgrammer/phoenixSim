@@ -4,12 +4,10 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import flanagan.interpolation.LinearInterpolation;
 import flanagan.roots.RealRoot;
 import flanagan.roots.RealRootFunction;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
@@ -17,11 +15,13 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
-import phoenixSim.util.VariableSelectorController;
 
 public class AddDropFittingSymmetricTabController extends AbstractTabController {
 
@@ -116,45 +116,34 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 
 	@FXML
 	public void chooseXData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			xData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
+		VariableSelectorModule selector = new VariableSelectorModule(simDataBase) ;
+		ActionInterface exitAction = () -> {
+			xData = new SimulationVariable(selector.getController().getVariable().getName(), 
+					selector.getController().getVariable().getAlias(), selector.getController().getValues()) ;
 			xDataLabel.setText("X data is set to '" + xData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
 			if(xData != null && yData != null){
 				fig = createPlot(xData, yData) ;
 				showPlot(fig, matlabPane);
 			}
-		});
-
-
+		} ;
+		
+		selector.setExitAction(exitAction);
 	}
 
 	@FXML
 	public void chooseYData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			yData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
+		VariableSelectorModule selector = new VariableSelectorModule(simDataBase) ;
+		ActionInterface exitAction = () -> {
+			yData = new SimulationVariable(selector.getController().getVariable().getName(), 
+					selector.getController().getVariable().getAlias(), selector.getController().getValues()) ;
 			yDataLabel.setText("Y data is set to '" + yData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
 			if(xData != null && yData != null){
 				fig = createPlot(xData, yData) ;
 				showPlot(fig, matlabPane);
 			}
-		});
-
+		} ;
+		
+		selector.setExitAction(exitAction);
 	}
 
 	@FXML
@@ -166,7 +155,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + minLambda_nm + " nm");
 			} catch (Exception e) {
-	            double minLambda_nm = MoreMath.evaluate(st) ;
+	            double minLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + String.format("%.4f", minLambda_nm) + " nm");
 			}
@@ -182,7 +171,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + maxLambda_nm + " nm");
 			} catch (Exception e) {
-	            double maxLambda_nm = MoreMath.evaluate(st) ;
+	            double maxLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + String.format("%.4f", maxLambda_nm) + " nm");
 			}
@@ -198,7 +187,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + centerLambda_nm + " nm");
 			} catch (Exception e) {
-	            double centerLambda_nm = MoreMath.evaluate(st) ;
+	            double centerLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + String.format("%.4f", centerLambda_nm) + " nm");
 			}
@@ -214,7 +203,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
                 simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
                 fsrLabel.setText("FSR is set to " + fsr_nm + " nm");
 			} catch (Exception e) {
-	            double fsr_nm = MoreMath.evaluate(st) ;
+	            double fsr_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
 	            fsrLabel.setText("FSR is set to " + String.format("%.4f", fsr_nm) + " nm");
 			}
@@ -230,7 +219,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
                 simDataBase.addNewVariable(new SimulationVariable("drLoss_(dB)", "Drop Loss (dB)", new double[]{drLoss_nm}));
                 drLossLabel.setText("DR loss is set to " + drLoss_nm + " dB");
 			} catch (Exception e) {
-	            double drLoss_nm = MoreMath.evaluate(st) ;
+	            double drLoss_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("drLoss_(dB)", "Drop Loss (dB)", new double[]{drLoss_nm}));
 	            drLossLabel.setText("DR loss is set to " + String.format("%.4f", drLoss_nm) + " dB");
 			}
@@ -245,10 +234,10 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 		double lambda_min_nm = simDataBase.getVariable("minLambda_(nm)").getValue(0) ;
 		double lambda_max_nm = simDataBase.getVariable("maxLambda_(nm)").getValue(0) ;
 		double lambda_res_nm = simDataBase.getVariable("centerLambda_(nm)").getValue(0) ;
-//		double[] lambda_nm = MoreMath.linspace(lambda_min_nm, lambda_max_nm, 1000) ;
+//		double[] lambda_nm = MathUtils.linspace(lambda_min_nm, lambda_max_nm, 1000) ;
 		double FSR_nm = simDataBase.getVariable("FSR_(nm)").getValue(0) ;
 		double drLoss_dB = simDataBase.getVariable("drLoss_(dB)").getValue(0) ;
-		double drLoss = MoreMath.Conversions.fromdB(-drLoss_dB) ;
+		double drLoss = MathUtils.Conversions.fromdB(-drLoss_dB) ;
 
 		if(fitTodB.isSelected()){
 			// first interpolate data points
@@ -271,14 +260,14 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 			}
 			lambda_min_nm = xData.getValue(M_start) ;
 			lambda_max_nm = xData.getValue(M_end) ;
-			double[] lambda_nm = MoreMath.linspace(lambda_min_nm, lambda_max_nm, 100) ;
+			double[] lambda_nm = MathUtils.linspace(lambda_min_nm, lambda_max_nm, 100) ;
 			double[] y_dB = new double[lambda_nm.length] ;
 			LinearInterpolation interpolator = new LinearInterpolation(xData_subset, yData_subset) ;
 			for(int i=0; i<y_dB.length; i++){
 				y_dB[i] = interpolator.interpolate(lambda_nm[i]) ;
 			}
-			double y_dB_max = MoreMath.Arrays.FindMaximum.getValue(y_dB) ;
-			double[] y_dB_normalized = MoreMath.Arrays.plus(y_dB, -y_dB_max) ; // normalizing data ;
+			double y_dB_max = MathUtils.Arrays.FindMaximum.getValue(y_dB) ;
+			double[] y_dB_normalized = MathUtils.Arrays.plus(y_dB, -y_dB_max) ; // normalizing data ;
 			LinearInterpolation interpolator_norm = new LinearInterpolation(lambda_nm, y_dB_normalized) ;
 			// step 1: find x
 			RealRootFunction func = new RealRootFunction(){
@@ -312,7 +301,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 			resultListView.getItems().add("L = " + String.format("%2.4f", L)) ;
 			// finally plotting
 			double[] fitted_plot = getLorentzianNormalized_dB(x, FSR_nm, xData.getAllValues(), lambda_res_nm) ;
-			fitted_plot = MoreMath.Arrays.plus(fitted_plot, y_dB_max) ;
+			fitted_plot = MathUtils.Arrays.plus(fitted_plot, y_dB_max) ;
 			simDataBase.addNewVariable(new SimulationVariable("fitted_drop_(dBm)", "Drop Power (dBm)", fitted_plot));
 			fig.plot(xData.getAllValues(), fitted_plot, "r", 3f);
 			fig.renderPlot();
@@ -346,7 +335,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 		for(int i=0; i<y.length; i++){
 			y[i] = getLorentzianNormalized(x, FSR_nm, lambda_nm[i], lambda_res_nm) ;
 		}
-		return MoreMath.Arrays.Conversions.todB(y) ;
+		return MathUtils.Arrays.Conversions.todB(y) ;
 	}
 
 //	private double getLorentzianNormalized(double kappa, double FSR_nm, double lambda_nm, double lambda_res_nm){
@@ -370,7 +359,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 //		for(int i=0; i<y.length; i++){
 //			y[i] = getLorentzianNormalized(kappa, FSR_nm, lambda_nm[i], lambda_res_nm) ;
 //		}
-//		return MoreMath.Arrays.Conversions.todB(y) ;
+//		return MathUtils.Arrays.Conversions.todB(y) ;
 //	}
 
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
@@ -384,7 +373,7 @@ public class AddDropFittingSymmetricTabController extends AbstractTabController 
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

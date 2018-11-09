@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.AddDropFitting.Symmetric.AddDropFittingSymmetricTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.AddDropFittingSymmetricTabController">
    <tabs>
       <Tab fx:id="tab" text="Add-Drop Fitting (Sym.)">
          <content>
