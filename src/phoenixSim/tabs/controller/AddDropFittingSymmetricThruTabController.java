@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import flanagan.interpolation.LinearInterpolation;
 import flanagan.roots.RealRoot;
 import flanagan.roots.RealRootFunction;
@@ -16,8 +14,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
@@ -156,7 +157,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + minLambda_nm + " nm");
 			} catch (Exception e) {
-	            double minLambda_nm = MoreMath.evaluate(st) ;
+	            double minLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("minLambda_(nm)", "min Lambda (nm)", new double[]{minLambda_nm}));
 	            minLambdaLabel.setText("min is set to " + String.format("%.4f", minLambda_nm) + " nm");
 			}
@@ -172,7 +173,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + maxLambda_nm + " nm");
 			} catch (Exception e) {
-	            double maxLambda_nm = MoreMath.evaluate(st) ;
+	            double maxLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("maxLambda_(nm)", "max Lambda (nm)", new double[]{maxLambda_nm}));
 	            maxLambdaLabel.setText("max is set to " + String.format("%.4f", maxLambda_nm) + " nm");
 			}
@@ -188,7 +189,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + centerLambda_nm + " nm");
 			} catch (Exception e) {
-	            double centerLambda_nm = MoreMath.evaluate(st) ;
+	            double centerLambda_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("centerLambda_(nm)", "center Lambda (nm)", new double[]{centerLambda_nm}));
 	            centerLambdaLabel.setText("center is set to " + String.format("%.4f", centerLambda_nm) + " nm");
 			}
@@ -204,7 +205,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
                 simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
                 fsrLabel.setText("FSR is set to " + fsr_nm + " nm");
 			} catch (Exception e) {
-	            double fsr_nm = MoreMath.evaluate(st) ;
+	            double fsr_nm = MathUtils.evaluate(st) ;
 	            simDataBase.addNewVariable(new SimulationVariable("FSR_(nm)", "FSR (nm)", new double[]{fsr_nm}));
 	            fsrLabel.setText("FSR is set to " + String.format("%.4f", fsr_nm) + " nm");
 			}
@@ -219,7 +220,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 		double lambda_min_nm = simDataBase.getVariable("minLambda_(nm)").getValue(0) ;
 		double lambda_max_nm = simDataBase.getVariable("maxLambda_(nm)").getValue(0) ;
 		double lambda_res_nm = simDataBase.getVariable("centerLambda_(nm)").getValue(0) ;
-		double[] lambda_nm = MoreMath.linspace(lambda_min_nm, lambda_max_nm, 1000) ;
+		double[] lambda_nm = MathUtils.linspace(lambda_min_nm, lambda_max_nm, 1000) ;
 		double FSR_nm = simDataBase.getVariable("FSR_(nm)").getValue(0) ;
 
 		if(fitTodB.isSelected()){
@@ -230,22 +231,22 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 			double[][] lambda_nm_values = new double[lambda_nm.length][1] ;
 			for(int i=0; i<y_dB.length; i++){
 				y_dB[i] = interpolator.interpolate(lambda_nm[i]) ;
-				y_nondB[i] = MoreMath.Conversions.fromdB(y_dB[i]) ;
+				y_nondB[i] = MathUtils.Conversions.fromdB(y_dB[i]) ;
 				lambda_nm_values[i][0] = lambda_nm[i] ;
 			}
-			double y_dB_min = MoreMath.Arrays.FindMinimum.getValue(y_dB) ;
-//			double y_dB_max = MoreMath.Arrays.FindMaximum.getValue(y_dB) ;
+			double y_dB_min = MathUtils.Arrays.FindMinimum.getValue(y_dB) ;
+//			double y_dB_max = MathUtils.Arrays.FindMaximum.getValue(y_dB) ;
 			// step 1: find BW & ER
 //			double ER_dB = (interpolator.interpolate(lambda_min_nm) + y_dB_max)/2 - interpolator.interpolate(lambda_res_nm) ;
-//			double er = MoreMath.Conversions.fromdB(ER_dB) ;
-			Function fitFunc = new Function(){
+//			double er = MathUtils.Conversions.fromdB(ER_dB) ;
+			LeastSquareFunction fitFunc = new LeastSquareFunction(){
 				@Override
 				public double evaluate(double[] values, double[] parameters) {
 					double BW = parameters[0] ; // nm units
 					double er = parameters[1] ; // no units (non-dB)
-					double ER_dB = MoreMath.Conversions.todB(er) ;
+					double ER_dB = MathUtils.Conversions.todB(er) ;
 					double lambda_nm = values[0] ; // only one variable - nm units
-					double tr_dB = MoreMath.Conversions.todB(getLorentzian(BW, er, lambda_nm, lambda_res_nm)) + y_dB_min + ER_dB ;
+					double tr_dB = MathUtils.Conversions.todB(getLorentzian(BW, er, lambda_nm, lambda_res_nm)) + y_dB_min + ER_dB ;
 					return tr_dB ;
 				}
 				@Override
@@ -257,14 +258,14 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 					return 1;
 				}
 			} ;
-//			Fitter fit = new NonLinearSolver(fitFunc) ;
-			Fitter fit = new MarquardtFitter(fitFunc) ;
+//			LeastSquareFitter fit = new NonLinearSolver(fitFunc) ;
+			LeastSquareFitter fit = new MarquardtFitter(fitFunc) ;
 			fit.setData(lambda_nm_values, y_dB);
 			fit.setParameters(new double[]{1, 10});
 			fit.fitData();
 			double BW_nm = Math.abs(fit.getParameters()[0]) ;
 			double er = Math.abs(fit.getParameters()[1]) ;
-			double ER_dB = MoreMath.Conversions.todB(er) ;
+			double ER_dB = MathUtils.Conversions.todB(er) ;
 			// step 2: find x = t*t*sqrt(L)
 			RealRootFunction func1 = new RealRootFunction(){
 				@Override
@@ -291,8 +292,8 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 			resultListView.getItems().add("Q = " + String.format("%2.4f", lambda_res_nm/BW_nm)) ;
 			resultListView.getItems().add("t^2*sqrt(L) = " + String.format("%2.4f", x)) ;
 			// finally plotting
-			double[] fitted_plot = MoreMath.Arrays.Conversions.todB(getLorentzian(BW_nm, er, lambda_nm, lambda_res_nm)) ;
-			fitted_plot = MoreMath.Arrays.plus(fitted_plot, y_dB_min+ER_dB) ;
+			double[] fitted_plot = MathUtils.Arrays.Conversions.todB(getLorentzian(BW_nm, er, lambda_nm, lambda_res_nm)) ;
+			fitted_plot = MathUtils.Arrays.plus(fitted_plot, y_dB_min+ER_dB) ;
 			simDataBase.addNewVariable(new SimulationVariable("fitted_thru_(dBm)", "Thru Power (dBm)", fitted_plot));
 			fig.plot(lambda_nm, fitted_plot, "r", 3f);
 			fig.renderPlot();
@@ -329,7 +330,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML
