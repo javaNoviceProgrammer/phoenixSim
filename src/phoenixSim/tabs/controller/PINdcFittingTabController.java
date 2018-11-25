@@ -4,23 +4,24 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.PNJunction.PINDiode.PINModelDC;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
+import phoenixSim.builder.intf.ActionInterface;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
-import phoenixSim.util.VariableSelectorController;
+import photonics.pnjunc.pin.PINModelDC;
 
 public class PINdcFittingTabController extends AbstractTabController {
 
@@ -83,20 +84,17 @@ public class PINdcFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseIData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			iData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
-			iDataLabel.setText("I data is set to '" + iData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
-			if(iData != null && vData != null){
-				fig = createPlot(iData, vData) ;
-				showPlot(fig, matlabPane);
+		VariableSelectorModule var = new VariableSelectorModule(simDataBase) ;
+		var.setExitAction(new ActionInterface() {
+			@Override
+			public void setExitAction() {
+				iData = new SimulationVariable(var.getController().getVariable().getName(), var.getController().getVariable().getAlias(), 
+						var.getController().getValues()) ;
+				iDataLabel.setText("I data is set to '" + iData.getName() + "'");
+				if(iData != null && vData != null){
+					fig = createPlot(iData, vData) ;
+					showPlot(fig, matlabPane);
+				}
 			}
 		});
 	}
@@ -116,20 +114,18 @@ public class PINdcFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseVData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			vData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
-			vDataLabel.setText("V data is set to '" + vData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
-			if(iData != null && vData != null){
-				fig = createPlot(iData, vData) ;
-				showPlot(fig, matlabPane);
+		VariableSelectorModule var = new VariableSelectorModule(simDataBase) ;
+		var.setExitAction(new ActionInterface() {
+			@Override
+			public void setExitAction() {
+				vData = new SimulationVariable(var.getController().getVariable().getName(), var.getController().getVariable().getAlias(), 
+						var.getController().getValues()) ;
+				vDataLabel.setText("V data is set to '" + vData.getName() + "'");
+				var.getController().getSetExitButton().getScene().getWindow().hide();
+				if(iData != null && vData != null){
+					fig = createPlot(iData, vData) ;
+					showPlot(fig, matlabPane);
+				}
 			}
 		});
 	}
@@ -143,7 +139,7 @@ public class PINdcFittingTabController extends AbstractTabController {
 			I_mA[i][0] = current_mA[i] ;
 		}
 
-		Function V = new Function(){
+		LeastSquareFunction V = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double Vbi_V = parameters[0] ; // Vbi
@@ -165,8 +161,8 @@ public class PINdcFittingTabController extends AbstractTabController {
 			}
 		} ;
 
-//		Fitter fit = new NonLinearSolver(V) ;
-		Fitter fit = new MarquardtFitter(V) ;
+//		LeastSquareFitter fit = new NonLinearSolver(V) ;
+		LeastSquareFitter fit = new MarquardtFitter(V) ;
 		fit.setData(I_mA, voltage_V);
 		fit.setParameters(new double[]{0.7, 0.5, 90, 0.7});
 		fit.fitData();
@@ -186,7 +182,8 @@ public class PINdcFittingTabController extends AbstractTabController {
 		resultListView.getItems().add("Is (nA) = " + String.format("%2.4f", Is_nA)) ;
 		resultListView.getItems().add("n = " + String.format("%2.4f", n)) ;
 
-		double[] V_values = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(voltage_V), MoreMath.Arrays.FindMaximum.getValue(voltage_V), 1000) ;
+		double[] V_values = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(voltage_V), 
+				MathUtils.Arrays.FindMaximum.getValue(voltage_V), 1000) ;
 		double[] I_values = new double[V_values.length] ;
 		PINModelDC pinModelDC = new PINModelDC(Vbi_V, R_kOhm, Is_nA, n) ;
 		for(int i=0; i<I_values.length; i++){
@@ -216,7 +213,7 @@ public class PINdcFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML

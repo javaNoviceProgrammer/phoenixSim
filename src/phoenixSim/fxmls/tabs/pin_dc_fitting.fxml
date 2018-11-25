@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.ElectroOpticFitting.PINdiode.PINdc.PINdcFittingTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.PINdcFittingTabController">
    <tabs>
       <Tab fx:id="tab" text="PIN V-I Fitting">
          <content>
@@ -95,12 +95,12 @@
                         <Separator layoutX="37.0" layoutY="186.0" prefWidth="200.0" />
                         <ImageView fitHeight="206.0" fitWidth="279.0" layoutX="12.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Extras/pin.png" />
+                              <Image url="@../../extras/pin.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="56.0" fitWidth="262.0" layoutX="5.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Extras/pin_eq.png" />
+                              <Image url="@../../extras/pin_eq.png" />
                            </image>
                         </ImageView>
                         <Text layoutX="5.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The voltage-current curve of a PIN junction has four parameters which will be fitted to the measured data through a robust Least Mean Square Error (LMSE) fitting." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />
