@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.ElectroOpticFitting.PINdiode.PINac.PINacFittingTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.PINacFittingTabController">
    <tabs>
       <Tab fx:id="tab" text="PIN AC Fitting">
          <content>
@@ -95,13 +95,13 @@
                         <Separator layoutX="37.0" layoutY="213.0" prefWidth="200.0" />
                         <ImageView fitHeight="108.0" fitWidth="237.0" layoutX="27.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Extras/pin_small_signal_model.jpg" />
+                              <Image url="@../../extras/pin_small_signal_model.jpg" />
                            </image>
                         </ImageView>
                         <Text layoutX="5.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The small-signal model of a PIN junction has six parameters which will be fitted to the measured data through a robust Least Mean Square Error (LMSE) fitting." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />
                         <ImageView fitHeight="53.0" fitWidth="150.0" layoutX="58.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Extras/pin_s11_eq.png" />
+                              <Image url="@../../extras/pin_s11_eq.png" />
                            </image>
                         </ImageView>
                      </children>

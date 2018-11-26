@@ -4,23 +4,23 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.PNJunction.PINDiode.PINModelAC;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
-import phoenixSim.util.VariableSelectorController;
+import photonics.pnjunc.pin.PINModelAC;
 
 public class PINacFittingTabController extends AbstractTabController {
 
@@ -83,22 +83,16 @@ public class PINacFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseIData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			iData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
+		VariableSelectorModule var = new VariableSelectorModule(simDataBase) ;
+		var.setExitAction(() -> {
+			iData = new SimulationVariable(var.getController().getVariable().getName(), var.getController().getVariable().getAlias(), 
+					var.getController().getValues()) ;
 			iDataLabel.setText("freq data is set to '" + iData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
 			if(iData != null && vData != null){
 				fig = createPlot(iData, vData) ;
 				showPlot(fig, matlabPane);
 			}
-		});
+		}) ;
 	}
 
 	@FXML
@@ -116,22 +110,16 @@ public class PINacFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseVData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			vData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
+		VariableSelectorModule var = new VariableSelectorModule(simDataBase) ;
+		var.setExitAction(() -> {
+			vData = new SimulationVariable(var.getController().getVariable().getName(), var.getController().getVariable().getAlias(), 
+					var.getController().getValues()) ;
 			vDataLabel.setText("ZL data is set to '" + vData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
 			if(iData != null && vData != null){
 				fig = createPlot(iData, vData) ;
 				showPlot(fig, matlabPane);
 			}
-		});
+		}) ;
 	}
 
 	@FXML
@@ -143,7 +131,7 @@ public class PINacFittingTabController extends AbstractTabController {
 			freqGhz[i][0] = freq_Ghz[i] ;
 		}
 
-		Function ZL = new Function(){
+		LeastSquareFunction ZL = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double RD_ohm = parameters[0] ; 
@@ -167,8 +155,8 @@ public class PINacFittingTabController extends AbstractTabController {
 			}
 		} ;
 
-//		Fitter fit = new NonLinearSolver(ZL) ;
-		Fitter fit = new MarquardtFitter(ZL) ;
+//		LeastSquareFitter fit = new NonLinearSolver(ZL) ;
+		LeastSquareFitter fit = new MarquardtFitter(ZL) ;
 		fit.setData(freqGhz, ZL_ohm);
 		fit.setParameters(new double[]{25, 6, 64, 0.2, 100, 100});
 		fit.fitData();
@@ -194,7 +182,8 @@ public class PINacFittingTabController extends AbstractTabController {
 		resultListView.getItems().add("Rs1 (ohm) = " + String.format("%2.4f", Rs1_ohm)) ;
 		resultListView.getItems().add("Cp (fF) = " + String.format("%2.4f", Cp_fF)) ;
 
-		double[] freq_values = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(freq_Ghz), MoreMath.Arrays.FindMaximum.getValue(freq_Ghz), 1000) ;
+		double[] freq_values = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(freq_Ghz), 
+												  MathUtils.Arrays.FindMaximum.getValue(freq_Ghz), 1000) ;
 		double[] ZL_values = new double[freq_values.length] ;
 		PINModelAC pinModelAC = new PINModelAC(RD_ohm, CD_pF, Rs2_ohm, Cox_pF, Rs1_ohm, Cp_fF) ;
 		for(int i=0; i<freq_values.length; i++){
@@ -224,7 +213,7 @@ public class PINacFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML
