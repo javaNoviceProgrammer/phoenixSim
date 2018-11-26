@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="People.Meisam.GUI.PhoenixSim.TabsLibrary.Measurements.ElectroOpticFitting.PINdiode.PINResShift.PINResShiftFittingTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.PINResShiftFittingTabController">
    <tabs>
       <Tab fx:id="tab" text="PIN ResShift Fitting">
          <content>
@@ -95,12 +95,12 @@
                         <Separator layoutX="37.0" layoutY="223.0" prefWidth="200.0" />
                         <ImageView fitHeight="194.0" fitWidth="224.0" layoutX="19.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Extras/pin_res_shift_plot.png" />
+                              <Image url="@../../extras/pin_res_shift_plot.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="83.0" fitWidth="295.0" layoutX="-1.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Extras/pin_res_shift_eq.PNG" />
+                              <Image url="@../../extras/pin_res_shift_eq.PNG" />
                            </image>
                         </ImageView>
                         <Text layoutX="5.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The resonance shift vs current curve of a PIN junction embedded in a microring resonator has three parameters which will be fitted to the measured data through a robust Least Mean Square Error (LMSE) fitting." textAlignment="JUSTIFY" wrappingWidth="262.9934844970703" />

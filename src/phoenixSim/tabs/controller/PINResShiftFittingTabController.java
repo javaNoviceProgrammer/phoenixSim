@@ -4,23 +4,23 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.PNJunction.PINDiode.PINShiftResDC;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
-import PhotonicElements.Utilities.MathLibraries.CurveFitting.LeastSquare.leastsquares.Fitter;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import mathLib.fitting.lmse.LeastSquareFitter;
+import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
-import phoenixSim.util.VariableSelectorController;
+import photonics.pnjunc.pin.PINShiftResDC;
 
 public class PINResShiftFittingTabController extends AbstractTabController {
 
@@ -83,17 +83,11 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseIData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			iData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
+		VariableSelectorModule var = new VariableSelectorModule(simDataBase) ;
+		var.setExitAction(() -> {
+			iData = new SimulationVariable(var.getController().getVariable().getName(), var.getController().getVariable().getAlias(), 
+					var.getController().getValues()) ;
 			iDataLabel.setText("I data is set to '" + iData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
 			if(iData != null && vData != null){
 				fig = createPlot(iData, vData) ;
 				showPlot(fig, matlabPane);
@@ -116,17 +110,11 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 
 	@FXML
 	public void chooseVData() throws IOException{
-		FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/VariableSelector/variable_selector.fxml")) ;
-		WindowBuilder varSelect = new WindowBuilder(loader) ;
-		varSelect.setIcon("/People/Meisam/GUI/Utilities/VariableSelector/Extras/icon.png");
-		varSelect.build("Select Variable & Values", false);
-		VariableSelectorController controller = loader.getController() ;
-		controller.setSimDataBase(simDataBase);
-		controller.initialize();
-		controller.getSetExitButton().setOnAction(e -> {
-			vData = new SimulationVariable(controller.getVariable().getName(), controller.getVariable().getAlias(), controller.getValues()) ;
+		VariableSelectorModule var = new VariableSelectorModule(simDataBase) ;
+		var.setExitAction(() -> {
+			vData = new SimulationVariable(var.getController().getVariable().getName(), var.getController().getVariable().getAlias(), 
+					var.getController().getValues()) ;
 			vDataLabel.setText("Res data is set to '" + vData.getName() + "'");
-			controller.getSetExitButton().getScene().getWindow().hide();
 			if(iData != null && vData != null){
 				fig = createPlot(iData, vData) ;
 				showPlot(fig, matlabPane);
@@ -143,7 +131,7 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 			I_mA[i][0] = current_mA[i] ;
 		}
 
-		Function V = new Function(){
+		LeastSquareFunction V = new LeastSquareFunction(){
 			@Override
 			public double evaluate(double[] values, double[] parameters) {
 				double a = parameters[0] ; 
@@ -164,8 +152,8 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 			}
 		} ;
 
-//		Fitter fit = new NonLinearSolver(V) ;
-		Fitter fit = new MarquardtFitter(V) ;
+//		LeastSquareFitter fit = new NonLinearSolver(V) ;
+		LeastSquareFitter fit = new MarquardtFitter(V) ;
 		fit.setData(I_mA, resShift_nm);
 		fit.setParameters(new double[]{0.5, 0.05, 0.05});
 		fit.fitData();
@@ -182,7 +170,8 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 		resultListView.getItems().add("c = " + String.format("%2.4f", c)) ;
 		resultListView.getItems().add("I0 (mA) = " + String.format("%2.4f", I0)) ;
 
-		double[] I_values = MoreMath.linspace(MoreMath.Arrays.FindMinimum.getValue(current_mA), MoreMath.Arrays.FindMaximum.getValue(current_mA), 1000) ;
+		double[] I_values = MathUtils.linspace(MathUtils.Arrays.FindMinimum.getValue(current_mA), 
+											   MathUtils.Arrays.FindMaximum.getValue(current_mA), 1000) ;
 		double[] shift_values = new double[I_values.length] ;
 		PINShiftResDC pinShiftResDC = new PINShiftResDC(a, c, I0) ;
 		for(int i=0; i<I_values.length; i++){
@@ -212,7 +201,7 @@ public class PINResShiftFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+//    	fig.exportToMatlab();
     }
 
     @FXML
