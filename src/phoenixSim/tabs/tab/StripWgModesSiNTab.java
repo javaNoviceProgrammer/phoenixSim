@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class StripWgModesSiNTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/modes/strip_wg_modes_SiN.fxml")) ; ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/strip_wg_modes_SiN.fxml")) ; ;
 	StripWgModesSiNTabController controller ;
 
 	public StripWgModesSiNTab(SimulationDataBase simDataBase){
