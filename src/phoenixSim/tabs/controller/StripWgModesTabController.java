@@ -4,11 +4,7 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.StripWg.ModeStripWgTE;
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.StripWg.ModeStripWgTM;
-import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
@@ -17,10 +13,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
-import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.strip.ModeStripWgTE;
+import photonics.strip.ModeStripWgTM;
+import photonics.strip.StripWg;
 import photonics.util.Wavelength;
 
 /*
@@ -129,26 +128,13 @@ public class StripWgModesTabController extends AbstractTabController {
 
     @FXML
     public void sweepWidth() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-//                if(simDataBase.variableExists("width_(nm)")){
-//                    simDataBase.removeVariable(simDataBase.getVariable("width_(nm)"));
-//                }
-                simDataBase.addNewVariable(new SimulationVariable("width_(nm)", "Width (nm)", controller.getAllValues()));
-                // clear text field and update label
-                widthTextField.clear();
-                widthLabel.setText("width is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(() -> {
+            simDataBase.addNewVariable(new SimulationVariable("width_(nm)", "Width (nm)", sweep.getController().getAllValues()));
+            widthTextField.clear();
+            widthLabel.setText("width is set to array values");
+    	});
+
         if(wgModePlotToggleSelected()){
             modePlot.getSelectedToggle().setSelected(false);
         }
@@ -170,26 +156,14 @@ public class StripWgModesTabController extends AbstractTabController {
 
     @FXML
     public void sweepHeight() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-//                if(simDataBase.variableExists("height_(nm)")){
-//                    simDataBase.removeVariable(simDataBase.getVariable("height_(nm)"));
-//                }
-                simDataBase.addNewVariable(new SimulationVariable("height_(nm)", "Height (nm)", controller.getAllValues()));
-                // clear text field and update label
-                heightTextField.clear();
-                heightLabel.setText("height is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(() -> {
+            simDataBase.addNewVariable(new SimulationVariable("height_(nm)", "Height (nm)", sweep.getController().getAllValues()));
+            // clear text field and update label
+            heightTextField.clear();
+            heightLabel.setText("height is set to array values");
+    	});
+
         if(wgModePlotToggleSelected()){
             modePlot.getSelectedToggle().setSelected(false);
         }
@@ -210,26 +184,14 @@ public class StripWgModesTabController extends AbstractTabController {
     }
 
     public void sweepLambda() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-//                if(simDataBase.variableExists("lambda_(nm)")){
-//                    simDataBase.removeVariable(simDataBase.getVariable("lambda_(nm)"));
-//                }
-                simDataBase.addNewVariable(new SimulationVariable("lambda_(nm)", "Wavelength (nm)", controller.getAllValues()));
-                // clear text field and update label
-                lambdaTextField.clear();
-                lambdaLabel.setText("lambda is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(() -> {
+            simDataBase.addNewVariable(new SimulationVariable("lambda_(nm)", "Wavelength (nm)", sweep.getController().getAllValues()));
+            // clear text field and update label
+            lambdaTextField.clear();
+            lambdaLabel.setText("lambda is set to array values");
+    	});
+    	
         if(wgModePlotToggleSelected()){
             modePlot.getSelectedToggle().setSelected(false);
         }
@@ -436,13 +398,6 @@ public class StripWgModesTabController extends AbstractTabController {
         }
     }
 
-//    private void showPlot(MatlabChart fig, Pane pane){
-//        int width = 500, height = 400 ;
-//        pane.getChildren().remove(fig.getChartSwingNode(width, height)) ;
-//        pane.getChildren().add(fig.getChartSwingNode(width, height)) ;
-//        pane.setPrefSize((double) width, (double) height);
-//    }
-
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
@@ -454,7 +409,7 @@ public class StripWgModesTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figWgMode.exportToMatlab();
+//    	figWgMode.exportToMatlab();
     }
 
     @FXML

@@ -2,18 +2,18 @@ package phoenixSim.tabs.controller;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.ModeSensitivity.StripWg.NeffVariationStripWgTE;
-import PhotonicElements.EffectiveIndexMethod.ModeSensitivity.StripWg.NeffVariationStripWgTM;
-import PhotonicElements.Utilities.MathLibraries.MoreMath;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.strip.NeffVariationStripWgTE;
+import photonics.strip.NeffVariationStripWgTM;
 import photonics.util.Wavelength;
 
 public class StripWgSensitivityTabController extends AbstractTabController {
@@ -110,7 +110,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dneffdnSi.isSelected()){
-				double[] dnSi = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSi = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dneff_dnSi = new double[dnSi.length] ;
 				double[] dneff = new double[dnSi.length] ;
 				double dn = 1e-3 ;
@@ -129,7 +129,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dneffdnSiO2.isSelected()){
-				double[] dnSiO2 = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSiO2 = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dneff_dnSiO2 = new double[dnSiO2.length] ;
 				double[] dneff = new double[dnSiO2.length] ;
 				double dn = 1e-3 ;
@@ -184,7 +184,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dngdnSi.isSelected()){
-				double[] dnSi = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSi = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dng_dnSi = new double[dnSi.length] ;
 				double[] dng = new double[dnSi.length] ;
 				double dn = 1e-3 ;
@@ -203,7 +203,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dngdnSiO2.isSelected()){
-				double[] dnSiO2 = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSiO2 = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dng_dnSiO2 = new double[dnSiO2.length] ;
 				double[] dng = new double[dnSiO2.length] ;
 				double dn = 1e-3 ;
@@ -261,7 +261,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dneffdnSi.isSelected()){
-				double[] dnSi = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSi = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dneff_dnSi = new double[dnSi.length] ;
 				double[] dneff = new double[dnSi.length] ;
 				double dn = 1e-3 ;
@@ -280,7 +280,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dneffdnSiO2.isSelected()){
-				double[] dnSiO2 = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSiO2 = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dneff_dnSiO2 = new double[dnSiO2.length] ;
 				double[] dneff = new double[dnSiO2.length] ;
 				double dn = 1e-3 ;
@@ -335,7 +335,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dngdnSi.isSelected()){
-				double[] dnSi = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSi = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dng_dnSi = new double[dnSi.length] ;
 				double[] dng = new double[dnSi.length] ;
 				double dn = 1e-3 ;
@@ -354,7 +354,7 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 	            showPlot(fig, matlabPlot);
 			}
 			else if(dngdnSiO2.isSelected()){
-				double[] dnSiO2 = MoreMath.linspace(-1e-2, 1e-2, 20) ;
+				double[] dnSiO2 = MathUtils.linspace(-1e-2, 1e-2, 20) ;
 				double[] dng_dnSiO2 = new double[dnSiO2.length] ;
 				double[] dng = new double[dnSiO2.length] ;
 				double dn = 1e-3 ;
