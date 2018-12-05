@@ -7,10 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import mathLib.func.ArrayFunc;
-import mathLib.geometry.algebra.Vector;
 import mathLib.plot.MatlabChart;
-import mathLib.util.MathUtils;
 import phoenixSim.util.ExportToMatlabController;
 import phoenixSim.util.SimulationVariable;
 
@@ -57,16 +54,6 @@ public class ExportToMatlabModule {
         SimulationVariable xVar = new SimulationVariable(fig.getXLabel(), x) ;
         SimulationVariable yVar = new SimulationVariable(fig.getYLabel(), y) ;
         controller.setVariables(xVar, yVar);
-	}
-	
-	// test
-	public static void main(String[] args) {
-		Vector x = MathUtils.linspace(0, 2*Math.PI, 100) ;
-		Vector y = ArrayFunc.apply(t -> Math.sin(t), x.asArray()) ;
-		MatlabChart fig1 = new MatlabChart() ;
-		fig1.plot(x.asArray(), y.asArray());
-		fig1.renderPlot();
-		new ExportToMatlabModule(fig1) ;
 	}
 
 }

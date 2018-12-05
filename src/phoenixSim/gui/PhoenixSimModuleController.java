@@ -525,6 +525,7 @@ public class PhoenixSimModuleController {
         	StatusBar statbar = new StatusBar() ;
         	statbar.setText("Workspace is set to: " + path);
         	updateStatusBar(statbar);
+        	System.gc();
     	}
     }
     
@@ -538,6 +539,7 @@ public class PhoenixSimModuleController {
     	FileOutput fo = new FileOutput(fc.getFilePath()) ;
     	fo.println(fc.getDirectoryPath());
     	fo.close();
+    	System.gc();
     	// update status bar
     	StatusBar statbar = new StatusBar() ;
     	statbar.setText("Config file saved to: " + path);
