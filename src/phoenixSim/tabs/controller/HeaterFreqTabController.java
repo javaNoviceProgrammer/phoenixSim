@@ -14,6 +14,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -202,7 +203,7 @@ public class HeaterFreqTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	figFreq.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

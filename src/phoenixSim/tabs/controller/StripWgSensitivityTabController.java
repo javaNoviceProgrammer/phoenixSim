@@ -376,13 +376,6 @@ public class StripWgSensitivityTabController extends AbstractTabController {
 		}
 	}
 
-//    private void showPlot(MatlabChart fig, Pane pane){
-//        int width = 500, height = 400 ;
-//        pane.getChildren().remove(fig.getChartSwingNode(width, height)) ;
-//        pane.getChildren().add(fig.getChartSwingNode(width, height)) ;
-//        pane.setPrefSize((double) width, (double) height);
-//    }
-
 	private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());

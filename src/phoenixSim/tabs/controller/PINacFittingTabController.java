@@ -15,6 +15,7 @@ import mathLib.fitting.lmse.LeastSquareFunction;
 import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -213,7 +214,7 @@ public class PINacFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	fig.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

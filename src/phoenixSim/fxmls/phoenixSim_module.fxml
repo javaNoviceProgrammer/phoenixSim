@@ -339,6 +339,8 @@
             <Menu mnemonicParsing="false" text="Settings">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#setDefaultWorkspacePressed" text="Set workspace" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveConfigFilePressed" text="Save config file" />
                   <MenuItem mnemonicParsing="false" onAction="#loadConfigFilePressed" text="Load config file" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <Menu mnemonicParsing="false" text="Tabs">

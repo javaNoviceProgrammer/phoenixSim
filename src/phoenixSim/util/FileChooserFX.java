@@ -3,6 +3,7 @@ package phoenixSim.util;
 import java.io.File;
 
 import javafx.application.Application;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 public class FileChooserFX {
 
     FileChooser fc ;
+    DirectoryChooser dc ;
     File selectedFile ;
     File[] selectedFiles ;
     
@@ -20,6 +22,7 @@ public class FileChooserFX {
 
     public FileChooserFX(){
         fc = new FileChooser() ;
+        dc = new DirectoryChooser() ;
         fc.setTitle("Select Path");
         // setting up default path
         setPath(path);
@@ -52,6 +55,11 @@ public class FileChooserFX {
 
     public void openFile(){
         selectedFile = fc.showOpenDialog(new Stage()) ;
+    }
+    
+    public String openDirectory() {
+    	dc.setInitialDirectory(new File(path));
+    	return dc.showDialog(new Stage()) ;
     }
 
     public File getSelectedFile(){
@@ -107,16 +115,20 @@ public class FileChooserFX {
 		@Override
 		public void start(Stage primaryStage) throws Exception {
 			FileChooserFX fc = new FileChooserFX() ;
-			fc.addExtension("txt");
-			fc.addExtension("jpeg");
-//			String path = "C:\\Users\\Meisam\\Desktop\\icons" ;
-//			fc.setPath(path);
-			fc.saveFile();
-			System.out.println(fc.getFileName());
-			System.out.println(fc.getFilePath());
-			System.out.println(fc.getFileName_NoExtension());
-			System.out.println(fc.getFilePath_NoExtension());
-			System.out.println(fc.getDirectoryPath());
+//			fc.addExtension("txt");
+//			fc.addExtension("jpeg");
+////			String path = "C:\\Users\\Meisam\\Desktop\\icons" ;
+////			fc.setPath(path);
+//			fc.saveFile();
+//			System.out.println(fc.getFileName());
+//			System.out.println(fc.getFilePath());
+//			System.out.println(fc.getFileName_NoExtension());
+//			System.out.println(fc.getFilePath_NoExtension());
+//			System.out.println(fc.getDirectoryPath());
+			
+			
+			System.out.println(fc.openDirectory());
+			
 		}
 
     }

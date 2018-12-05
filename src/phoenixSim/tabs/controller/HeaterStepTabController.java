@@ -13,6 +13,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -157,7 +158,7 @@ public class HeaterStepTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	figStep.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

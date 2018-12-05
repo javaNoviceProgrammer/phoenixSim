@@ -17,6 +17,7 @@ import mathLib.fitting.lmse.NonLinearSolver;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
 import phoenixSim.builder.WindowBuilder;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.SimulationDataBase;
@@ -207,7 +208,7 @@ public class HeaterDCFittingTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	fig.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -200,7 +201,7 @@ public class MaterialsTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	fig.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

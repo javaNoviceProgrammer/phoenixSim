@@ -20,6 +20,7 @@ import mathLib.fitting.lmse.MarquardtFitter;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -330,7 +331,7 @@ public class AddDropFittingSymmetricThruTabController extends AbstractTabControl
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	fig.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

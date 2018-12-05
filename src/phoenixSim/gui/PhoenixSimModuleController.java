@@ -515,20 +515,32 @@ public class PhoenixSimModuleController {
     @FXML
     public void setDefaultWorkspacePressed(){
     	FileChooserFX fc = new FileChooserFX() ;
+    	String path = fc.openDirectory() ;
+    	if(!path.equals("null")) {
+        	FileChooserFX.path = path ;
+        	CustomJFileChooser.path = path ;
+        	// changing the default path of cockpit
+        	ObjectConstuctionTreeModel.DEFAULT_FILE_NAME = path + File.separator + "tree.conf" ;
+        	// update status bar
+        	StatusBar statbar = new StatusBar() ;
+        	statbar.setText("Workspace is set to: " + path);
+        	updateStatusBar(statbar);
+    	}
+    }
+    
+    @FXML
+    public void saveConfigFilePressed(){
+    	FileChooserFX fc = new FileChooserFX() ;
     	fc.setExtension("confsim");
     	fc.saveFile();
     	String path = fc.getDirectoryPath() ;
-    	FileChooserFX.path = path ;
-    	CustomJFileChooser.path = path ;
-    	// changing the default path of cockpit
-    	ObjectConstuctionTreeModel.DEFAULT_FILE_NAME = path + File.separator + "tree.conf" ;
     	// create the config file
     	FileOutput fo = new FileOutput(fc.getFilePath()) ;
     	fo.println(fc.getDirectoryPath());
     	fo.close();
     	// update status bar
     	StatusBar statbar = new StatusBar() ;
-    	statbar.setText("Workspace is set to: " + path);
+    	statbar.setText("Config file saved to: " + path);
     	updateStatusBar(statbar);
     }
 

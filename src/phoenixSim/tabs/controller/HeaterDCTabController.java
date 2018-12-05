@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
 import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.VariableSelectorModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -250,7 +251,7 @@ public class HeaterDCTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	figDC.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

@@ -14,17 +14,26 @@ public class ExportToMatlabGUI extends Application {
 	}
 	
     Stage window ;
+    ExportToMatlabController controller ;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        Parent root = FXMLLoader.load(getClass().getResource("/phoenixSim/fxmls/exportToMatlab.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/phoenixSim/fxmls/exportToMatlab.fxml")) ;
+//        Parent root = FXMLLoader.load(getClass().getResource("/phoenixSim/fxmls/exportToMatlab.fxml")) ;
+        Parent root = loader.load() ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
         window.setTitle("Configure Export to MATLAB");
         window.getIcons().add(new Image(getClass().getResourceAsStream("/phoenixSim/extras/Matlab_Logo.png"))) ;
         window.setResizable(false);
         window.show();
+        
+        controller = loader.getController() ;
+    }
+    
+    public ExportToMatlabController getController() {
+    	return controller ;
     }
 	
 }

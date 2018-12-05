@@ -13,6 +13,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -279,7 +280,7 @@ public class InterfaceTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	fig.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML

@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
@@ -407,7 +408,7 @@ public class StripWgModesSiNTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	figWgMode.exportToMatlab();
+    	new ExportToMatlabModule(figWgMode) ;
     }
 
     @FXML

@@ -14,6 +14,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
 import phoenixSim.builder.WindowBuilder;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.DataCollectorController;
@@ -382,7 +383,7 @@ public class SlabWgModesTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-//    	figWgMode.exportToMatlab();
+    	new ExportToMatlabModule(figWgMode) ;
     }
 
     @FXML
