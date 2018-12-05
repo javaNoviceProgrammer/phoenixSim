@@ -42,7 +42,7 @@ public class ModuleCreator {
 	public void createCouplerDesigner(){
 		// loading the GUI
 		WindowBuilder builder = new WindowBuilder(loader) ;
-		builder.setIcon("/People/Meisam/GUI/PhoenixSim/TabsLibrary/CouplerDesigner/Extras/coupler_designer_logo.png");
+		builder.setIcon("/phoenixSim/extras/coupler_designer_logo.png");
 		try {
 			builder.build_NoModality("Coupler Designer v1.0", false);
 		} catch (IOException e) {
@@ -75,7 +75,7 @@ public class ModuleCreator {
 	public void createThermalAnalyzer(){
 		// loading the GUI
 		WindowBuilder builder = new WindowBuilder(loader) ;
-		builder.setIcon("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png");
+		builder.setIcon("/phoenixSim/extras/PhoenixSim_logo.png");
 		try {
 			builder.build_NoModality("Thermo-Optic Analyzer v1.0", false);
 		} catch (IOException e) {
@@ -109,7 +109,7 @@ public class ModuleCreator {
 	public void createAddDropFitting(){
 		// loading the GUI
 		WindowBuilder builder = new WindowBuilder(loader) ;
-		builder.setIcon("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png");
+		builder.setIcon("/phoenixSim/extras/PhoenixSim_logo.png");
 		try {
 			builder.build_NoModality("Add Drop Fitting Module", false);
 		} catch (IOException e) {
