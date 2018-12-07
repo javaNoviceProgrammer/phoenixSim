@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.StripWgModeProfileTabController">
+<TabPane prefHeight="567.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixSim.tabs.controller.StripWgModeProfileTabController">
    <tabs>
       <Tab fx:id="tab" text="Strip Wg Mode Profile">
          <content>
@@ -39,7 +39,7 @@
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Extras/stirp_wg_profile.png" />
+                                    <Image url="@../../extras/stirp_wg_profile.png" />
                                  </image>
                               </ImageView>
                               <RadioButton fx:id="yCut" layoutX="159.0" layoutY="62.0" mnemonicParsing="false" onAction="#setSlabCut" text="Y-cut">

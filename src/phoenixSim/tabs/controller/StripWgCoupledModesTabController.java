@@ -4,12 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.CoupledStrip.ModeCoupledStripWgTE_fast;
-import PhotonicElements.EffectiveIndexMethod.ModeSolver.CoupledStrip.ModeCoupledStripWgTM_fast;
-import PhotonicElements.EffectiveIndexMethod.NeffDataBase.NeffCoupledStripWg_400X220_COMSOL;
-import PhotonicElements.EffectiveIndexMethod.NeffDataBase.NeffCoupledStripWg_450X220_COMSOL;
-import PhotonicElements.EffectiveIndexMethod.NeffDataBase.NeffCoupledStripWg_500X220_COMSOL;
-import PhotonicElements.EffectiveIndexMethod.Structures.StripWg;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.CheckBox;
@@ -21,11 +15,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.intf.ActionInterface;
+import phoenixSim.modules.ExportToMatlabModule;
+import phoenixSim.modules.PlotterModule;
+import phoenixSim.modules.SweepParameterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.strip.StripWg;
 import photonics.util.Wavelength;
 
 public class StripWgCoupledModesTabController extends AbstractTabController {
@@ -122,26 +121,16 @@ public class StripWgCoupledModesTabController extends AbstractTabController {
 
     @FXML
     public void sweepGap() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/DataInput/MainGUI/dataCollector.fxml")) ;
-        WindowBuilder window = new WindowBuilder(loader) ;
-        window.setIcon("/People/Meisam/GUI/DataInput/Extras/dataCollector.png");
-        window.build("Data Collector", false);
-        DataCollectorController controller = loader.getController() ;
-        controller.initialize();
-        controller.getExitButton().setOnAction(e -> {
-            try {
-//                if(simDataBase.variableExists("gap_(nm)")){
-//                    simDataBase.removeVariable(simDataBase.getVariable("gap_(nm)"));
-//                }
-                simDataBase.addNewVariable(new SimulationVariable("gap_(nm)", "Gap (nm)", controller.getAllValues()));
+    	SweepParameterModule sweep = new SweepParameterModule() ;
+    	sweep.setExitAction(new ActionInterface() {
+			@Override
+			public void setExitAction() {
+                simDataBase.addNewVariable(new SimulationVariable("gap_(nm)", "Gap (nm)", sweep.getController().getAllValues()));
                 // clear text field and update label
                 gapTextField.clear();
                 gapLabel.setText("gap is set to array values");
-                window.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+			}
+		});
         if(coupledModePlotToggleSelected()){
         	coupledModePlot.getSelectedToggle().setSelected(false);
         }
@@ -331,13 +320,6 @@ public class StripWgCoupledModesTabController extends AbstractTabController {
     	return neffOdd ;
     }
 
-//    private void showPlot(MatlabChart fig, Pane pane){
-//        int width = 500, height = 400 ;
-//        pane.getChildren().remove(fig.getChartSwingNode(width, height)) ;
-//        pane.getChildren().add(fig.getChartSwingNode(width, height)) ;
-//        pane.setPrefSize((double) width, (double) height);
-//    }
-
     private MatlabChart createPlot(SimulationVariable x, SimulationVariable y){
         MatlabChart fig = new MatlabChart() ;
         fig.plot(x.getAllValues(), y.getAllValues());
@@ -349,18 +331,12 @@ public class StripWgCoupledModesTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figCoupledModes.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML
     public void openInPlotterPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Plotters/MainGUI/plotter.fxml")) ;
-        WindowBuilder plotter = new WindowBuilder(loader) ;
-        plotter.setIcon("/People/Meisam/GUI/Plotters/MainGUI/Extras/plotter.png");
-        plotter.build("Plotter v0.5 Beta", true);
-        PlotterController controller = (PlotterController) plotter.getController() ;
-        controller.setDataBase(simDataBase);
-        controller.initialize();
+        new PlotterModule(simDataBase) ;
     }
 
     public StatusBar getStatusBar(){
@@ -378,7 +354,6 @@ public class StripWgCoupledModesTabController extends AbstractTabController {
 
 	@Override
 	public void generateGDS() {
-		// TODO Auto-generated method stub
 
 	}
 
