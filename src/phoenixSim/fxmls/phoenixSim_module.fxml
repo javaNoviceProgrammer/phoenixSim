@@ -191,8 +191,8 @@
                         <MenuItem mnemonicParsing="false" onAction="#interconnectSFG" text="Interconnect" />
                      </items>
                   </Menu>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <Menu mnemonicParsing="false" text="NASA">
+                  <SeparatorMenuItem mnemonicParsing="false" visible="false" />
+                  <Menu mnemonicParsing="false" text="NASA" visible="false">
                      <items>
                         <Menu mnemonicParsing="false" text="Ring Resonators">
                            <items>
