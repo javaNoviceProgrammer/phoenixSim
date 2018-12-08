@@ -61,13 +61,17 @@ public class DataCollectorController extends AbstractController {
 	@FXML
 	public void addValueButtonPressed(){
 
-		startValue = Double.parseDouble(startTextField.getText()) ;
-		endValue = Double.parseDouble(endTextField.getText()) ;
+//		startValue = Double.parseDouble(startTextField.getText()) ;
+//		endValue = Double.parseDouble(endTextField.getText()) ;
+		
+		startValue = MathUtils.evaluate(startTextField.getText()) ;
+		endValue = MathUtils.evaluate(endTextField.getText()) ;
 
 		double[] x ;
 
 		if(stepSelected) {
-			stepSize = Double.parseDouble(stepPointsTextField.getText()) ;
+//			stepSize = Double.parseDouble(stepPointsTextField.getText()) ;
+			stepSize = MathUtils.evaluate(stepPointsTextField.getText()) ;
 			x = MathUtils.linspace(startValue, endValue, stepSize);
 		}
 		else {
