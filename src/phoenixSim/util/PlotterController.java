@@ -1,6 +1,12 @@
 package phoenixSim.util;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
+
+import javax.swing.JFrame;
+
+import org.jfree.chart.JFreeChart;
 
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
@@ -14,6 +20,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import mathLib.plot.MatlabChart;
+import mathLib.plot.util.CustomChartPanel;
 import mathLib.util.MathUtils;
 import phoenixSim.builder.AbstractController;
 import phoenixSim.modules.DatabaseModule;
@@ -277,8 +284,18 @@ public class PlotterController extends AbstractController {
 	}
 
 	@FXML
-	private void popupPlotPressed(){
-		fig.run();
+	private void popupPlotPressed() throws CloneNotSupportedException{
+//		fig.run();
+		
+		JFreeChart chart = (JFreeChart) fig.getChart().clone();
+    	CustomChartPanel cpanel = new CustomChartPanel(chart, 640, 450, 640, 450, 640, 450, true, true, true, true, true, true) ;
+	    JFrame chartFrame = new JFrame() ;
+	    chartFrame.add(cpanel) ;
+	    chartFrame.setSize(640, 450);
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/phoenixSim/extras/presentation.png"));
+        chartFrame.setIconImage(image);
+        chartFrame.setTitle("Plot Viewer v1.0");
+        chartFrame.setVisible(true);
 	}
 
 	@FXML

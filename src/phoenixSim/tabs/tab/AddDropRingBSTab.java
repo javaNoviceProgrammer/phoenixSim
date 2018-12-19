@@ -13,7 +13,7 @@ import phoenixSim.util.SimulationDataBase;
 
 public class AddDropRingBSTab extends AbstractTab {
 
-	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/AddDropFirstOrderBS/add_drop_ring_bs.fxml")) ;
+	FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/tabs/add_drop_ring_bs.fxml")) ;
 	AddDropRingBSTabController controller ;
 
 	public AddDropRingBSTab(SimulationDataBase simDataBase){

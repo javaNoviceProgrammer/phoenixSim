@@ -1,6 +1,5 @@
 package phoenixSim.tabs.controller;
 
-import static PhotonicElements.Utilities.MathLibraries.MoreMath.* ;
 import static java.lang.Math.PI;
 import static java.lang.Math.pow;
 
@@ -13,15 +12,17 @@ import javax.swing.JOptionPane;
 
 import org.controlsfx.control.StatusBar;
 
-import GDS.Elements.BasicElements.AddDropRing;
-import GDS.Elements.Positioning.Port;
-import GDS.Elements.Positioning.Position;
-import GDS.Headers.Footer;
-import GDS.PDK.AbstractLayerMap;
-import GDS.PDK.AIMLayerMap.SiliconLevelMasks.SEAM;
-import PhotonicElements.RingStructures.BackScattering.ClosedForm.AddDropSymmetricBS;
-import PhotonicElements.Waveguides.TerminatorAndReflector.LumpedReflector;
 import flanagan.interpolation.LinearInterpolation;
+import gds.elements.AbstractElement;
+import gds.elements.DataBase.Entry;
+import gds.elements.basics.AddDropRing;
+import gds.elements.positioning.Port;
+import gds.elements.positioning.Position;
+import gds.headers.Footer;
+import gds.headers.Header;
+import gds.layout.cells.Cell;
+import gds.pdk.AbstractLayerMap;
+import gds.pdk.generic.GeneralLayer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -30,12 +31,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import mathLib.util.MathUtils.Conversions;
+import phoenixSim.modules.ExportToMatlabModule;
 import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.FileChooserFX;
 import phoenixSim.util.OSDetector;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
+import photonics.ring.bs.AddDropSymmetricBS;
+import photonics.wg.LumpedReflector;
+import static mathLib.util.MathUtils.*;
 
 public class AddDropRingBSTabController extends AbstractTabController {
 
@@ -257,7 +263,7 @@ public class AddDropRingBSTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	fig.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML
@@ -279,7 +285,7 @@ public class AddDropRingBSTabController extends AbstractTabController {
 			double inputGap_nm = interpolator.interpolate(inputKappa) ;
 			double outputGap_nm = interpolator.interpolate(outputKappa) ;
 			double radius_um = simDataBase.getVariable("radius_(um)").getValue(0) ;
-			AddDropRing element = new AddDropRing("AddDropRing", new AbstractLayerMap[]{new SEAM()}, "port1", new Port(new Position(0, 0), width_um, 180), new Entry(width_um), new Entry(radius_um), new Entry(inputGap_nm), new Entry(outputGap_nm)) ;
+			AddDropRing element = new AddDropRing("AddDropRing", new AbstractLayerMap[]{new GeneralLayer("Gen", 1, 0)}, "port1", new Port(new Position(0, 0), width_um, 180), new Entry(width_um), new Entry(radius_um), new Entry(inputGap_nm), new Entry(outputGap_nm)) ;
 			// step2: file chooser
 			FileChooserFX fc = new FileChooserFX() ;
 			fc.setExtension("gds");
