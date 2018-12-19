@@ -4,15 +4,17 @@ import java.io.IOException;
 
 import org.controlsfx.control.StatusBar;
 
-import GDS.Elements.BasicElements.RingWg;
-import GDS.Elements.Positioning.Port;
-import GDS.Elements.Positioning.Position;
-import GDS.Headers.Footer;
-import GDS.PDK.AbstractLayerMap;
-import GDS.PDK.AIMLayerMap.SiliconLevelMasks.SEAM;
-import PhotonicElements.DirectionalCoupler.RingWgCoupling.RingWgCoupler;
-import PhotonicElements.Waveguides.WaveguideProperties.WgProperties;
 import flanagan.interpolation.CubicSpline;
+import gds.elements.AbstractElement;
+import gds.elements.DataBase.Entry;
+import gds.elements.basics.RingWg;
+import gds.elements.positioning.Port;
+import gds.elements.positioning.Position;
+import gds.headers.Footer;
+import gds.headers.Header;
+import gds.layout.cells.Cell;
+import gds.pdk.AbstractLayerMap;
+import gds.pdk.generic.GeneralLayer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -22,14 +24,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import mathLib.plot.MatlabChart;
+import phoenixSim.builder.WindowBuilder;
+import phoenixSim.modules.ExportToMatlabModule;
+import phoenixSim.modules.PlotterModule;
 import phoenixSim.tabs.AbstractTabController;
 import phoenixSim.util.DataCollectorController;
 import phoenixSim.util.FileChooserFX;
 import phoenixSim.util.OSDetector;
-import phoenixSim.util.PlotterController;
 import phoenixSim.util.SimulationDataBase;
 import phoenixSim.util.SimulationVariable;
 import photonics.util.Wavelength;
+import photonics.wg.coupling.RingWgCoupler;
 
 public class RingWgCouplerTabController extends AbstractTabController {
 
@@ -179,8 +184,7 @@ public class RingWgCouplerTabController extends AbstractTabController {
     	double[] neff_odd_fromCoupledTab = simDataBase.getVariableValues("neff_odd_()") ;
     	CubicSpline neff_even_interpolator = new CubicSpline(gap_nm_fromCoupledTab, neff_even_fromCoupledTab) ;
     	CubicSpline neff_odd_interpolator = new CubicSpline(gap_nm_fromCoupledTab, neff_odd_fromCoupledTab) ;
-    	WgProperties wgProp = new WgProperties(1, 0, 1, null) ;
-    	RingWgCoupler rwDC = new RingWgCoupler(new Wavelength(lambda_nm), wgProp, width_nm, radius_um, d_nm, neff_even_interpolator, neff_odd_interpolator) ;
+    	RingWgCoupler rwDC = new RingWgCoupler(new Wavelength(lambda_nm), width_nm, radius_um, d_nm, neff_even_interpolator, neff_odd_interpolator) ;
     	return rwDC.getS31().abs() ;
     }
 
@@ -190,8 +194,7 @@ public class RingWgCouplerTabController extends AbstractTabController {
     	double[] neff_odd_fromCoupledTab = simDataBase.getVariableValues("neff_odd_()") ;
     	CubicSpline neff_even_interpolator = new CubicSpline(gap_nm_fromCoupledTab, neff_even_fromCoupledTab) ;
     	CubicSpline neff_odd_interpolator = new CubicSpline(gap_nm_fromCoupledTab, neff_odd_fromCoupledTab) ;
-    	WgProperties wgProp = new WgProperties(1, 0, 1, null) ;
-    	RingWgCoupler rwDC = new RingWgCoupler(new Wavelength(lambda_nm), wgProp, width_nm, radius_um, d_nm, neff_even_interpolator, neff_odd_interpolator) ;
+    	RingWgCoupler rwDC = new RingWgCoupler(new Wavelength(lambda_nm), width_nm, radius_um, d_nm, neff_even_interpolator, neff_odd_interpolator) ;
     	return rwDC.getS21().abs() ;
     }
 
@@ -282,18 +285,12 @@ public class RingWgCouplerTabController extends AbstractTabController {
 
     @FXML
     public void exportToMatlabPressed() throws IOException {
-    	figRingWg.exportToMatlab();
+    	new ExportToMatlabModule(getFig()) ;
     }
 
     @FXML
     public void openInPlotterPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Plotters/MainGUI/plotter.fxml")) ;
-        WindowBuilder plotter = new WindowBuilder(loader) ;
-        plotter.setIcon("/People/Meisam/GUI/Plotters/MainGUI/Extras/plotter.png");
-        plotter.build("Plotter v0.5 Beta", true);
-        PlotterController controller = (PlotterController) plotter.getController() ;
-        controller.setDataBase(simDataBase);
-        controller.initialize();
+        new PlotterModule(simDataBase) ;
     }
 
     public StatusBar getStatusBar(){
@@ -322,7 +319,7 @@ public class RingWgCouplerTabController extends AbstractTabController {
 		double width_um = width_nm/1e3 ;
 		double gap_nm = simDataBase.getVariable("gap_ringwg_(nm)").getValue(0) ;
 		double radius_um = simDataBase.getVariable("radius_(um)").getValue(0) ;
-		RingWg element = new RingWg("ringWg", new AbstractLayerMap[]{new SEAM()}, "port1", new Port(new Position(0, 0), width_um, 180), new Entry(width_um), new Entry(radius_um), new Entry(gap_nm)) ;
+		RingWg element = new RingWg("ringWg", new AbstractLayerMap[]{new GeneralLayer("Gen", 1, 0)}, "port1", new Port(new Position(0, 0), width_um, 180), new Entry(width_um), new Entry(radius_um), new Entry(gap_nm)) ;
 		// step3: create python file
 		Cell cell = new Cell(cellName, new AbstractElement[]{element}) ;
 		Header header = new Header(true, true, true, true, true) ;
