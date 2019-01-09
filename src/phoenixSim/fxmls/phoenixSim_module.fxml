@@ -191,18 +191,11 @@
                         <MenuItem mnemonicParsing="false" onAction="#interconnectSFG" text="Interconnect" />
                      </items>
                   </Menu>
-                  <SeparatorMenuItem mnemonicParsing="false" visible="false" />
-                  <Menu mnemonicParsing="false" text="NASA" visible="false">
-                     <items>
-                        <Menu mnemonicParsing="false" text="Ring Resonators">
-                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#allPassRingNASAPressed" text="All-Pass" />
-                              <MenuItem mnemonicParsing="false" onAction="#addDropRingNASAPressed" text="Add-Drop" />
-                              <MenuItem mnemonicParsing="false" onAction="#addAllPassRingQContoursPressed" text="All-Pass Q-contour" />
-                              <MenuItem mnemonicParsing="false" onAction="#addAllPassRingERContoursPressed" text="All-Pass ER-contour" />
-                           </items>
-                        </Menu>
-                     </items>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="PIPES">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#pipesLinkDesignPressed" text="Link Analysis" />
+                    </items>
                   </Menu>
                </items>
             </Menu>

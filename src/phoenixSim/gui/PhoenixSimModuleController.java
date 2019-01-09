@@ -101,6 +101,7 @@ import phoenixSim.util.ModuleCreator;
 import phoenixSim.util.OSDetector;
 import phoenixSim.util.PlotDigitizer;
 import phoenixSim.util.SimulationDataBase;
+import pipes.Link;
 
 public class PhoenixSimModuleController {
 
@@ -1568,6 +1569,20 @@ public class PhoenixSimModuleController {
 //    	EventQueue.invokeLater(r);
 	}
 
+	//********* PIPES **************
+	@FXML
+	public void pipesLinkDesignPressed() {
+    	Runnable r = new Runnable(){
+			@Override
+			public void run() {
+				String pacakgeString = "photonics.pipes" ;
+				String classString = Link.class.getName() ;
+				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
+				AbstractResultsDisplayer.showGUI = true ;
+			}
+    	} ;
+    	EventQueue.invokeLater(r);
+	}
 
 	//*****************************************
 
