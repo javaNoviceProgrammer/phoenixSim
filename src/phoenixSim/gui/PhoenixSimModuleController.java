@@ -529,7 +529,7 @@ public class PhoenixSimModuleController {
         	System.gc();
     	}
     }
-    
+
     @FXML
     public void saveConfigFilePressed(){
     	FileChooserFX fc = new FileChooserFX() ;
@@ -1575,7 +1575,7 @@ public class PhoenixSimModuleController {
     	Runnable r = new Runnable(){
 			@Override
 			public void run() {
-				String pacakgeString = "photonics.pipes" ;
+				String pacakgeString = "photonics;pipes;" ;
 				String classString = Link.class.getName() ;
 				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
 				AbstractResultsDisplayer.showGUI = true ;
