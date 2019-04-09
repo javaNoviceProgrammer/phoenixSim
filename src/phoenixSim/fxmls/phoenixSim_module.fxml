@@ -366,7 +366,7 @@
       </MenuBar>
    </top>
    <center>
-      <TabPane fx:id="tabs" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
+      <TabPane fx:id="tabs" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="823.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <StatusBar fx:id="statusBar" prefHeight="24.0" prefWidth="823.0" text="Ready" BorderPane.alignment="CENTER" />

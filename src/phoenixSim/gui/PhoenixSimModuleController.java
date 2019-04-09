@@ -122,7 +122,7 @@ public class PhoenixSimModuleController {
     @FXML public TabPane tabs ;
     @FXML public MenuItem closeApp ;
 //    @FXML VBox mainWindow ;
-    @FXML BorderPane mainWindow ;
+    @FXML public BorderPane mainWindow ;
     @FXML CheckMenuItem tabClosingSetting ;
     @FXML public CheckMenuItem fullScreenMode ;
 

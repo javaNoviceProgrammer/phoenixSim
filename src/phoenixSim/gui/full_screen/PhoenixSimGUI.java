@@ -27,13 +27,13 @@ public class PhoenixSimGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage ;
-        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/PhoenixSim/MainModule/FullScreenMode/phoenixSim_module_fullScreen.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/phoenixSim_module_fullScreen.fxml")) ;
         Parent root = loader.load() ;
         Scene scene = new Scene(root) ;
         window.setScene(scene);
         window.setTitle("PhoenixSim v1.0 - Main Window");
         window.setResizable(false);
-        window.getIcons().add(new Image("/People/Meisam/GUI/ThermalHeater/Extras/PhoenixSim_logo.png")) ;
+        window.getIcons().add(new Image("/phoenixSim/extras/PhoenixSim_logo.png")) ;
 
         PhoenixSimModuleController controller = loader.getController() ;
         controller.addWelcomeTab();
@@ -66,7 +66,7 @@ public class PhoenixSimGUI extends Application {
         	leftPane.setSide(Side.LEFT);
 
         	TabPane rightPane = new TabPane() ;
-        	FXMLLoader databaseTab = new FXMLLoader(Object.class.getClass().getResource("/People/Meisam/GUI/Utilities/DataBaseTable/database_fullscreen_mode/database_table_fullscreen_mode.fxml")) ;
+        	FXMLLoader databaseTab = new FXMLLoader(Object.class.getClass().getResource("/phoenixSim/fxmls/database_table_fullscreen_mode.fxml")) ;
         	try {
 				databaseTab.load() ;
 			} catch (IOException e1) {

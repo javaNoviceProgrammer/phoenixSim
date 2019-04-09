@@ -22,7 +22,6 @@ import ch.epfl.javancox.experiments.builder.ExperimentConfigurationCockpit;
 import ch.epfl.javancox.experiments.builder.tree_model.ObjectConstuctionTreeModel;
 import flanagan.io.FileInput;
 import flanagan.io.FileOutput;
-import gds.util.MoreMath;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -44,6 +43,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import mathLib.plot.util.CustomChartPanel;
 import mathLib.util.CustomJFileChooser;
+import mathLib.util.MathUtils;
 import phoenixSim.modules.CreditsModule;
 import phoenixSim.modules.DatabaseModule;
 import phoenixSim.modules.ExportCompleted;
@@ -397,7 +397,7 @@ public class PhoenixSimModuleController {
     @FXML
     public void setFontSize(){
     	String st = fontSizeTextField.getText() ;
-    	getCurrentTab().getController().getFig().setFontSize((int) MoreMath.evaluate(st));
+    	getCurrentTab().getController().getFig().setFontSize((int) MathUtils.evaluate(st));
     }
 
     @FXML
@@ -1274,73 +1274,6 @@ public class PhoenixSimModuleController {
     	} ;
     	EventQueue.invokeLater(r);
 	}
-
-	//********* HPE Tree Library **************
-	@FXML
-	public void hpeAddDropRingPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "hpe.edu.lrl;" ;
-				String classString = "hpe.edu.lrl.simulations.TestAddDropRingSFG" ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
-	}
-
-	@FXML
-	public void hpeWaveguidesPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "hpe.edu.lrl;" ;
-				String classString = "hpe.edu.lrl.simulations.HPEWaveguides" ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
-	}
-
-	@FXML
-	public void hpeRaceTrackCouplerPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "hpe.edu.lrl;" ;
-				String classString = "hpe.edu.lrl.simulations.RaceTrackCoupler" ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
-	}
-
-	@FXML
-	public void hpeAddDropBSPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "hpe.edu.lrl;" ;
-				String classString = "hpe.edu.lrl.simulations.AddDropRingBackScatteringSFGAsym" ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
-	}
-
-	@FXML
-	public void hpeAddDropClosedFormPressed(){
-    	Runnable r = new Runnable(){
-			@Override
-			public void run() {
-				String pacakgeString = "hpe.edu.lrl;" ;
-				String classString = "hpe.edu.lrl.simulations.TestAddDropRingClosedForm" ;
-				ExperimentConfigurationCockpit.main(new String[]{"-p", pacakgeString, "-c", classString});
-			}
-    	} ;
-    	EventQueue.invokeLater(r);
-	}
-
 
 	//*****************************************
 
