@@ -501,7 +501,8 @@ public class PhoenixSimModuleController {
 			}
 		};
     	if(tabClosingSetting.isSelected()){
-    		tabs.setTabClosingPolicy(TabClosingPolicy.ALL_TABS);
+//    		tabs.setTabClosingPolicy(TabClosingPolicy.ALL_TABS);
+    		tabs.setTabClosingPolicy(TabClosingPolicy.SELECTED_TAB);
     		tabs.getTabs().addListener(listener) ;
     	}
     	else{
