@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import org.controlsfx.control.StatusBar;
 import org.jfree.chart.ChartFactory;
@@ -50,6 +51,7 @@ import phoenixSim.modules.DatabaseModule;
 import phoenixSim.modules.ExportCompleted;
 import phoenixSim.modules.ImportDataModule;
 import phoenixSim.modules.PlotterModule;
+import phoenixSim.swing.TriggerConversionGUI;
 import phoenixSim.tabs.AbstractTab;
 import phoenixSim.tabs.tab.AddDropFittingSymmetricBSDoubleReflectorTab;
 import phoenixSim.tabs.tab.AddDropFittingSymmetricBSTab;
@@ -510,6 +512,18 @@ public class PhoenixSimModuleController {
     		tabs.getTabs().removeListener(listener);
     	}
 
+    }
+    
+    @FXML
+    public void triggerConversionPressed() {
+    	SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				TriggerConversionGUI trig = new TriggerConversionGUI(simDataBase) ;	
+				trig.setVisible(true);
+			}
+		});
     }
 
 

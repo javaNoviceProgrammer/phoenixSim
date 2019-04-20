@@ -13,8 +13,8 @@ public class WavelengthTriggerConversion {
 	int startIndex, endIndex ;
 	double startLambdaNm, endLambdaNm, sweepStepNm, sweepRateNmPerSec ;
 	
-	String triggerFile = "C:\\Users\\ilirm\\Desktop\\trigger.txt" ;
-	String lightFile = "C:\\Users\\ilirm\\Desktop\\photodiode.txt" ;
+	String triggerFile = ""  ;
+	String lightFile = "" ;
 	
 	public WavelengthTriggerConversion() {
 		timeList = new ArrayList<>() ;
@@ -93,9 +93,6 @@ public class WavelengthTriggerConversion {
 			}
 		}
 		
-//		System.out.println("start = " + time[startIndex]);
-//		System.out.println("end = " + time[endIndex]);
-		
 		ArrayList<Double> lambda = new ArrayList<>() ;
 		for(int i=startIndex; i<endIndex+1; i++) {
 			double a = startLambdaNm + (time[i] - time[startIndex]) * sweepRateNmPerSec ;
@@ -119,19 +116,6 @@ public class WavelengthTriggerConversion {
 		fig.plot(lambdaNm, lightConverted);
 		fig.renderPlot();
 		fig.run(true);
-	}
-	
-	public static void main(String[] args) {
-		WavelengthTriggerConversion wt = new WavelengthTriggerConversion() ;
-		
-		wt.setStartSweepNm(1519);
-		wt.setEndSweepNm(1521);
-//		wt.setSweepStepNm(1e-3);
-		wt.setSweepSpeed(1);
-		
-		wt.readData();
-		wt.findTriggerInterval();
-		wt.plot();
 	}
 
 }

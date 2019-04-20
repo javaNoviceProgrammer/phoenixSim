@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -25,10 +26,33 @@
                      <contextMenu>
                         <ContextMenu>
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#applyFunctionPressed" text="Apply Function">
-                                 <graphic>
-                                    <TextField fx:id="functionField" prefWidth="300.0" />
-                                 </graphic></MenuItem>
+                              <Menu mnemonicParsing="false" text="Change Name">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#applyNamePressed" text="Apply">
+                                       <graphic>
+                                          <TextField fx:id="nameField" />
+                                       </graphic>
+                                    </MenuItem>
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Change Alias">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#applyAliasPressed" text="Apply">
+                                       <graphic>
+                                          <TextField fx:id="aliasField" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Function">
+                                 <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#applyFunctionPressed" text="Apply">
+                                       <graphic>
+                                          <TextField fx:id="functionField" prefWidth="300.0" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </Menu>
                           </items>
                         </ContextMenu>
                      </contextMenu>

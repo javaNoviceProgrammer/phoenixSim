@@ -36,7 +36,7 @@ public class DatabaseTableController extends AbstractController {
     @FXML Button clearAllButton ;
     @FXML Button refreshButton ;
     @FXML Button loadButton ;
-    @FXML TextField functionField ;
+    @FXML TextField functionField, nameField, aliasField ;
     @FXML public Tab tab ;
 
     public SimpleBooleanProperty loadCompleted = new SimpleBooleanProperty(false) ;
@@ -203,6 +203,24 @@ public class DatabaseTableController extends AbstractController {
     	String funcAlias = st.replaceAll("x", selectedVar.getAlias()) ;
     	SimulationVariable funcVariable = new SimulationVariable(funcName, funcAlias, funcValues) ;
     	dataBase.addNewVariable(funcVariable);
+    }
+    
+    @FXML
+    private void applyNamePressed() {
+    	String st = nameField.getText() ;
+    	SimulationVariable var = paramTable.getSelectionModel().getSelectedItem() ;
+    	dataBase.getVariableFromAlias(var.getAlias()).setName(st);
+    	refreshTable(dataBase);
+    	nameField.clear();
+    }
+    
+    @FXML
+    private void applyAliasPressed() {
+    	String st = aliasField.getText() ;
+    	SimulationVariable var = paramTable.getSelectionModel().getSelectedItem() ;
+    	dataBase.getVariable(var.getName()).setAlias(st);
+    	refreshTable(dataBase);
+    	aliasField.clear();
     }
 
     

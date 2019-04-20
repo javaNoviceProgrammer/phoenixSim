@@ -317,6 +317,12 @@
                         <MenuItem mnemonicParsing="false" onAction="#plotDigitizerLogXLogY" text="LogX-LogY" />
                      </items>
                   </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <Menu mnemonicParsing="false" text="Instruments">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#triggerConversionPressed" text="Trigger Conversion" />
+                     </items>
+                  </Menu>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Layout">
