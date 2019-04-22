@@ -209,7 +209,9 @@ public class DatabaseTableController extends AbstractController {
     private void applyNamePressed() {
     	String st = nameField.getText() ;
     	SimulationVariable var = paramTable.getSelectionModel().getSelectedItem() ;
-    	dataBase.getVariableFromAlias(var.getAlias()).setName(st);
+    	dataBase.removeVariable(var);
+    	SimulationVariable varNew = new SimulationVariable(st, var.getAlias(), var.getAllValues()) ;
+    	dataBase.addNewVariable(varNew);
     	refreshTable(dataBase);
     	nameField.clear();
     }
