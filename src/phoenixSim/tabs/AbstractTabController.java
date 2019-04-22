@@ -19,6 +19,7 @@ public abstract class AbstractTabController {
 	public abstract void generateGDS() ;
 
 	public SwingNode swingNode = new SwingNode() ;
+	public SimulationDataBase locadDataBase = new SimulationDataBase() ;
 
 	protected void showPlot(MatlabChart fig, Pane pane){
 		  int width = 500 , height = 400 ;
