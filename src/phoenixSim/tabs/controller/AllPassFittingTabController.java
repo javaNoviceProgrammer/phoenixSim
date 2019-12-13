@@ -122,7 +122,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 		ActionInterface exitAction = new ActionInterface() {
 			@Override
 			public void setExitAction() {
-				xData = new SimulationVariable(selector.getController().getVariable().getName(), 
+				xData = new SimulationVariable(selector.getController().getVariable().getName(),
 						selector.getController().getVariable().getAlias(), selector.getController().getValues()) ;
 				xDataLabel.setText("X data is set to '" + xData.getName() + "'");
 				if(xData != null && yData != null){
@@ -131,7 +131,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 				}
 			}
 		};
-		
+
 		selector.setExitAction(exitAction);
 	}
 
@@ -142,7 +142,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 		ActionInterface exitAction = new ActionInterface() {
 			@Override
 			public void setExitAction() {
-				yData = new SimulationVariable(selector.getController().getVariable().getName(), 
+				yData = new SimulationVariable(selector.getController().getVariable().getName(),
 						selector.getController().getVariable().getAlias(), selector.getController().getValues()) ;
 				yDataLabel.setText("Y data is set to '" + yData.getName() + "'");
 				if(xData != null && yData != null){
@@ -151,7 +151,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 				}
 			}
 		};
-		
+
 		selector.setExitAction(exitAction);
 
 	}
@@ -310,7 +310,7 @@ public class AllPassFittingTabController extends AbstractTabController {
 			double[] fitted_plot = MathUtils.Arrays.Conversions.todB(getLorentzian(BW_nm, er, lambda_nm, lambda_res_nm)) ;
 			fitted_plot = MathUtils.Arrays.plus(fitted_plot, y_dB_min+ER_dB) ;
 			simDataBase.addNewVariable(new SimulationVariable("fitted_thru_(dBm)", "Thru Power (dBm)", fitted_plot));
-			simDataBase.addNewVariable(new SimulationVariable("fitted_lambda_(nm)", "Wavelength (nm)", fitted_plot));
+			simDataBase.addNewVariable(new SimulationVariable("fitted_lambda_(nm)", "Wavelength (nm)", lambda_nm));
 			fig.plot(lambda_nm, fitted_plot, "r", 3f);
 			fig.renderPlot();
 			fig.xlabel("Wavelength (nm)");
